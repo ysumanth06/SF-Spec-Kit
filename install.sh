@@ -105,12 +105,17 @@ mkdir -p "$SFSPEC_ROOT/specs"
 echo "📂 Created directory structure at $SFSPEC_ROOT"
 
 # 3. Create Skill Links
-SOURCE_DIR="$SCRIPT_DIR/.agents/skills"
-
-if [ ! -d "$SOURCE_DIR" ]; then
-    echo "❌ Error: Could not find skills source directory at $SOURCE_DIR"
+# Auto-detect source skills directory (Toolkit might use .agents or .cursor)
+if [ -d "$SCRIPT_DIR/.agents/skills" ]; then
+    SOURCE_DIR="$SCRIPT_DIR/.agents/skills"
+elif [ -d "$SCRIPT_DIR/.cursor/skills" ]; then
+    SOURCE_DIR="$SCRIPT_DIR/.cursor/skills"
+else
+    echo "❌ Error: Could not find skills source directory (tried .agents/skills and .cursor/skills)"
     exit 1
 fi
+
+echo "🔍 Detected skills source at: $SOURCE_DIR"
 
 setup_antigravity() {
     echo "🤖 Setting up Antigravity skills..."

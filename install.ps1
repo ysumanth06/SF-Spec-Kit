@@ -95,12 +95,17 @@ if (-not (Test-Path "$SFSPEC_ROOT\specs")) { New-Item -ItemType Directory -Path 
 Write-Host "📂 Created directory structure at $SFSPEC_ROOT"
 
 # 3. Create Skill Links
-$SOURCE_DIR = Join-Path $SDK_DIR ".agents\skills"
-
-if (-not (Test-Path $SOURCE_DIR)) {
-    Write-Host "❌ Error: Could not find skills source directory at $SOURCE_DIR" -ForegroundColor Red
+# Auto-detect source skills directory (Toolkit might use .agents or .cursor)
+if (Test-Path "$SDK_DIR\.agents\skills") {
+    $SOURCE_DIR = Join-Path $SDK_DIR ".agents\skills"
+} elseif (Test-Path "$SDK_DIR\.cursor\skills") {
+    $SOURCE_DIR = Join-Path $SDK_DIR ".cursor\skills"
+} else {
+    Write-Host "❌ Error: Could not find skills source directory (tried .agents\skills and .cursor\skills)" -ForegroundColor Red
     exit 1
 }
+
+Write-Host "🔍 Detected skills source at: $SOURCE_DIR"
 
 function Setup-Antigravity {
     Write-Host "🤖 Setting up Antigravity skills..." -ForegroundColor Cyan
