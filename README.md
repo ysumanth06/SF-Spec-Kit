@@ -4,8 +4,9 @@
   <p><b>The Enterprise-Grade Salesforce AI-Driven Development (AIDD) Framework</b></p>
 </div>
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/ysumanth06/SF-Spec-Kit)
-![GitHub stars](https://img.shields.io/github/stars/ysumanth06/SF-Spec-Kit)
+![Version](https://img.shields.io/badge/version-1.1.0-blue)
+![GitHub last commit](https://img.shields.io/github/last-commit/ysumanth06/SF-Spec-Kit)
+![GitHub top language](https://img.shields.io/github/languages/top/ysumanth06/SF-Spec-Kit)
 ![GitHub license](https://img.shields.io/github/license/ysumanth06/SF-Spec-Kit)
 ![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-blue)
 ![agentskills.io](https://img.shields.io/badge/agentskills.io-Certified-green)
