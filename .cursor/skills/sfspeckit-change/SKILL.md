@@ -17,7 +17,7 @@ This skill handles requirement changes that arrive after stories have been gener
 
 Change description:
 ```
-/sfspeckit-change Add multi-currency support to the Invoice feature
+/SFSpeckit-change Add multi-currency support to the Invoice feature
 ```
 
 ## Prerequisites
@@ -29,9 +29,9 @@ Change description:
 
 ### Step 1: Read Current State
 
-1. Read the current spec: `.sfspeckit/specs/NNN-feature-name/spec.md`
-2. Read the current plan: `.sfspeckit/specs/NNN-feature-name/plan.md`
-3. Read ALL story files: `.sfspeckit/specs/NNN-feature-name/task_story_*.md`
+1. Read the current spec: `sfspeckit-data/specs/NNN-feature-name/spec.md`
+2. Read the current plan: `sfspeckit-data/specs/NNN-feature-name/plan.md`
+3. Read ALL story files: `sfspeckit-data/specs/NNN-feature-name/task_story_*.md`
 4. Track each story's current status (DRAFT, READY, IMPLEMENTING, REVIEW, QA, DONE)
 
 ### Step 2: Analyze Impact
@@ -115,9 +115,19 @@ Add to spec.md's Change Log:
 
 ## Output
 
-- **Impact report**: Displayed to TPO
-- **Files updated**: spec.md, plan.md, affected story files
-- **Files created**: New story files (if needed)
+- Updated Metadata: [list affected files]
+- Evidence Document: [path to evidence]
+- Status Update: [final state]
+
+## Verification Evidence
+
+1. **Spectrum Engine Log**: ./SFSpeckit/bin/sfspeckit [cmd]
+2. **Evidence File**: Traceability maintained in sfspeckit-data/
+
+## Error Handling
+
+- **Prerequisite Missing**: STOP and inform the user of the missing context.
+- **CLI Failure**: Report the specific Spectrum Engine error code.
 
 ## Notes
 

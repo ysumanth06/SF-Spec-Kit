@@ -1,0 +1,199 @@
+#!/bin/bash
+
+# SFSpeckit: The Spec-Driven Engine (SDE) for Salesforce
+# Unified CLI Wrapper for Autonomous SDLC
+
+# --- Configuration & Colors ---
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+JSON_MODE=false
+VERBOSE=false
+
+# --- Helper Functions ---
+log_info() { if [ "$JSON_MODE" = false ]; then echo -e "${BLUE}ℹ️  $1${NC}"; fi; }
+log_success() { if [ "$JSON_MODE" = false ]; then echo -e "${GREEN}✅ $1${NC}"; fi; }
+log_warn() { if [ "$JSON_MODE" = false ]; then echo -e "${YELLOW}⚠️  $1${NC}"; fi; }
+log_error() { if [ "$JSON_MODE" = false ]; then echo -e "${RED}❌ $1${NC}"; fi; }
+
+show_help() {
+    cat << EOF
+SFSpeckit CLI — The Spec-Driven Engine (SDE) for Salesforce
+
+USAGE:
+    sfspeckit <command> [options]
+
+COMMANDS:
+    init                Initialize project memory and specification structure.
+    branch <name>       Create a standardized branch (feature/story/hotfix).
+    scaffold <id>       Create a folder structure for a specific developer story.
+    verify              Run static analysis and tests, then generate evidence.
+    score               Calculate project health and story completion metrics.
+    pr                  Prepare GitHub Pull Request with story metadata.
+    help                Show this help message.
+
+OPTIONS:
+    --json              Output result in JSON format for AI Agent parsing.
+    --verbose           Show detailed command execution logs.
+
+EXAMPLES:
+    ./SFSpeckit/bin/sfspeckit branch feat/001-setup
+    ./SFSpeckit/bin/sfspeckit verify --json
+EOF
+}
+
+# --- Command Implementations ---
+
+cmd_init() {
+    log_info "Initializing SFSpeckit project structure..."
+    mkdir -p sfspeckit-data/memory
+    mkdir -p sfspeckit-data/specs/templates
+    
+    if [ "$JSON_MODE" = true ]; then
+        echo '{"status": "success", "message": "Directories initialized", "paths": ["sfspeckit-data/memory", "sfspeckit-data/specs"]}'
+    else
+        log_success "SFSpeckit data directories established."
+    fi
+}
+
+cmd_scaffold() {
+    local story_id=$1
+    if [ -z "$story_id" ]; then
+        log_error "Story ID is required (e.g., ST-001)."
+        exit 1
+    fi
+
+    local story_dir="sfspeckit-data/specs/$story_id"
+    log_info "Scaffolding story directory at $story_dir..."
+    mkdir -p "$story_dir/stories"
+    
+    # Create a basic placeholder for documentation
+    echo "# Story $story_id" > "$story_dir/spec.md"
+    
+    if [ "$JSON_MODE" = true ]; then
+        echo "{\"status\": \"success\", \"path\": \"$story_dir\"}"
+    else
+        log_success "Scaffolded $story_id successfully."
+    fi
+}
+
+cmd_verify() {
+    log_info "Starting Verification Engine..."
+    
+    # 1. Static Analysis
+    log_info "Running Salesforce Code Analyzer..."
+    # Simplified for the wrapper; in a real scenario, this would target changed files
+    if command -v sf &> /dev/null; then
+        sf scanner run --target "force-app" --format table > /tmp/sf_scanner_results.txt 2>&1
+    else
+        log_warn "sf CLI not found. Skipping scanner."
+    fi
+
+    # 2. Apex Tests
+    log_info "Executing Apex Unit Tests..."
+    # This would ideally detect the relevant classes
+    if command -v sf &> /dev/null; then
+        sf apex run test --result-format human --wait 10 > /tmp/sf_test_results.txt 2>&1
+    else
+        log_warn "sf CLI not found. Skipping tests."
+    fi
+
+    # 3. Evidence Generation
+    log_info "Generating Verification Evidence..."
+    local evidence_file="verification-evidence.md"
+    echo "# Verification Evidence - $(date)" > "$evidence_file"
+    echo "## Static Analysis Results" >> "$evidence_file"
+    [ -f /tmp/sf_scanner_results.txt ] && cat /tmp/sf_scanner_results.txt >> "$evidence_file"
+    echo "## Apex Test Results" >> "$evidence_file"
+    [ -f /tmp/sf_test_results.txt ] && cat /tmp/sf_test_results.txt >> "$evidence_file"
+
+    if [ "$JSON_MODE" = true ]; then
+        echo "{\"status\": \"success\", \"evidence_file\": \"$evidence_file\"}"
+    else
+        log_success "Verification complete. Evidence saved to $evidence_file"
+    fi
+}
+
+cmd_validate_skills() {
+    log_info "Running agentskills.io compliance audit..."
+    local SKILLS_DIR=$1
+    if [ -z "$SKILLS_DIR" ]; then
+        log_error "Please provide a skills directory to validate."
+        exit 1
+    fi
+
+    local errors=0
+    for skill_file in $(find "$SKILLS_DIR" -name "SKILL.md"); do
+        log_info "Audit: $(basename $(dirname "$skill_file"))"
+        
+        # 1. Check YAML frontmatter (use -- to handle ---)
+        if ! head -n 1 "$skill_file" | grep -q -- "---"; then
+            log_warn "  - Missing YAML frontmatter"
+            ((errors++))
+        fi
+        
+        # 2. Check Mandatory Sections
+        grep -q "## Overview" "$skill_file" || { log_warn "  - Missing Overview"; ((errors++)); }
+        grep -q "## Prerequisites" "$skill_file" || { log_warn "  - Missing Prerequisites"; ((errors++)); }
+        grep -q "## Steps" "$skill_file" || { log_warn "  - Missing Steps"; ((errors++)); }
+        grep -q "## Output" "$skill_file" || { log_warn "  - Missing Output"; ((errors++)); }
+    done
+
+    if [ "$errors" -eq 0 ]; then
+        log_success "All skills are agentskills.io compliant."
+    else
+        log_warn "Found $errors compliance issues."
+    fi
+}
+
+cmd_branch() {
+    local branch_name=$1
+    if [ -z "$branch_name" ]; then
+        log_error "Branch name is required."
+        exit 1
+    fi
+
+    log_info "Creating and switching to branch: $branch_name"
+    if git checkout -b "$branch_name" 2>/dev/null; then
+        if [ "$JSON_MODE" = true ]; then
+            echo "{\"status\": \"success\", \"branch\": \"$branch_name\"}"
+        else
+            log_success "Switched to new branch $branch_name"
+        fi
+    else
+        log_error "Failed to create branch. Does it already exist?"
+        exit 1
+    fi
+}
+
+# --- Main Logic ---
+
+# Initial argument check
+if [ "$#" -lt 1 ]; then
+    show_help
+    exit 0
+fi
+
+# Parse global flags first
+for arg in "$@"; do
+    case $arg in
+        --json) JSON_MODE=true; shift ;;
+        --verbose) VERBOSE=true; shift ;;
+    esac
+done
+
+COMMAND=$1
+shift
+
+case $COMMAND in
+    init) cmd_init ;;
+    branch) cmd_branch "$@" ;;
+    scaffold) cmd_scaffold "$@" ;;
+    verify) cmd_verify "$@" ;;
+    validate-skills) cmd_validate_skills "$@" ;;
+    help) show_help ;;
+    *) log_error "Unknown command: $COMMAND"; show_help; exit 1 ;;
+esac

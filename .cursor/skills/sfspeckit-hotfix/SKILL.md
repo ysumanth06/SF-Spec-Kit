@@ -17,7 +17,7 @@ This skill provides a fast-track process for fixing production bugs that can't w
 
 Bug description:
 ```
-/sfspeckit-hotfix NullPointerException in InvoiceService.createInvoice when Account.Industry is null
+/SFSpeckit-hotfix NullPointerException in InvoiceService.createInvoice when Account.Industry is null
 ```
 
 ## Prerequisites
@@ -38,8 +38,8 @@ git checkout -b hotfix/HOTFIX-$ID-$SLUG
 
 ### Step 2: Generate Minimal Story File
 
-Read `.sfspeckit/templates/hotfix-template.md` and create a hotfix story:
-- Location: `.sfspeckit/specs/hotfixes/hotfix-$ID.md`
+Read `sfspeckit-data/templates/hotfix-template.md` and create a hotfix story:
+- Location: `sfspeckit-data/specs/hotfixes/hotfix-$ID.md`
 - Auto-fill: bug description from user input, date, severity
 - Ask user for:
   - Severity: Critical / High / Medium
@@ -110,10 +110,19 @@ git merge main
 
 ## Output
 
-- **Hotfix story**: `.sfspeckit/specs/hotfixes/hotfix-$ID.md`
-- **Code changes**: Minimal fix + test
-- **Deployed to**: Production
-- **Back-ported to**: main + open feature branches
+- Updated Metadata: [list affected files]
+- Evidence Document: [path to evidence]
+- Status Update: [final state]
+
+## Verification Evidence
+
+1. **Spectrum Engine Log**: ./SFSpeckit/bin/sfspeckit [cmd]
+2. **Evidence File**: Traceability maintained in sfspeckit-data/
+
+## Error Handling
+
+- **Prerequisite Missing**: STOP and inform the user of the missing context.
+- **CLI Failure**: Report the specific Spectrum Engine error code.
 
 ## Notes
 

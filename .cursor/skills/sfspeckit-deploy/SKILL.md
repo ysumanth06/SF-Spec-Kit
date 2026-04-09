@@ -17,9 +17,9 @@ This skill promotes the feature code through the environment pipeline: Dev → Q
 
 Target environment:
 ```
-/sfspeckit-deploy qa
-/sfspeckit-deploy uat
-/sfspeckit-deploy prod
+/SFSpeckit-deploy qa
+/SFSpeckit-deploy uat
+/SFSpeckit-deploy prod
 ```
 
 ## Prerequisites
@@ -42,9 +42,9 @@ Depending on target environment:
 - [ ] No failing tests in dev sandbox
 
 #### For UAT deployment:
-- [ ] All stories passed QA verification (`/sfspeckit-qa`)
-- [ ] Regression tests passed (`/sfspeckit-regression`)
-- [ ] Feature scoring meets thresholds (`/sfspeckit-score`)
+- [ ] All stories passed QA verification (`/SFSpeckit-qa`)
+- [ ] Regression tests passed (`/SFSpeckit-regression`)
+- [ ] Feature scoring meets thresholds (`/SFSpeckit-score`)
 
 #### For Production deployment:
 - [ ] All stories in DONE state
@@ -56,7 +56,7 @@ If any prerequisite fails → STOP and report what's missing.
 
 ### Step 2: Read Deployment Context
 
-1. Read the plan for deployment order: `.sfspeckit/specs/NNN-feature-name/plan.md`
+1. Read the plan for deployment order: `sfspeckit-data/specs/NNN-feature-name/plan.md`
 2. Read `sfdx-project.json` for source paths
 3. Confirm target org alias is configured:
    ```bash
@@ -165,7 +165,7 @@ If deploying to QA:
 
 If deploying to UAT:
 - Inform BPO that UAT environment is ready for validation
-- Reference UAT test scripts from `/sfspeckit-qa` output
+- Reference UAT test scripts from `/SFSpeckit-qa` output
 
 If deploying to Production:
 - Update all story statuses to DONE
@@ -187,9 +187,19 @@ If deploying to Production:
 
 ## Output
 
-- **Deployment**: Code promoted to target environment
-- **Story files updated**: Status updated based on target
-- **Test results**: Post-deployment verification results
+- Updated Metadata: [list affected files]
+- Evidence Document: [path to evidence]
+- Status Update: [final state]
+
+## Verification Evidence
+
+1. **Spectrum Engine Log**: ./SFSpeckit/bin/sfspeckit [cmd]
+2. **Evidence File**: Traceability maintained in sfspeckit-data/
+
+## Error Handling
+
+- **Prerequisite Missing**: STOP and inform the user of the missing context.
+- **CLI Failure**: Report the specific Spectrum Engine error code.
 
 ## Cross-Referenced Skills
 

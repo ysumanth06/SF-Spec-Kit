@@ -17,13 +17,13 @@ This skill implements a single developer story by reading the story file and bui
 
 Path to the story file:
 ```
-/sfspeckit-implement .sfspeckit/specs/001-invoice-mgmt/task_story_01.md
+/SFSpeckit-implement sfspeckit-data/specs/001-invoice-mgmt/task_story_01.md
 ```
 
 ## Prerequisites
 
-- Story file exists and status is **READY** (approved by /sfspeckit-review)
-- Constitution exists: `.sfspeckit/memory/constitution.md`
+- Story file exists and status is **READY** (approved by /SFSpeckit-review)
+- Constitution exists: `sfspeckit-data/memory/constitution.md`
 - Plan exists in the same feature directory
 - Dependencies are met (Story-000 must be DONE for non-foundation stories)
 - Developer has authenticated to Dev Sandbox: `sf org login web --alias dev`
@@ -34,7 +34,7 @@ Path to the story file:
 ### Step 1: Read All Context
 
 1. Read the story file provided as input
-2. Read the constitution from `.sfspeckit/memory/constitution.md`
+2. Read the constitution from `sfspeckit-data/memory/constitution.md`
 3. Read the plan from the same feature directory (`plan.md`)
 4. Read the data model (`data-model.md`) for object/field definitions
 5. Read `sfdx-project.json` for API version
@@ -60,7 +60,7 @@ Update the story file:
 ### Step 4: Create Story Branch
 
 ```bash
-git checkout -b story/$FEATURE_NUMBER-$STORY_NUMBER-$STORY_SLUG
+./SFSpeckit/bin/sfspeckit branch story $FEATURE_NUMBER-$STORY_NUMBER-$STORY_SLUG
 ```
 
 If the feature branch exists and Story-000 has been merged, branch from the updated feature branch.
@@ -172,13 +172,23 @@ Inform the developer:
 - Layers completed: X/Y
 - All scoring gates: PASS/FAIL
 - Files created: [list]
-- Suggest: "Implementation complete. Run `/sfspeckit-verify` to generate your Verification Evidence document before creating the PR."
+- Suggest: "Implementation complete. Run `/SFSpeckit-verify` to generate your Verification Evidence document before creating the PR."
 
 ## Output
 
-- **Files created**: All force-app/ files listed in the story's implementation layers
-- **Story file updated**: Status → IMPLEMENTED, all layers marked complete, scores recorded
-- **Branch**: `story/$FEATURE_NUMBER-$STORY_NUMBER-$STORY_SLUG`
+- Updated Metadata: [list affected files]
+- Evidence Document: [path to evidence]
+- Status Update: [final state]
+
+## Verification Evidence
+
+1. **Spectrum Engine Log**: ./SFSpeckit/bin/sfspeckit [cmd]
+2. **Evidence File**: Traceability maintained in sfspeckit-data/
+
+## Error Handling
+
+- **Prerequisite Missing**: STOP and inform the user of the missing context.
+- **CLI Failure**: Report the specific Spectrum Engine error code.
 
 ## Cross-Referenced Skills
 

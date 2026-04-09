@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="docs/assets/logo.png" width="300" alt="SFSpeckit Logo">
+  <img src="assets/logo.png" width="300" alt="SFSpeckit Logo">
   <h1>SFSpeckit</h1>
   <p><b>The Enterprise-Grade Salesforce AI-Driven Development (AIDD) Framework</b></p>
 </div>
@@ -7,8 +7,7 @@
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ysumanth06/SFSpeckit)
 ![GitHub stars](https://img.shields.io/github/stars/ysumanth06/SFSpeckit)
 ![GitHub license](https://img.shields.io/github/license/ysumanth06/SFSpeckit)
-![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-blue)
-![agentskills.io](https://img.shields.io/badge/agentskills.io-Certified-green)
+![GitHub Pages](https://img.shields.io/badge/docs-GitHub%20Pages-blue)
 
 **Transforming Salesforce delivery into an evidence-based, autonomous engine driven by structured specifications.**
 
@@ -83,12 +82,6 @@ graph TD
 | **Technical Debt** | High (Inconsistent patterns) | **Zero (Architect-enforced articles)** |
 | **Logic Drift** | High (Instructions change/fade) | **None (Locked Spectrum Engine CLI)** |
 | **Scalability** | Fails at 2+ complex features | **Enterprise-Grade Scalability** |
-| **Certification** | None | **agentskills.io Compliance** |
-
----
-
- **🛡️ Evidence-Based Quality**: Every build is measured against the Spec and the Constitution, providing a deterministic audit trail before any code is merged.
-- **🔄 Auto-Heal**: If a build fails, the AI refers back to the Plan to self-correct, rather than guessing the intended logic.
 
 ---
 

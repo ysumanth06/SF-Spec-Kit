@@ -16,13 +16,13 @@ This skill produces a comprehensive quality scoring dashboard by running all SF 
 ## Prerequisites
 
 - Feature code exists in `force-app/`
-- Story files exist in `.sfspeckit/specs/NNN-feature-name/`
+- Story files exist in `sfspeckit-data/specs/NNN-feature-name/`
 
 ## Steps
 
 ### Step 1: Identify Feature Scope
 
-1. Read all story files in `.sfspeckit/specs/NNN-feature-name/`
+1. Read all story files in `sfspeckit-data/specs/NNN-feature-name/`
 2. Collect all artifacts per story (Apex classes, LWC components, metadata)
 3. Build a complete file inventory for the feature
 
@@ -122,12 +122,22 @@ Invoke sf-testing scoring logic (`.agents/skills/sf-testing/SKILL.md`):
 
 ### Step 7: Determine Feature Readiness
 
-- If ALL scoring gates pass and ALL stories are DONE → "Feature is ready for `/sfspeckit-deploy qa`"
+- If ALL scoring gates pass and ALL stories are DONE → "Feature is ready for `/SFSpeckit-deploy qa`"
 - If any gates fail → list specific improvements needed before deployment
 - If any stories are not DONE → list pending stories
 
 ## Output
 
-- **Quality dashboard**: Displayed with per-story and per-layer breakdowns
-- **Top improvements**: Actionable list of specific changes to increase scores
-- **Feature readiness**: READY or NOT READY with specific blockers
+- Updated Metadata: [list affected files]
+- Evidence Document: [path to evidence]
+- Status Update: [final state]
+
+## Verification Evidence
+
+1. **Spectrum Engine Log**: ./SFSpeckit/bin/sfspeckit [cmd]
+2. **Evidence File**: Traceability maintained in sfspeckit-data/
+
+## Error Handling
+
+- **Prerequisite Missing**: STOP and inform the user of the missing context.
+- **CLI Failure**: Report the specific Spectrum Engine error code.

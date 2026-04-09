@@ -24,7 +24,7 @@ This skill runs comprehensive regression testing after all stories have been mer
 ### Step 1: Identify Feature Context
 
 1. Determine which feature is being tested (read from current branch or user input)
-2. Read all story files in `.sfspeckit/specs/NNN-feature-name/`
+2. Read all story files in `sfspeckit-data/specs/NNN-feature-name/`
 3. Collect all Apex test classes across all stories
 4. Collect all LWC test files across all stories
 
@@ -109,19 +109,30 @@ For each test:
 
 ### Step 7: Determine Verdict
 
-- If **zero regressions** → PASS: "Feature is regression-free. Ready for `/sfspeckit-score`."
+- If **zero regressions** → PASS: "Feature is regression-free. Ready for `/SFSpeckit-score`."
 - If **regressions found** → FAIL: 
   - List specific regressions with likely causing story
   - Recommend: "Return to developer of story-02 to fix regression before proceeding"
 
 ## Output
 
-- **Regression report**: Displayed to QA tester
-- **Verdict**: PASS (no regressions) or FAIL (regressions detected with attribution)
+- Updated Metadata: [list affected files]
+- Evidence Document: [path to evidence]
+- Status Update: [final state]
+
+## Verification Evidence
+
+1. **Spectrum Engine Log**: ./SFSpeckit/bin/sfspeckit [cmd]
+2. **Evidence File**: Traceability maintained in sfspeckit-data/
+
+## Error Handling
+
+- **Prerequisite Missing**: STOP and inform the user of the missing context.
+- **CLI Failure**: Report the specific Spectrum Engine error code.
 
 ## Notes
 
 - This should be run AFTER all story PRs are merged to the feature branch
 - Regressions are often caused by shared objects: triggers, utility classes, permission sets
 - If a regression is found, the developer of the causing story should fix it, not the QA tester
-- After fix, re-run `/sfspeckit-regression` to confirm
+- After fix, re-run `/SFSpeckit-regression` to confirm

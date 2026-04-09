@@ -11,13 +11,13 @@ This skill helps QA testers verify a developer story by generating manual test s
 
 ## Who Runs This
 
-**QA Tester**. This skill focuses on the **TECHNICAL** QA. For business validation, use `/sfspeckit-uat`.
+**QA Tester**. This skill focuses on the **TECHNICAL** QA. For business validation, use `/SFSpeckit-uat`.
 
 ## Input
 
 Path to the story file:
 ```
-/sfspeckit-qa .sfspeckit/specs/001-invoice-mgmt/task_story_01.md
+/SFSpeckit-qa sfspeckit-data/specs/001-invoice-mgmt/task_story_01.md
 ```
 
 ## Prerequisites
@@ -47,7 +47,7 @@ Path to the story file:
 
 ### Step 3: Generate Manual Test Scripts
 
-Read `.agents/skills/sfspeckit-qa/test-scripts-template.md` (or the project's `.sfspeckit/templates/test-scripts-template.md` if customized) and generate test scripts for each acceptance criterion:
+Read `.agents/skills/SFSpeckit-qa/test-scripts-template.md` (or the project's `sfspeckit-data/templates/test-scripts-template.md` if customized) and generate test scripts for each acceptance criterion:
 
 For each acceptance criterion:
 1. Convert Given/When/Then into step-by-step clickpath instructions.
@@ -98,12 +98,12 @@ Map every acceptance criterion to its test coverage:
 
 ### Step 8: Prepare for UAT
 
-**Next Step**: "Technical QA PASSED. Run `/sfspeckit-uat` to begin the business sign-off process."
+**Next Step**: "Technical QA PASSED. Run `/SFSpeckit-uat` to begin the business sign-off process."
 
 ### Step 9: Write Test Scripts File
 
 Save technical results (Persona Matrix, Traceability Matrix, Manual Scripts) to:
-`.sfspeckit/specs/NNN-feature-name/task_story_NN_test_scripts.md`
+`sfspeckit-data/specs/NNN-feature-name/task_story_NN_test_scripts.md`
 
 ### Step 10: Update Story File
 
@@ -114,8 +114,19 @@ Update the story file's QA Results section:
 
 ## Output
 
-- **Content**: Manual test scripts, automated results, traceability matrix
-- **Story file updated**: Status → QA, QA results section populated
+- Updated Metadata: [list affected files]
+- Evidence Document: [path to evidence]
+- Status Update: [final state]
+
+## Verification Evidence
+
+1. **Spectrum Engine Log**: ./SFSpeckit/bin/sfspeckit [cmd]
+2. **Evidence File**: Traceability maintained in sfspeckit-data/
+
+## Error Handling
+
+- **Prerequisite Missing**: STOP and inform the user of the missing context.
+- **CLI Failure**: Report the specific Spectrum Engine error code.
 
 ## Notes
 

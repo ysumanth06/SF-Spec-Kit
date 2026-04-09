@@ -1,28 +1,28 @@
 ---
 name: sfspeckit-verify
-description: "Developer Verification and Evidence Generation. Runs Apex and LWC tests, generates a formal Verification Evidence document in the .sfspeckit folder, and includes coverage and performance metrics."
+description: "Developer Verification and Evidence Generation. Runs Apex and LWC tests, generates a formal Verification Evidence document in the sfspeckit-data folder, and includes coverage and performance metrics."
 ---
 
 # /sfspeckit-verify — Story Verification Evidence Generation
 
 ## Overview
 
-This skill generates a formal "Unit Test Evidence" document for a developer story. It runs automated tests, analyzes code coverage, identifies performance bottlenecks, and saves a signed verification report to the `.sfspeckit` directory.
+This skill generates a formal "Unit Test Evidence" document for a developer story. It runs automated tests, analyzes code coverage, identifies performance bottlenecks, and saves a signed verification report to the `sfspeckit-data` directory.
 
 ## Who Runs This
 
-**Developer** — after completing `/sfspeckit-implement` and before running `/sfspeckit-pr`.
+**Developer** — after completing `/SFSpeckit-implement` and before running `/SFSpeckit-pr`.
 
 ## Input
 
 Path to the story file:
 ```
-/sfspeckit-verify .sfspeckit/specs/001-invoice-mgmt/task_story_01.md
+/sfspeckit-verify sfspeckit-data/specs/001-invoice-mgmt/task_story_01.md
 ```
 
 ## Prerequisites
 
-- Story status is **IMPLEMENTED** (completed by /sfspeckit-implement)
+- Story status is **IMPLEMENTED** (completed by /SFSpeckit-implement)
 - Target org is Dev Sandbox (`--target-org dev`)
 - Salesforce Code Analyzer plugin installed (for security snapshot)
 
@@ -42,16 +42,11 @@ git add .
 git commit -m "chore: prepare for unit test verification"
 ```
 
-### Step 3: Run Apex Tests & Performance Analysis
+### Step 3: Run Unit Tests & Security Scans
 
-Run tests for the identified classes:
+Run the integrated verification engine:
 ```bash
-sf apex run test \
-  --class-names [Class1Test,Class2Test] \
-  --code-coverage \
-  --result-format json \
-  --output-dir .sfspeckit/logs/tests \
-  --target-org dev
+./SFSpeckit/bin/sfspeckit verify --id $STORY_ID --target-org dev
 ```
 
 ### Step 3.5: Runtime Telemetry Analysis (Log Observation)
@@ -74,13 +69,13 @@ Record these in the **Runtime Telemetry** section.
 
 If the story has LWC layers:
 ```bash
-npx lwc-jest -- --testPathPattern [componentName] --json --outputFile .sfspeckit/logs/tests/jest-results.json
+npx lwc-jest -- --testPathPattern [componentName] --json --outputFile sfspeckit-data/logs/tests/jest-results.json
 ```
 
-### Step 5: Generate Unit Test Evidence Document
+### Step 5: Review Generated Evidence
 
-Create the evidence document:
-- Location: `.sfspeckit/specs/[feature-dir]/test-logs/story-$ID-verify.md`
+Check the auto-generated evidence:
+- Location: `sfspeckit-data/specs/[feature-dir]/verification-evidence.md`
 - Template:
 
 ```markdown
@@ -143,6 +138,16 @@ Standard scan results (PMD/ESLint):
 
 ## Output
 
-- **Evidence Document**: `.sfspeckit/specs/[feature]/test-logs/story-$ID-verify.md`
-- **Story Update**: Status → VERIFIED, scores recorded.
-- **Console Summary**: Pass/fail, coverage %, and performance warnings.
+- Updated Metadata: [list affected files]
+- Evidence Document: [path to evidence]
+- Status Update: [final state]
+
+## Verification Evidence
+
+1. **Spectrum Engine Log**: ./SFSpeckit/bin/sfspeckit [cmd]
+2. **Evidence File**: Traceability maintained in sfspeckit-data/
+
+## Error Handling
+
+- **Prerequisite Missing**: STOP and inform the user of the missing context.
+- **CLI Failure**: Report the specific Spectrum Engine error code.

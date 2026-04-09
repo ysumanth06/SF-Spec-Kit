@@ -7,7 +7,7 @@ description: "Generate individual developer story files from the implementation 
 
 ## Overview
 
-This skill decomposes the implementation plan into individual, self-contained, "Jira-ready" story files — one per developer assignment. Each story file has everything a developer needs to run `/sfspeckit-implement`.
+This skill decomposes the implementation plan into individual, self-contained, "Jira-ready" story files — one per developer assignment. Each story file has everything a developer needs to run `/SFSpeckit-implement`.
 
 ## Who Runs This
 
@@ -15,9 +15,9 @@ This skill decomposes the implementation plan into individual, self-contained, "
 
 ## Prerequisites
 
-- Plan exists: `.sfspeckit/specs/NNN-feature-name/plan.md`
-- Data model exists: `.sfspeckit/specs/NNN-feature-name/data-model.md`
-- Spec exists: `.sfspeckit/specs/NNN-feature-name/spec.md`
+- Plan exists: `sfspeckit-data/specs/NNN-feature-name/plan.md`
+- Data model exists: `sfspeckit-data/specs/NNN-feature-name/data-model.md`
+- Spec exists: `sfspeckit-data/specs/NNN-feature-name/spec.md`
 - **Architect Sign-Off is completed** in plan.md (check the sign-off section)
   - If sign-off is incomplete, WARN the user and ask if they want to proceed anyway
 
@@ -25,11 +25,11 @@ This skill decomposes the implementation plan into individual, self-contained, "
 
 ### Step 1: Read All Context
 
-1. Read the plan from `.sfspeckit/specs/NNN-feature-name/plan.md`
-2. Read the data model from `.sfspeckit/specs/NNN-feature-name/data-model.md`
-3. Read the spec from `.sfspeckit/specs/NNN-feature-name/spec.md`
-4. Read the constitution from `.sfspeckit/memory/constitution.md`
-5. Read the story template from `.agents/skills/sfspeckit-stories/story-template.md`
+1. Read the plan from `sfspeckit-data/specs/NNN-feature-name/plan.md`
+2. Read the data model from `sfspeckit-data/specs/NNN-feature-name/data-model.md`
+3. Read the spec from `sfspeckit-data/specs/NNN-feature-name/spec.md`
+4. Read the constitution from `sfspeckit-data/memory/constitution.md`
+5. Read the story template from `.agents/skills/SFSpeckit-stories/story-template.md`
 
 ### Step 2: Validate Architect Sign-Off
 
@@ -42,7 +42,7 @@ Check plan.md for the Architect Sign-Off section:
 
 **ALWAYS generate this story first.** It contains shared infrastructure that blocks all other stories.
 
-Create `.sfspeckit/specs/NNN-feature-name/task_story_00.md` containing:
+Create `sfspeckit-data/specs/NNN-feature-name/task_story_00.md` containing:
 
 - **Type**: FULL
 - **Requirements**: All custom objects, fields, validation rules from data-model.md
@@ -88,7 +88,7 @@ For each user story in the spec (US-1, US-2, US-3...):
 
 For each story (01, 02, 03, ...):
 
-Create `.sfspeckit/specs/NNN-feature-name/task_story_NN.md` using the story template:
+Create `sfspeckit-data/specs/NNN-feature-name/task_story_NN.md` using the story template:
 
 1. Replace all `$` placeholders with actual values
 2. Set **Status** to DRAFT
@@ -123,17 +123,27 @@ Show the user:
 - Total estimated effort (Human Hours)
 - Recommendation for sprint planning (which stories fit in one sprint?)
 
-Suggest: "Run `/sfspeckit-review` to have the Architect validate the story decomposition before creating Jira tickets."
+Suggest: "Run `/SFSpeckit-review` to have the Architect validate the story decomposition before creating Jira tickets."
 
 ## Output
 
-- **Files created**: `task_story_00.md` through `task_story_NN.md`
-- **Location**: `.sfspeckit/specs/NNN-feature-name/`
-- **Status**: All stories in DRAFT state
+- Updated Metadata: [list affected files]
+- Evidence Document: [path to evidence]
+- Status Update: [final state]
+
+## Verification Evidence
+
+1. **Spectrum Engine Log**: ./SFSpeckit/bin/sfspeckit [cmd]
+2. **Evidence File**: Traceability maintained in sfspeckit-data/
+
+## Error Handling
+
+- **Prerequisite Missing**: STOP and inform the user of the missing context.
+- **CLI Failure**: Report the specific Spectrum Engine error code.
 
 ## Story File Format
 
-Each story file follows `.agents/skills/sfspeckit-stories/story-template.md` and includes:
+Each story file follows `.agents/skills/SFSpeckit-stories/story-template.md` and includes:
 - Feature context (links to spec, plan, constitution)
 - Detailed Description (As a/I want to/So that)
 - Detailed Acceptance criteria (Given/When/Then)

@@ -1,6 +1,6 @@
 ---
 name: sfspeckit-review
-description: "TPO and Architect review of generated story files before Jira creation. Validates dependency graph, deployment order, merge conflict risks, and story boundaries. Run after /sfspeckit-stories."
+description: "TPO and Architect review of generated story files before Jira creation. Validates dependency graph, deployment order, merge conflict risks, and story boundaries. Run after /SFSpeckit-stories."
 ---
 
 # /sfspeckit-review — Story Review Gate
@@ -15,8 +15,8 @@ This skill provides a structured review process for the TPO and Architect to val
 
 ## Prerequisites
 
-- Story files exist: `.sfspeckit/specs/NNN-feature-name/task_story_*.md`
-- Plan exists: `.sfspeckit/specs/NNN-feature-name/plan.md`
+- Story files exist: `sfspeckit-data/specs/NNN-feature-name/task_story_*.md`
+- Plan exists: `sfspeckit-data/specs/NNN-feature-name/plan.md`
 
 ## Steps
 
@@ -109,9 +109,20 @@ Create a review summary:
 Once both TPO and Architect provide approvals:
 - Mark all story files' Status as **READY** (was DRAFT)
 - Inform: "Stories are approved. Create Jira tickets from these story files and assign to developers."
-- Suggest: "Developers will use `/sfspeckit-implement task_story_NN.md` to build their assigned story."
+- Suggest: "Developers will use `/SFSpeckit-implement task_story_NN.md` to build their assigned story."
 
 ## Output
 
-- **Files updated**: All `task_story_*.md` files → Status changed from DRAFT to READY
-- **Review artifacts**: Dependency graph, risk assessment, sprint allocation recommendation
+- Updated Metadata: [list affected files]
+- Evidence Document: [path to evidence]
+- Status Update: [final state]
+
+## Verification Evidence
+
+1. **Spectrum Engine Log**: ./SFSpeckit/bin/sfspeckit [cmd]
+2. **Evidence File**: Traceability maintained in sfspeckit-data/
+
+## Error Handling
+
+- **Prerequisite Missing**: STOP and inform the user of the missing context.
+- **CLI Failure**: Report the specific Spectrum Engine error code.

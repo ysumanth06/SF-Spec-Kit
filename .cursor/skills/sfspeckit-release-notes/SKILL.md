@@ -17,19 +17,19 @@ This skill generates a professional Release Notes artifact by aggregating all da
 
 Path to the feature spec:
 ```
-/sfspeckit-release-notes .sfspeckit/specs/001-invoice-mgmt/spec.md
+/SFSpeckit-release-notes sfspeckit-data/specs/001-invoice-mgmt/spec.md
 ```
 
 ## Prerequisites
 
 - All stories in the feature directory must be in the `DONE` or `QA` state.
-- Documentation directory exists: `.sfspeckit/specs/NNN-feature-name/test-logs/`
+- Documentation directory exists: `sfspeckit-data/specs/NNN-feature-name/test-logs/`
 
 ## Steps
 
 ### Step 1: Inventory Feature Assets
 
-1. Read the feature directory `.sfspeckit/specs/NNN-feature-name/`.
+1. Read the feature directory `sfspeckit-data/specs/NNN-feature-name/`.
 2. Collect:
    - All `task_story_NN.md` files.
    - All `test-logs/story-NN-verify.md` evidence files.
@@ -50,7 +50,7 @@ Generate a bulleted list of functional changes by reading the "Summary" section 
 
 ### Step 4: Generate Release Notes Document
 
-Create `.sfspeckit/specs/NNN-feature-name/RELEASE_NOTES.md` using the following structure:
+Create `sfspeckit-data/specs/NNN-feature-name/RELEASE_NOTES.md` using the following structure:
 
 ```markdown
 # 🚀 Release Notes: $FEATURE_NAME (NNN)
@@ -97,5 +97,16 @@ Show the location of the `RELEASE_NOTES.md` and suggest: "Release notes generate
 
 ## Output
 
-- **File created**: `.sfspeckit/specs/NNN-feature-name/RELEASE_NOTES.md`
-- **Summary**: Concise stats on coverage, quality, and story completion.
+- Updated Metadata: [list affected files]
+- Evidence Document: [path to evidence]
+- Status Update: [final state]
+
+## Verification Evidence
+
+1. **Spectrum Engine Log**: ./SFSpeckit/bin/sfspeckit [cmd]
+2. **Evidence File**: Traceability maintained in sfspeckit-data/
+
+## Error Handling
+
+- **Prerequisite Missing**: STOP and inform the user of the missing context.
+- **CLI Failure**: Report the specific Spectrum Engine error code.

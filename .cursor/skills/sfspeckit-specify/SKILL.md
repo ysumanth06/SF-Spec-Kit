@@ -17,12 +17,12 @@ This skill creates a functional specification for a new Salesforce feature. It g
 
 The user provides a feature description as arguments:
 ```
-/sfspeckit-specify Build an invoice management system for the Sales team
+/SFSpeckit-specify Build an invoice management system for the Sales team
 ```
 
 ## Prerequisites
 
-- Constitution exists: `.sfspeckit/memory/constitution.md` (run `/sfspeckit-constitution` first)
+- Constitution exists: `sfspeckit-data/memory/constitution.md` (run `/SFSpeckit-constitution` first)
 - Git repository initialized
 - `sfdx-project.json` exists in project root
 
@@ -30,26 +30,26 @@ The user provides a feature description as arguments:
 
 ### Step 1: Read Context
 
-1. Read the constitution from `.sfspeckit/memory/constitution.md`
+1. Read the constitution from `sfspeckit-data/memory/constitution.md`
 2. Read `sfdx-project.json` to extract:
    - `sourceApiVersion` → API version
    - `packageDirectories[0].path` → source path
    - `name` → project name
 3. Scan `force-app/main/default/objects/` to understand existing custom objects
-4. Scan `.sfspeckit/specs/` to determine next feature number
+4. Scan `sfspeckit-data/specs/` to determine next feature number
 
 ### Step 2: Create Feature Branch & Directory
 
 Run the branch creation script or perform equivalent:
-1. Determine next feature number (scan existing dirs in `.sfspeckit/specs/`)
+1. Determine next feature number (scan existing dirs in `sfspeckit-data/specs/`)
 2. Create slug from feature description (lowercase, hyphens)
-3. Create directory: `.sfspeckit/specs/NNN-feature-slug/`
+3. Create directory: `sfspeckit-data/specs/NNN-feature-slug/`
 4. Create git branch: `feature/NNN-feature-slug`
    - If branch creation fails (not on main, uncommitted changes), warn but continue
 
 ### Step 3: Read Template
 
-Read `.sfspeckit/templates/spec-template.md` — this is the structure to follow.
+Read `sfspeckit-data/templates/spec-template.md` — this is the structure to follow.
 
 ### Step 4: Gather Requirements
 
@@ -65,7 +65,7 @@ Have a conversation with the user to understand the feature. Focus on:
 
 ### Step 5: Generate the Specification
 
-Create `.sfspeckit/specs/NNN-feature-slug/spec.md` by:
+Create `sfspeckit-data/specs/NNN-feature-slug/spec.md` by:
 
 1. Populating the spec template with gathered requirements
 2. Auto-filling:
@@ -94,15 +94,24 @@ Show the generated spec to the user. Highlight:
 - Automation approach decisions made
 
 Suggest next steps:
-- **Requirement Audit**: "Run `/sfspeckit-clarify` to execute the 10-point Salesforce gap analysis and ensure the specification is complete."
-- **Technical Design**: "Once the spec is clarified, run `/sfspeckit-plan` to create the technical implementation plan."
+- **Requirement Audit**: "Run `/SFSpeckit-clarify` to execute the 10-point Salesforce gap analysis and ensure the specification is complete."
+- **Technical Design**: "Once the spec is clarified, run `/SFSpeckit-plan` to create the technical implementation plan."
 
 ## Output
 
-- **Directory created**: `.sfspeckit/specs/NNN-feature-slug/`
-- **File created**: `.sfspeckit/specs/NNN-feature-slug/spec.md`
-- **Branch created**: `feature/NNN-feature-slug`
-- **Status**: Draft (with clarification markers if applicable)
+- Updated Metadata: [list affected files]
+- Evidence Document: [path to evidence]
+- Status Update: [final state]
+
+## Verification Evidence
+
+1. **Spectrum Engine Log**: ./SFSpeckit/bin/sfspeckit [cmd]
+2. **Evidence File**: Traceability maintained in sfspeckit-data/
+
+## Error Handling
+
+- **Prerequisite Missing**: STOP and inform the user of the missing context.
+- **CLI Failure**: Report the specific Spectrum Engine error code.
 
 ## Cross-Referenced Skills
 

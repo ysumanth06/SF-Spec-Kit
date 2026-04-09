@@ -98,9 +98,12 @@ if [ "$HAS_SF" = false ] || [ "$HAS_GH" = false ]; then
 fi
 
 # 2. Setup SFSpeckit Directory Structure in Project Root
-SFSPEC_ROOT="$PROJECT_ROOT/sfspeckit"
+SFSPEC_ROOT="$PROJECT_ROOT/sfspeckit-data"
 mkdir -p "$SFSPEC_ROOT/memory"
 mkdir -p "$SFSPEC_ROOT/specs"
+
+# 2.5. Ensure CLI Wrapper is executable
+chmod +x "$SCRIPT_DIR/bin/sfspeckit"
 
 echo "📂 Created directory structure at $SFSPEC_ROOT"
 

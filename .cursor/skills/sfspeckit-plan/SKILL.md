@@ -1,6 +1,8 @@
 ---
 name: sfspeckit-plan
-description: "Create a Salesforce technical implementation plan from the feature spec. Includes force-app structure, deployment order, scoring gates, and Architect sign-off section. Run by the TPO."
+description: "Architectural Planning Engine. Transforms functional specs into technical blueprints with force-app mapping, impact analysis, and architect sign-off gates. Prevents hallucination by isolating technical design from implementation."
+tags: ["aidd", "planning", "architect", "sfdc"]
+weight: 10
 ---
 
 # /sfspeckit-plan — Create Technical Implementation Plan
@@ -17,21 +19,21 @@ This skill transforms a functional specification into a technical implementation
 
 Optional tech stack guidance:
 ```
-/sfspeckit-plan Use LWC with wire service, TAF triggers, and Batch Apex for nightly scoring
+/SFSpeckit-plan Use LWC with wire service, TAF triggers, and Batch Apex for nightly scoring
 ```
 
 ## Prerequisites
 
-- Spec exists: `.sfspeckit/specs/NNN-feature-name/spec.md` (status: Clarified or Draft)
-- Constitution exists: `.sfspeckit/memory/constitution.md`
+- Spec exists: `sfspeckit-data/specs/NNN-feature-name/spec.md` (status: Clarified or Draft)
+- Constitution exists: `sfspeckit-data/memory/constitution.md`
 - `sfdx-project.json` exists
 
 ## Steps
 
 ### Step 1: Read All Context
 
-1. Read constitution from `.sfspeckit/memory/constitution.md`
-2. Read spec from `.sfspeckit/specs/NNN-feature-name/spec.md`
+1. Read constitution from `sfspeckit-data/memory/constitution.md`
+2. Read spec from `sfspeckit-data/specs/NNN-feature-name/spec.md`
 3. Read `sfdx-project.json` for API version, package directories
 4. Scan `force-app/main/default/` for existing objects, classes, LWC components
 5. Check for existing data model patterns (naming conventions, trigger patterns)
@@ -51,7 +53,7 @@ If any checks fail, note them in the plan's "Constitution Check" section with sp
 
 ### Step 3: Read Plan Template
 
-Read `.sfspeckit/templates/plan-template.md` — this defines the plan structure.
+Read `sfspeckit-data/templates/plan-template.md` — this defines the plan structure.
 
 ### Step 4: Design the Technical Architecture
 
@@ -107,7 +109,7 @@ Record findings in the **Impact Analysis** section of the `plan.md`.
 
 Create the following files:
 
-#### `.sfspeckit/specs/NNN-feature-name/plan.md`
+#### `sfspeckit-data/specs/NNN-feature-name/plan.md`
 - Populate from the plan template
 - Auto-fill technical context from `sfdx-project.json`
 - **Impact Analysis Matrix**: List all components at risk of regression.
@@ -117,12 +119,12 @@ Create the following files:
 - Include environment strategy
 - Include estimation summary
 
-#### `.sfspeckit/specs/NNN-feature-name/data-model.md`
+#### `sfspeckit-data/specs/NNN-feature-name/data-model.md`
 - Detailed object/field definitions
 - Field-level metadata XML examples
 - Relationship diagrams (consider using sf-diagram-mermaid)
 
-#### `.sfspeckit/specs/NNN-feature-name/research.md` (optional)
+#### `sfspeckit-data/specs/NNN-feature-name/research.md` (optional)
 - Only if technical research was needed
 - Document findings, comparisons, decisions
 
@@ -135,14 +137,24 @@ Present the plan to the user with clear indication of:
 - The scoring gates
 - Any constitution violations or exceptions noted
 
-Remind: "This plan requires Architect review. The 🏛️ Architect Sign-Off section must be completed before `/sfspeckit-stories` can generate story files."
+Remind: "This plan requires Architect review. The 🏛️ Architect Sign-Off section must be completed before `/SFSpeckit-stories` can generate story files."
 
 ## Output
 
-- **File created**: `.sfspeckit/specs/NNN-feature-name/plan.md` (Includes Impact Matrix)
-- **File created**: `.sfspeckit/specs/NNN-feature-name/data-model.md`
-- **File created**: `.sfspeckit/specs/NNN-feature-name/research.md` (optional)
-- **Status**: Pending Architect Review
+- **Primary Blueprint**: `sfspeckit-data/specs/NNN-feature-name/plan.md`
+- **Data Architecture**: `sfspeckit-data/specs/NNN-feature-name/data-model.md`
+- **Traceability**: Impact Matrix populated in `plan.md`
+- **Status**: Updated to `Architect Review Required`
+
+## Verification Evidence
+
+1. **Spectrum Engine Log**: `./SFSpeckit/bin/sfspeckit branch --id $STORY_ID` (if branching is used).
+2. **Impact Matrix**: Evidence of metadata dependency scanning in `plan.md`.
+
+## Error Handling
+
+- **Missing Spec**: STOP and run `/sfspeckit-specify` or `/sfspeckit-clarify` first.
+- **Constitutional Conflict**: If the design violates an Article (e.g., Article VI: SoC), itemize the risk in the "Exceptions" section and require explicit Architect waiver.
 
 ## Cross-Referenced Skills
 
@@ -157,4 +169,4 @@ Remind: "This plan requires Architect review. The 🏛️ Architect Sign-Off sec
 
 ## GATE
 
-**The plan is NOT approved until the Architect Sign-Off section in plan.md is completed.** The `/sfspeckit-stories` skill will check for this and warn if sign-off is missing.
+**The plan is NOT approved until the Architect Sign-Off section in plan.md is completed.** The `/SFSpeckit-stories` skill will check for this and warn if sign-off is missing.

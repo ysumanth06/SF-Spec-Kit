@@ -11,20 +11,20 @@ This skill generates business-facing User Acceptance Testing (UAT) scripts from 
 
 ## Who Runs This
 
-**BPO (Business Process Owner)** or **QA Lead** — after a story has successfully passed technical verification (`/sfspeckit-qa`).
+**BPO (Business Process Owner)** or **QA Lead** — after a story has successfully passed technical verification (`/SFSpeckit-qa`).
 
 ## Input
 
 Path to the story file:
 ```
-/sfspeckit-uat .sfspeckit/specs/001-invoice-mgmt/task_story_01.md
+/SFSpeckit-uat sfspeckit-data/specs/001-invoice-mgmt/task_story_01.md
 ```
 
 ## Prerequisites
 
 - Story status is **QA** (technical verification passed)
 - Story code is deployed to UAT Sandbox (if applicable) or QA Sandbox
-- Constitution exists: `.sfspeckit/memory/constitution.md`
+- Constitution exists: `sfspeckit-data/memory/constitution.md`
 
 ## Steps
 
@@ -39,7 +39,7 @@ Path to the story file:
 
 ### Step 2: Generate Business Walkthrough
 
-Read `.agents/skills/sfspeckit-uat/uat-script-template.md` and generate a script that translates technical ACs into business steps.
+Read `.agents/skills/SFSpeckit-uat/uat-script-template.md` and generate a script that translates technical ACs into business steps.
 
 **Guidelines for Business Language:**
 - **NO technical jargon**: Avoid "Apex", "Trigger", "SOQL", "LWC", "DML".
@@ -49,7 +49,7 @@ Read `.agents/skills/sfspeckit-uat/uat-script-template.md` and generate a script
 ### Step 3: Create UAT Script File
 
 Save the generated script to:
-`.sfspeckit/specs/NNN-feature-name/uat_story_NN.md`
+`sfspeckit-data/specs/NNN-feature-name/uat_story_NN.md`
 
 ### Step 4: Present to BPO
 
@@ -70,8 +70,19 @@ If the BPO provides feedback or sign-off after executing the script:
 
 ## Output
 
-- **File created**: `.sfspeckit/specs/NNN-feature-name/uat_story_NN.md`
-- **Story file updated**: Status updated based on sign-off (if provided)
+- Updated Metadata: [list affected files]
+- Evidence Document: [path to evidence]
+- Status Update: [final state]
+
+## Verification Evidence
+
+1. **Spectrum Engine Log**: ./SFSpeckit/bin/sfspeckit [cmd]
+2. **Evidence File**: Traceability maintained in sfspeckit-data/
+
+## Error Handling
+
+- **Prerequisite Missing**: STOP and inform the user of the missing context.
+- **CLI Failure**: Report the specific Spectrum Engine error code.
 
 ## Error Handling
 
@@ -80,5 +91,5 @@ If the BPO provides feedback or sign-off after executing the script:
 
 ## Notes
 
-- This skill focuses on the **BUSINESS** validation. For technical QA, use `/sfspeckit-qa`.
+- This skill focuses on the **BUSINESS** validation. For technical QA, use `/SFSpeckit-qa`.
 - UAT should ideally be performed in a separate UAT Sandbox with production-like data.

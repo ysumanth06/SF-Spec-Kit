@@ -15,14 +15,14 @@ This skill performs a deep analysis of the feature specification to identify log
 
 ## Prerequisites
 
-- Specification exists in `.sfspeckit/specs/NNN-feature-name/spec.md`
-- Constitution exists in `.sfspeckit/memory/constitution.md`
+- Specification exists in `sfspeckit-data/specs/NNN-feature-name/spec.md`
+- Constitution exists in `sfspeckit-data/memory/constitution.md`
 
 ## Steps
 
 ### Step 1: Read Current State
 
-1. Read the feature spec from `.sfspeckit/specs/NNN-feature-name/spec.md`
+1. Read the feature spec from `sfspeckit-data/specs/NNN-feature-name/spec.md`
 2. Identify all `[NEEDS CLARIFICATION]` markers.
 3. **Ask the TPO**: "Would you like to run in **Draft Mode** (generate report for business) or **Interactive Mode** (answer now and sync to spec immediately)?"
 
@@ -60,7 +60,7 @@ Generate as many specific questions as needed to cover every identified edge cas
 ### Step 3: Generate Clarification Report
 
 Create a formal sign-off document:
-- **Location**: `.sfspeckit/specs/[feature-dir]/clarification-report-[feature-name].md`
+- **Location**: `sfspeckit-data/specs/[feature-dir]/clarification-report-[feature-name].md`
 - **Content**:
     - **Section 1: Org Consistency & Drift**: Results from the Step 1.5 CLI Audit. List manual changes or conflicts found in the target sandbox.
     - **Section 2: Technical Foundation**: The 10-point Salesforce checklist.
@@ -78,7 +78,7 @@ For each question, provide:
 Inform the TPO of the results. The guidance depends on the mode chosen in Step 1:
 
 **If Draft Mode**:
-- "Clarification report generated: `.sfspeckit/specs/[feature]/clarification-report-[feature-name].md`"
+- "Clarification report generated: `sfspeckit-data/specs/[feature]/clarification-report-[feature-name].md`"
 - "Next: Review with stakeholders (especially the **Drift Alert** section), record decisions, and re-run this skill in **Interactive Mode** to sync."
 
 **If Interactive Mode**:
@@ -96,9 +96,20 @@ For each resolved question in the report:
 
 ## Output
 
-- **Clarification Report Created**: `.sfspeckit/specs/NNN-feature-name/clarification-report-[feature-name].md` (Includes Org Drift Analysis)
-- **Spec Updated (Optional)**: `.sfspeckit/specs/NNN-feature-name/spec.md` (only after TPO sign-off)
+- Updated Metadata: [list affected files]
+- Evidence Document: [path to evidence]
+- Status Update: [final state]
+
+## Verification Evidence
+
+1. **Spectrum Engine Log**: ./SFSpeckit/bin/sfspeckit [cmd]
+2. **Evidence File**: Traceability maintained in sfspeckit-data/
+
+## Error Handling
+
+- **Prerequisite Missing**: STOP and inform the user of the missing context.
+- **CLI Failure**: Report the specific Spectrum Engine error code.
 
 ## Note on Drift
 
-If drift is significant (e.g., destructive changes found), STOP and resolve source control conflicts before proceeding to `/sfspeckit-plan`.
+If drift is significant (e.g., destructive changes found), STOP and resolve source control conflicts before proceeding to `/SFSpeckit-plan`.

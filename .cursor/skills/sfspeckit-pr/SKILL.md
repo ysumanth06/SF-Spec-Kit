@@ -11,22 +11,22 @@ This skill prepares a developer's completed story for peer review and architect 
 
 ## Who Runs This
 
-**Developer** — after completing `/sfspeckit-implement`.
+**Developer** — after completing `/SFSpeckit-implement`.
 
 ## Input
 
 Path to the story file:
 ```
-/sfspeckit-pr .sfspeckit/specs/001-invoice-mgmt/task_story_01.md
+/SFSpeckit-pr sfspeckit-data/specs/001-invoice-mgmt/task_story_01.md
 ```
 
 ## Prerequisites
 
-- Story status is **IMPLEMENTED** (completed by /sfspeckit-implement)
+- Story status is **IMPLEMENTED** (completed by /SFSpeckit-implement)
 - Story branch exists: `story/$FEATURE_NUMBER-$STORY_NUMBER-$STORY_SLUG`
 - All implementation layers are marked `[x]` in the story file
 - Salesforce Code Analyzer plugin installed: `sf plugins install @salesforce/sfdx-scanner`
-- **Verification Evidence** exists: `.sfspeckit/specs/[feature]/test-logs/story-$ID-verify.md`
+- **Verification Evidence** exists: `sfspeckit-data/specs/[feature]/test-logs/story-$ID-verify.md`
 
 ## Steps
 
@@ -205,11 +205,19 @@ Show the developer:
 
 ## Output
 
-- **PR URL**: Direct link to the created Pull Request (if automated)
-- **PR description**: Generated markdown ready to paste into Git PR (if manual)
-- **Code review checklist**: Structured reviewer guide
-- **Story file updated**: Status → REVIEW, scores and PR link recorded
-- **Scoring results**: Pass/fail for each gate
+- Updated Metadata: [list affected files]
+- Evidence Document: [path to evidence]
+- Status Update: [final state]
+
+## Verification Evidence
+
+1. **Spectrum Engine Log**: ./SFSpeckit/bin/sfspeckit [cmd]
+2. **Evidence File**: Traceability maintained in sfspeckit-data/
+
+## Error Handling
+
+- **Prerequisite Missing**: STOP and inform the user of the missing context.
+- **CLI Failure**: Report the specific Spectrum Engine error code.
 
 ## GATE
 

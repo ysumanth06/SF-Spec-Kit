@@ -1,0 +1,6 @@
+theme: jekyll-theme-architect
+title: SFSpeckit
+description: The Spec-Driven Engine (SDE) for Salesforce Lifecycle by Sumanth Yanamala
+show_downloads: true
+google_analytics:
+remote_theme:
