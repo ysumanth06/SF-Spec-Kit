@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>API &amp; CLI Reference | SFSpeckit</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&amp;family=Space+Grotesk:wght@300;400;500;700&amp;family=Fira+Code:wght@400;500&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#00e5ff",
+                        "on-primary-container": "#00626e",
+                        "on-error": "#690005",
+                        "on-tertiary-container": "#6f5500",
+                        "primary": "#c3f5ff",
+                        "tertiary-container": "#fec931",
+                        "secondary-container": "#3d4759",
+                        "surface-variant": "#313540",
+                        "on-secondary-fixed": "#121c2c",
+                        "inverse-on-surface": "#2c303b",
+                        "inverse-surface": "#dfe2f1",
+                        "surface-container-lowest": "#0a0e18",
+                        "surface-container-highest": "#313540",
+                        "on-secondary": "#273141",
+                        "outline": "#849396",
+                        "surface-tint": "#00daf3",
+                        "primary-fixed-dim": "#00daf3",
+                        "surface-container-high": "#262a35",
+                        "tertiary": "#ffeac0",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "background": "#0f131d",
+                        "surface": "#0f131d",
+                        "secondary-fixed-dim": "#bdc7dc",
+                        "on-primary": "#00363d",
+                        "on-primary-fixed": "#001f24",
+                        "on-tertiary": "#3e2e00",
+                        "outline-variant": "#3b494c",
+                        "secondary-fixed": "#d9e3f9",
+                        "surface-container-low": "#171b26",
+                        "surface-bright": "#353944",
+                        "on-secondary-container": "#abb5cb",
+                        "surface-container": "#1c1f2a",
+                        "tertiary-fixed-dim": "#f3bf26",
+                        "on-surface": "#dfe2f1",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#251a00",
+                        "on-background": "#dfe2f1",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#bac9cc",
+                        "error": "#ffb4ab",
+                        "inverse-primary": "#006875",
+                        "on-primary-fixed-variant": "#004f58",
+                        "tertiary-fixed": "#ffdf96",
+                        "on-secondary-fixed-variant": "#3d4759",
+                        "primary-fixed": "#9cf0ff",
+                        "surface-dim": "#0f131d",
+                        "secondary": "#bdc7dc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            background-color: rgba(28, 31, 42, 0.7);
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #0f131d; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #313540; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body custom-scrollbar selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar (Standardized) -->
+<nav class="fixed top-0 w-full z-50 bg-[#0f131d]/80 backdrop-blur-xl shadow-[0_0_20px_rgba(0,229,255,0.05)]">
+    <div class="flex items-center justify-between px-8 py-4 w-full max-w-full">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="flex items-center gap-4">
+                <img alt="SFSpeckit Logo" class="w-8 h-8" src="assets/logo.png"/>
+                <span class="text-2xl font-black tracking-tighter text-cyan-400 font-headline">SFSpeckit</span>
+            </a>
+            <nav class="hidden md:flex items-center gap-8 ml-4 font-headline font-bold text-sm">
+                <a class="text-cyan-400 border-b-2 border-cyan-400 pb-1" href="index.html">Documentation</a>
+                <a class="text-slate-400 hover:text-slate-200 transition-colors" href="https://github.com/ysumanth06/SF-Spec-Kit" target="_blank">GitHub</a>
+            </nav>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="hidden lg:flex items-center bg-surface-container-low border border-outline-variant/15 rounded-lg px-3 py-1.5 gap-2">
+                <span class="material-symbols-outlined text-outline text-sm">search</span>
+                <input class="bg-transparent border-none text-xs focus:ring-0 text-on-surface-variant font-label placeholder-outline/50 w-40" placeholder="Search API..." type="text"/>
+                <span class="text-[10px] text-outline px-1.5 py-0.5 border border-outline-variant/20 rounded bg-surface-container-highest font-label">⌘K</span>
+            </div>
+            <a href="commands.html" class="bg-primary-container text-on-primary-container font-headline font-bold text-sm px-5 py-2 rounded-lg active:scale-95 duration-200 hover:bg-cyan-400/90 transition-all duration-300">
+                Get Started
+            </a>
+        </div>
+    </div>
+    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent h-[1px]"></div>
+</nav>
+
+<div class="flex pt-16 min-h-screen">
+    <!-- SideNavBar (Standardized) -->
+    <aside class="flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] overflow-y-auto w-64 border-r border-slate-800/50 bg-[#0f131d] z-40 hidden md:flex">
+        <div class="p-6 pb-2">
+            <h3 class="font-['Space_Grotesk'] text-xs uppercase tracking-widest text-cyan-400 font-bold">Framework</h3>
+            <p class="text-[10px] text-slate-500 font-label mt-1">v1.1.0-Stable</p>
+        </div>
+        <nav class="mt-4 flex flex-col">
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 transition-all font-['Space_Grotesk'] text-xs uppercase tracking-widest hover:text-cyan-300 hover:translate-x-1" href="index.html">
+                <span class="material-symbols-outlined">info</span>
+                <span>Introduction</span>
+            </a>
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 transition-all font-['Space_Grotesk'] text-xs uppercase tracking-widest hover:text-cyan-300 hover:translate-x-1" href="commands.html">
+                <span class="material-symbols-outlined">terminal</span>
+                <span>Slash Commands</span>
+            </a>
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 transition-all font-['Space_Grotesk'] text-xs uppercase tracking-widest hover:text-cyan-300 hover:translate-x-1" href="constitution.html">
+                <span class="material-symbols-outlined">gavel</span>
+                <span>Constitution</span>
+            </a>
+            <!-- API Reference (Active) -->
+            <a class="flex items-center gap-3 bg-cyan-400/10 text-cyan-400 border-r-2 border-cyan-400 px-4 py-3 font-bold font-['Space_Grotesk'] text-xs uppercase tracking-widest transition-all" href="api.html">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">api</span>
+                <span>API Reference</span>
+            </a>
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 transition-all font-['Space_Grotesk'] text-xs uppercase tracking-widest hover:text-cyan-300 hover:translate-x-1" href="deployment.html">
+                <span class="material-symbols-outlined">rocket_launch</span>
+                <span>Deployment</span>
+            </a>
+        </nav>
+        <div class="mt-auto p-6">
+            <div class="bg-surface-container-low rounded-xl p-4 border border-outline-variant/10">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                    <span class="text-[10px] font-label text-cyan-400 font-bold uppercase tracking-wider">Engine Status</span>
+                </div>
+                <p class="text-[10px] text-slate-500 font-label leading-relaxed">Unified Spectrum Orchestration is active and synchronized.</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Canvas -->
+    <main class="flex-1 md:ml-64 px-8 lg:px-16 py-12">
+        <section class="max-w-5xl mx-auto mb-16 relative">
+            <div class="absolute -top-12 -left-12 w-64 h-64 bg-primary-container/5 blur-[120px] rounded-full"></div>
+            <div class="relative">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="px-3 py-1 rounded-full bg-surface-container-highest text-cyan-400 text-[10px] font-label font-bold uppercase tracking-widest border border-cyan-400/20">Unified Spectrum Engine</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
+                    <span class="text-slate-500 text-[10px] font-label uppercase tracking-widest font-bold">Stable v1.1.0</span>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-black font-headline tracking-tighter text-on-surface mb-4">
+                    API &amp; <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-primary-fixed-dim">CLI Reference</span>
+                </h1>
+                <p class="text-lg text-on-surface-variant max-w-2xl font-light leading-relaxed">
+                    Comprehensive documentation for the <span class="text-primary italic">SFSpeckit</span> Spectrum Engine. Manage blueprints, verify schemas, and calculate health metrics via the unified CLI.
+                </p>
+            </div>
+        </section>
+
+        <!-- Bento Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 max-w-5xl mx-auto mb-16">
+            <div class="md:col-span-8 bg-surface-container-low rounded-2xl p-8 border border-outline-variant/10 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-400/5 blur-3xl group-hover:bg-cyan-400/10 transition-colors"></div>
+                <div class="flex items-start justify-between relative z-10">
+                    <div>
+                        <h3 class="text-xl font-headline font-bold text-on-surface mb-2">Engine Orchestration</h3>
+                        <p class="text-sm text-on-surface-variant leading-relaxed max-w-lg">
+                            The core Spectrum Engine handles state resolution across distributed sandboxes. It utilizes an asynchronous polling mechanism to ensure schema integrity before any branch promotion.
+                        </p>
+                    </div>
+                    <span class="material-symbols-outlined text-cyan-400/40 text-4xl">hub</span>
+                </div>
+                <div class="mt-8 flex gap-4">
+                    <div class="flex-1 bg-surface-container-lowest rounded-xl p-4 border border-white/5">
+                        <span class="text-[10px] font-label text-slate-500 uppercase tracking-widest block mb-2 font-bold">Primary Protocol</span>
+                        <span class="text-sm font-headline text-on-surface font-bold">Metadata-Direct v1.1</span>
+                    </div>
+                    <div class="flex-1 bg-surface-container-lowest rounded-xl p-4 border border-white/5">
+                        <span class="text-[10px] font-label text-slate-500 uppercase tracking-widest block mb-2 font-bold">Output Mode</span>
+                        <span class="text-sm font-headline text-on-surface font-bold">JSON / Dashboard</span>
+                    </div>
+                </div>
+            </div>
+            <div class="md:col-span-4 bg-surface-container-high rounded-2xl p-8 border border-outline-variant/10 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-headline font-bold text-on-surface mb-4">Output Control</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded bg-primary-container/10 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-cyan-400 text-sm">data_object</span>
+                            </span>
+                            <code class="text-xs font-mono text-cyan-200">--json</code>
+                        </div>
+                        <p class="text-[11px] text-slate-400 font-label leading-relaxed">
+                            Machine-readable stream for CI/CD integration and automated task verification loops.
+                        </p>
+                    </div>
+                </div>
+                <button class="mt-6 text-[10px] font-label font-bold uppercase tracking-widest text-cyan-400 flex items-center gap-2 group transition-all hover:text-cyan-200">
+                    Formatting Specs
+                    <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                </button>
+            </div>
+
+            <!-- Commands -->
+            <div class="md:col-span-12 mt-4">
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-2xl font-headline font-black tracking-tight text-on-surface">Core CLI Commands</h2>
+                    <div class="h-[1px] flex-1 bg-gradient-to-r from-cyan-500/20 to-transparent mx-8"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 hover:border-cyan-400/30 transition-all group">
+                        <div class="flex items-center justify-between mb-4">
+                            <code class="text-cyan-400 font-mono font-bold text-lg">init</code>
+                            <span class="material-symbols-outlined text-slate-600 group-hover:text-cyan-400/50">add_box</span>
+                        </div>
+                        <p class="text-xs text-on-surface-variant leading-relaxed mb-6">Safe initialization of the `sfspeckit-data/` structure within a new project root.</p>
+                        <div class="bg-surface-container-lowest rounded-lg p-3 border border-white/5">
+                            <code class="text-[10px] font-mono text-slate-500">$ sfspeckit init</code>
+                        </div>
+                    </div>
+                    <div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 hover:border-cyan-400/30 transition-all group">
+                        <div class="flex items-center justify-between mb-4">
+                            <code class="text-cyan-400 font-mono font-bold text-lg">branch</code>
+                            <span class="material-symbols-outlined text-slate-600 group-hover:text-cyan-400/50">account_tree</span>
+                        </div>
+                        <p class="text-xs text-on-surface-variant leading-relaxed mb-6">Creates standardized naming for `feat/`, `story/`, or `hotfix/` branches.</p>
+                        <div class="bg-surface-container-lowest rounded-lg p-3 border border-white/5">
+                            <code class="text-[10px] font-mono text-slate-500">$ sfspeckit branch story/123</code>
+                        </div>
+                    </div>
+                    <div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 hover:border-cyan-400/30 transition-all group">
+                        <div class="flex items-center justify-between mb-4">
+                            <code class="text-cyan-400 font-mono font-bold text-lg">scaffold</code>
+                            <span class="material-symbols-outlined text-slate-600 group-hover:text-cyan-400/50">architecture</span>
+                        </div>
+                        <p class="text-xs text-on-surface-variant leading-relaxed mb-6">Generates the folder and documentation templates for a specific story or feature.</p>
+                        <div class="bg-surface-container-lowest rounded-lg p-3 border border-white/5">
+                            <code class="text-[10px] font-mono text-slate-500">$ sfspeckit scaffold --feature=LWC-Grid</code>
+                        </div>
+                    </div>
+                    <div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 hover:border-cyan-400/30 transition-all group">
+                        <div class="flex items-center justify-between mb-4">
+                            <code class="text-cyan-400 font-mono font-bold text-lg">verify</code>
+                            <span class="material-symbols-outlined text-slate-600 group-hover:text-cyan-400/50">verified</span>
+                        </div>
+                        <p class="text-xs text-on-surface-variant leading-relaxed mb-6">Runs the full autonomous verification suite: Scanner + Tests + Evidence generation.</p>
+                        <div class="bg-surface-container-lowest rounded-lg p-3 border border-white/5">
+                            <code class="text-[10px] font-mono text-slate-500">$ sfspeckit verify --strict</code>
+                        </div>
+                    </div>
+                    <div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10 hover:border-cyan-400/30 transition-all group">
+                        <div class="flex items-center justify-between mb-4">
+                            <code class="text-cyan-400 font-mono font-bold text-lg">score</code>
+                            <span class="material-symbols-outlined text-slate-600 group-hover:text-cyan-400/50">speed</span>
+                        </div>
+                        <p class="text-xs text-on-surface-variant leading-relaxed mb-6">Calculates real-time project health and story completion metrics for architectural review.</p>
+                        <div class="bg-surface-container-lowest rounded-lg p-3 border border-white/5">
+                            <code class="text-[10px] font-mono text-slate-500">$ sfspeckit score --summary</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Code Block -->
+        <section class="max-w-5xl mx-auto">
+            <div class="bg-surface-container-lowest rounded-2xl overflow-hidden border border-outline-variant/10">
+                <div class="bg-surface-container-high px-6 py-3 flex items-center justify-between border-b border-outline-variant/10">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-error/40"></span>
+                        <span class="w-3 h-3 rounded-full bg-tertiary-container/40"></span>
+                        <span class="w-3 h-3 rounded-full bg-primary-container/40"></span>
+                        <span class="ml-4 text-[10px] font-mono text-slate-500 uppercase tracking-widest font-bold">engine_config.json</span>
+                    </div>
+                    <button class="text-[10px] font-label text-slate-400 hover:text-cyan-400 transition-colors uppercase tracking-widest font-bold">View Source</button>
+                </div>
+                <div class="p-8 font-mono text-sm leading-relaxed overflow-x-auto">
+                    <pre class="text-slate-300">
+{
+  <span class="text-cyan-400">"engine_version"</span>: <span class="text-tertiary-fixed">"1.1.0-Stable"</span>,
+  <span class="text-cyan-400">"orchestration"</span>: {
+    <span class="text-cyan-400">"mode"</span>: <span class="text-tertiary-fixed">"unified_spectrum"</span>,
+    <span class="text-cyan-400">"heartbeat_interval"</span>: <span class="text-primary-fixed-dim">300</span>,
+    <span class="text-cyan-400">"retry_on_fail"</span>: <span class="text-primary-fixed-dim">true</span>
+  },
+  <span class="text-cyan-400">"output_formatting"</span>: {
+    <span class="text-cyan-400">"default"</span>: <span class="text-tertiary-fixed">"json"</span>,
+    <span class="text-cyan-400">"verbosity"</span>: <span class="text-primary-fixed-dim">2</span>
+  }
+}</pre>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<!-- Footer (Standardized) -->
+<footer class="w-full border-t border-slate-800/40 bg-[#0f131d] mt-24">
+    <div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full">
+        <div class="flex flex-col gap-2">
+            <p class="font-['Space_Grotesk'] text-[10px] tracking-[0.2em] text-cyan-400 font-bold uppercase">SFSpeckit Intelligence</p>
+            <p class="text-[9px] text-slate-500 tracking-tight">Architectural Integrity Framework for Salesforce ecosystems. Built by an Architect.</p>
+        </div>
+        <div class="flex gap-8 mt-6 md:mt-0 font-['Space_Grotesk'] text-[10px] tracking-widest font-bold">
+            <a class="text-slate-500 hover:text-cyan-400 transition-colors uppercase" href="https://github.com/ysumanth06/SF-Spec-Kit/blob/main/CHANGELOG.md" target="_blank">Changelog</a>
+            <a class="text-slate-500 hover:text-cyan-400 transition-colors uppercase" href="#">Privacy</a>
+            <a class="text-slate-500 hover:text-cyan-400 transition-colors uppercase" href="index.html">Architecture</a>
+            <a class="text-slate-500 hover:text-cyan-400 transition-colors uppercase" href="https://www.linkedin.com/in/ysumanth/" target="_blank">LinkedIn</a>
+            <a class="text-primary-container hover:text-primary transition-colors uppercase underline underline-offset-4" href="https://ysumanth06.github.io/LinkedIn-Personal-Website/" target="_blank">Creator Website</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

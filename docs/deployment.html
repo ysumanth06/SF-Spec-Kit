@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Deployment | SFSpeckit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&amp;family=Space+Grotesk:wght@300;400;500;700&amp;family=Fira+Code&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#00e5ff",
+                        "on-primary-container": "#00626e",
+                        "on-error": "#690005",
+                        "on-tertiary-container": "#6f5500",
+                        "primary": "#c3f5ff",
+                        "tertiary-container": "#fec931",
+                        "secondary-container": "#3d4759",
+                        "surface-variant": "#313540",
+                        "on-secondary-fixed": "#121c2c",
+                        "inverse-on-surface": "#2c303b",
+                        "inverse-surface": "#dfe2f1",
+                        "surface-container-lowest": "#0a0e18",
+                        "surface-container-highest": "#313540",
+                        "on-secondary": "#273141",
+                        "outline": "#849396",
+                        "surface-tint": "#00daf3",
+                        "primary-fixed-dim": "#00daf3",
+                        "surface-container-high": "#262a35",
+                        "tertiary": "#ffeac0",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "background": "#0f131d",
+                        "surface": "#0f131d",
+                        "secondary-fixed-dim": "#bdc7dc",
+                        "on-primary": "#00363d",
+                        "on-primary-fixed": "#001f24",
+                        "on-tertiary": "#3e2e00",
+                        "outline-variant": "#3b494c",
+                        "secondary-fixed": "#d9e3f9",
+                        "surface-container-low": "#171b26",
+                        "surface-bright": "#353944",
+                        "on-secondary-container": "#abb5cb",
+                        "surface-container": "#1c1f2a",
+                        "tertiary-fixed-dim": "#f3bf26",
+                        "on-surface": "#dfe2f1",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#251a00",
+                        "on-background": "#dfe2f1",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#bac9cc",
+                        "error": "#ffb4ab",
+                        "inverse-primary": "#006875",
+                        "on-primary-fixed-variant": "#004f58",
+                        "tertiary-fixed": "#ffdf96",
+                        "on-secondary-fixed-variant": "#3d4759",
+                        "primary-fixed": "#9cf0ff",
+                        "surface-dim": "#0f131d",
+                        "secondary": "#bdc7dc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(28, 31, 42, 0.6);
+            backdrop-filter: blur(20px);
+        }
+        .tonal-shift {
+            background: linear-gradient(180deg, rgba(23, 27, 38, 0.5) 0%, rgba(15, 19, 29, 0) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar (Standardized) -->
+<nav class="fixed top-0 w-full z-50 bg-[#0f131d]/80 backdrop-blur-xl shadow-[0_0_20px_rgba(0,229,255,0.05)]">
+    <div class="flex items-center justify-between px-8 py-4 w-full max-w-full">
+        <div class="flex items-center gap-8">
+            <a href="index.html" class="flex items-center gap-4">
+                <img alt="SFSpeckit Logo" class="w-8 h-8" src="assets/logo.png"/>
+                <span class="text-2xl font-black tracking-tighter text-cyan-400 font-headline">SFSpeckit</span>
+            </a>
+            <div class="hidden md:flex gap-6 items-center ml-4">
+                <a class="font-['Inter'] font-bold text-sm tracking-tight text-cyan-400 border-b-2 border-cyan-400 pb-1" href="index.html">Documentation</a>
+                <a class="font-['Inter'] font-bold text-sm tracking-tight text-slate-400 hover:text-slate-200 transition-colors" href="https://github.com/ysumanth06/SF-Spec-Kit" target="_blank">GitHub</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <a href="commands.html" class="px-5 py-2 bg-primary-container text-on-primary text-sm font-bold rounded hover:bg-cyan-400/10 hover:text-cyan-300 transition-all duration-300 active:scale-95">Get Started</a>
+        </div>
+    </div>
+    <div class="bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent h-[1px] bottom-0 absolute w-full"></div>
+</nav>
+
+<div class="flex min-h-screen pt-16">
+    <!-- SideNavBar (Standardized) -->
+    <aside class="flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] overflow-y-auto w-64 border-r border-slate-800/50 bg-[#0f131d] hidden md:flex z-40">
+        <div class="px-6 py-6 border-b border-slate-800/30 tonal-shift">
+            <p class="font-['Space_Grotesk'] text-xs uppercase tracking-widest text-slate-500">Framework</p>
+            <p class="text-[10px] text-cyan-400 font-mono mt-1 opacity-70 font-bold">v1.1.0-Stable</p>
+        </div>
+        <div class="mt-4 flex-grow">
+            <a class="flex items-center gap-3 text-slate-500 px-4 py-3 hover:bg-slate-800/50 transition-all hover:text-cyan-300 hover:translate-x-1" href="index.html">
+                <span class="material-symbols-outlined text-[20px]">info</span>
+                <span class="font-['Space_Grotesk'] text-xs uppercase tracking-widest">Introduction</span>
+            </a>
+            <a class="flex items-center gap-3 text-slate-500 px-4 py-3 hover:bg-slate-800/50 transition-all hover:text-cyan-300 hover:translate-x-1" href="commands.html">
+                <span class="material-symbols-outlined text-[20px]">terminal</span>
+                <span class="font-['Space_Grotesk'] text-xs uppercase tracking-widest">Slash Commands</span>
+            </a>
+            <a class="flex items-center gap-3 text-slate-500 px-4 py-3 hover:bg-slate-800/50 transition-all hover:text-cyan-300 hover:translate-x-1" href="constitution.html">
+                <span class="material-symbols-outlined text-[20px]">gavel</span>
+                <span class="font-['Space_Grotesk'] text-xs uppercase tracking-widest">Constitution</span>
+            </a>
+            <a class="flex items-center gap-3 text-slate-500 px-4 py-3 hover:bg-slate-800/50 transition-all hover:text-cyan-300 hover:translate-x-1" href="api.html">
+                <span class="material-symbols-outlined text-[20px]">api</span>
+                <span class="font-['Space_Grotesk'] text-xs uppercase tracking-widest">API Reference</span>
+            </a>
+            <!-- Deployment (Active) -->
+            <a class="flex items-center gap-3 bg-cyan-400/10 text-cyan-400 border-r-2 border-cyan-400 px-4 py-3 font-bold hover:translate-x-1 transition-transform" href="deployment.html">
+                <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+                <span class="font-['Space_Grotesk'] text-xs uppercase tracking-widest">Deployment</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 ml-0 md:ml-64 p-8 md:p-12 lg:p-16">
+        <!-- Hero Section -->
+        <header class="max-w-4xl mb-16">
+            <div class="inline-flex items-center px-3 py-1 rounded-full bg-primary-container/10 border border-primary-container/20 text-primary-container text-[10px] font-['Space_Grotesk'] tracking-[0.2em] uppercase mb-6 font-bold">
+                Operational Excellence
+            </div>
+            <h1 class="text-5xl md:text-7xl font-black tracking-tighter text-on-surface mb-6 leading-[0.9]">
+                Deployment &amp; <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-fixed-dim to-primary-container">Multi-Org Promotion</span>
+            </h1>
+            <p class="text-xl text-slate-400 font-light max-w-2xl leading-relaxed">
+                Secure promotion across the enterprise environment. SFSpeckit ensures your metadata transitions with absolute structural integrity and automated verification.
+            </p>
+        </header>
+
+        <!-- Bento Grid Section -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-16">
+            <!-- Deployment Safety Principle -->
+            <div class="md:col-span-8 glass-panel border border-outline-variant/15 rounded-xl p-8 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-primary-container/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2"></div>
+                <div class="relative z-10">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span class="material-symbols-outlined text-primary-container p-2 bg-primary-container/10 rounded-lg">shield</span>
+                        <h3 class="font-['Space_Grotesk'] text-xs uppercase tracking-[0.2em] font-bold text-slate-300">Article VII: Deployment Safety</h3>
+                    </div>
+                    <p class="text-2xl font-light text-on-surface mb-6 leading-snug">
+                        "The sanctity of the Production environment is paramount. No deployment shall occur without validated dependency mapping and automated smoke testing."
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="px-4 py-2 bg-surface-container-highest rounded-lg flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary-container text-sm">check_circle</span>
+                            <span class="text-[10px] font-['Space_Grotesk'] text-slate-400 uppercase tracking-widest font-bold">Atomic Commits</span>
+                        </div>
+                        <div class="px-4 py-2 bg-surface-container-highest rounded-lg flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary-container text-sm">lock</span>
+                            <span class="text-[10px] font-['Space_Grotesk'] text-slate-400 uppercase tracking-widest font-bold">Dependency Locked</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Dependency Resolution -->
+            <div class="md:col-span-4 bg-surface-container-high rounded-xl p-8 border border-outline-variant/15 flex flex-col justify-between">
+                <div>
+                    <div class="mb-6">
+                        <span class="material-symbols-outlined text-tertiary-container mb-4 text-4xl">account_tree</span>
+                        <h3 class="font-headline font-bold text-xl text-on-surface">Dependency Resolution</h3>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Metadata-Direct v1.1 automatically traverses complex metadata trees to ensure all required components are included in every payload.
+                    </p>
+                </div>
+                <div class="space-y-4">
+                    <div class="h-2 bg-surface-container-lowest rounded-full overflow-hidden">
+                        <div class="h-full bg-primary-container w-full"></div>
+                    </div>
+                    <div class="h-2 bg-surface-container-lowest rounded-full overflow-hidden">
+                        <div class="h-full bg-primary-container w-[75%]"></div>
+                    </div>
+                    <div class="h-2 bg-surface-container-lowest rounded-full overflow-hidden">
+                        <div class="h-full bg-primary-container w-[90%]"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Multi-Org Pipeline -->
+            <div class="md:col-span-12 glass-panel border border-outline-variant/15 rounded-xl p-8">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
+                    <div>
+                        <h3 class="font-headline font-bold text-2xl text-on-surface">The Enterprise Promotion Path</h3>
+                        <p class="text-slate-400 text-sm mt-2">Standardized flow for mission-critical Salesforce deployments</p>
+                    </div>
+                    <button class="bg-surface-container-highest border border-outline-variant/30 text-on-surface px-6 py-2 rounded-lg text-sm font-['Space_Grotesk'] uppercase tracking-widest hover:bg-surface-bright transition-colors font-bold">
+                        Pipeline Config
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
+                    <!-- Connecting Line (Desktop) -->
+                    <div class="hidden lg:block absolute top-[20px] left-0 w-full h-[1px] bg-gradient-to-r from-primary-container/0 via-primary-container/20 to-primary-container/0"></div>
+                    <!-- Dev -->
+                    <div class="relative bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 z-10 hover:border-primary-container/30 transition-colors">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center mb-4 text-slate-400 font-bold text-xs border border-white/5">01</div>
+                        <h4 class="font-['Space_Grotesk'] text-sm font-bold text-primary-container tracking-widest uppercase">Development</h4>
+                        <p class="text-xs text-slate-500 mt-2">Sandbox-level iteration and feature branching.</p>
+                    </div>
+                    <!-- QA -->
+                    <div class="relative bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 z-10 hover:border-primary-container/30 transition-colors">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center mb-4 text-slate-400 font-bold text-xs border border-white/5">02</div>
+                        <h4 class="font-['Space_Grotesk'] text-sm font-bold text-on-surface tracking-widest uppercase">Quality Assurance</h4>
+                        <p class="text-xs text-slate-500 mt-2">Automated testing and verification suites.</p>
+                    </div>
+                    <!-- UAT -->
+                    <div class="relative bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 z-10 hover:border-primary-container/30 transition-colors">
+                        <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center mb-4 text-slate-400 font-bold text-xs border border-white/5">03</div>
+                        <h4 class="font-['Space_Grotesk'] text-sm font-bold text-on-surface tracking-widest uppercase">Staging / UAT</h4>
+                        <p class="text-xs text-slate-500 mt-2">Business acceptance and staging mirror.</p>
+                    </div>
+                    <!-- Prod -->
+                    <div class="relative bg-surface-container-lowest p-6 rounded-xl border border-primary-container/30 z-10 shadow-[0_0_20px_rgba(0,229,255,0.1)]">
+                        <div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center mb-4 text-primary-container font-bold text-xs">04</div>
+                        <h4 class="font-['Space_Grotesk'] text-sm font-bold text-primary-container tracking-widest uppercase">Production</h4>
+                        <p class="text-xs text-slate-400 mt-2">Verified, high-availability live environment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Promotion Log Visual -->
+        <section class="mt-12">
+            <div class="bg-surface-container-low rounded-2xl overflow-hidden border border-outline-variant/10">
+                <div class="px-6 py-4 border-b border-outline-variant/10 bg-surface-container flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <div class="flex gap-1.5">
+                            <div class="w-3 h-3 rounded-full bg-[#3d4759]"></div>
+                            <div class="w-3 h-3 rounded-full bg-[#3d4759]"></div>
+                            <div class="w-3 h-3 rounded-full bg-[#3d4759]"></div>
+                        </div>
+                        <span class="ml-4 font-mono text-[11px] text-slate-500 uppercase tracking-widest">Promotion Log: speckit-deploy-v11.log</span>
+                    </div>
+                    <span class="text-[10px] font-['Space_Grotesk'] text-primary-container animate-pulse flex items-center gap-1 font-bold tracking-widest">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-ping"></span>
+                        SYSTEM_ACTIVE
+                    </span>
+                </div>
+                <div class="p-8 bg-surface-container-lowest font-mono text-sm space-y-2">
+                    <p class="text-slate-600"><span class="text-primary-container font-bold">[09:41:22]</span> Initializing structural scan...</p>
+                    <p class="text-slate-600"><span class="text-primary-container font-bold">[09:41:23]</span> Resolving dependencies for <span class="text-tertiary-container">speckit.lead_engine.cls</span></p>
+                    <p class="text-slate-400"><span class="text-primary-container font-bold">[09:41:25]</span> Mapping detected: 14 Apex Classes, 2 Triggers, 1 Custom Metadata Type.</p>
+                    <p class="text-primary-container font-bold"><span class="text-primary-container">[09:41:28]</span> PRE-DEPLOYMENT VALIDATION: SUCCESS (0 errors, 0 warnings)</p>
+                    <p class="text-slate-400"><span class="text-primary-container font-bold">[09:41:30]</span> Pushing to QA instance <span class="text-slate-200">"sfs_qa_04"</span>...</p>
+                    <div class="pt-4 border-t border-slate-800/20 mt-4">
+                        <p class="text-primary-container font-bold tracking-widest">PROMOTION_STATUS: IN_PROGRESS</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<!-- Footer (Standardized) -->
+<footer class="w-full border-t border-slate-800/40 bg-[#0f131d]">
+    <div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full mt-auto">
+        <div class="flex flex-col gap-2">
+            <p class="font-['Space_Grotesk'] text-[10px] tracking-[0.2em] text-cyan-400 font-bold uppercase">SFSpeckit Intelligence</p>
+            <p class="text-[9px] text-slate-500 tracking-tight">Architectural Integrity Framework for Salesforce ecosystems. Built by an Architect.</p>
+        </div>
+        <div class="flex gap-8 mt-6 md:mt-0 font-['Space_Grotesk'] text-[10px] tracking-widest font-bold">
+            <a class="text-slate-500 hover:text-cyan-400 transition-colors uppercase" href="https://github.com/ysumanth06/SF-Spec-Kit/blob/main/CHANGELOG.md" target="_blank">Changelog</a>
+            <a class="text-slate-500 hover:text-cyan-400 transition-colors uppercase" href="#">Privacy</a>
+            <a class="text-slate-500 hover:text-cyan-400 transition-colors uppercase" href="index.html">Architecture</a>
+            <a class="text-slate-500 hover:text-cyan-400 transition-colors uppercase" href="https://www.linkedin.com/in/ysumanth/" target="_blank">LinkedIn</a>
+            <a class="text-primary-container hover:text-primary transition-colors uppercase underline underline-offset-4" href="https://ysumanth06.github.io/LinkedIn-Personal-Website/" target="_blank">Creator Website</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

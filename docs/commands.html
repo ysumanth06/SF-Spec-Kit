@@ -3,65 +3,63 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>SFSpeckit Documentation | Slash Commands</title>
-    <link href="https://fonts.googleapis.com" rel="preconnect"/>
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Space+Grotesk:wght@500;600&amp;family=Source+Code+Pro&amp;display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <title>Slash Commands | SFSpeckit</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Fira+Code:wght@400;500&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     "colors": {
-                        "on-secondary-fixed": "#121c2c",
-                        "surface": "#0f131d",
-                        "outline-variant": "#3b494c",
-                        "primary-fixed-dim": "#00daf3",
-                        "on-secondary": "#273141",
-                        "primary-fixed": "#9cf0ff",
-                        "on-tertiary-fixed-variant": "#594400",
-                        "surface-container-lowest": "#0a0e18",
-                        "on-error": "#690005",
-                        "on-primary-fixed-variant": "#004f58",
-                        "on-primary": "#00363d",
-                        "tertiary-fixed-dim": "#f3bf26",
-                        "secondary-fixed": "#d9e3f9",
-                        "error-container": "#93000a",
-                        "inverse-on-surface": "#2c303b",
-                        "primary": "#c3f5ff",
-                        "error": "#ffb4ab",
-                        "on-error-container": "#ffdad6",
-                        "on-secondary-fixed-variant": "#3d4759",
                         "primary-container": "#00e5ff",
-                        "surface-container-high": "#262a35",
-                        "on-tertiary-fixed": "#251a00",
                         "on-primary-container": "#00626e",
+                        "on-error": "#690005",
+                        "on-tertiary-container": "#6f5500",
+                        "primary": "#c3f5ff",
+                        "tertiary-container": "#fec931",
                         "secondary-container": "#3d4759",
                         "surface-variant": "#313540",
-                        "surface-bright": "#353944",
-                        "on-surface": "#dfe2f1",
-                        "on-tertiary-container": "#6f5500",
-                        "tertiary": "#ffeac0",
-                        "on-primary-fixed": "#001f24",
-                        "surface-dim": "#0f131d",
-                        "surface-container-highest": "#313540",
-                        "surface-container": "#1c1f2a",
-                        "tertiary-fixed": "#ffdf96",
-                        "surface-container-low": "#171b26",
-                        "background": "#0f131d",
+                        "on-secondary-fixed": "#121c2c",
+                        "inverse-on-surface": "#2c303b",
                         "inverse-surface": "#dfe2f1",
-                        "on-background": "#dfe2f1",
-                        "on-tertiary": "#3e2e00",
-                        "tertiary-container": "#fec931",
-                        "secondary-fixed-dim": "#bdc7dc",
-                        "inverse-primary": "#006875",
+                        "surface-container-lowest": "#0a0e18",
+                        "surface-container-highest": "#313540",
+                        "on-secondary": "#273141",
                         "outline": "#849396",
-                        "secondary": "#bdc7dc",
+                        "surface-tint": "#00DAF3",
+                        "primary-fixed-dim": "#00daf3",
+                        "surface-container-high": "#262a35",
+                        "tertiary": "#ffeac0",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "background": "#0f131d",
+                        "surface": "#0f131d",
+                        "secondary-fixed-dim": "#bdc7dc",
+                        "on-primary": "#00363d",
+                        "on-primary-fixed": "#001f24",
+                        "on-tertiary": "#3e2e00",
+                        "outline-variant": "#3b494c",
+                        "secondary-fixed": "#d9e3f9",
+                        "surface-container-low": "#171b26",
+                        "surface-bright": "#353944",
                         "on-secondary-container": "#abb5cb",
+                        "surface-container": "#1c1f2a",
+                        "tertiary-fixed-dim": "#f3bf26",
+                        "on-surface": "#dfe2f1",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#251a00",
+                        "on-background": "#dfe2f1",
+                        "error-container": "#93000a",
                         "on-surface-variant": "#bac9cc",
-                        "surface-tint": "#00daf3"
+                        "error": "#ffb4ab",
+                        "inverse-primary": "#006875",
+                        "on-primary-fixed-variant": "#004f58",
+                        "tertiary-fixed": "#ffdf96",
+                        "on-secondary-fixed-variant": "#3d4759",
+                        "primary-fixed": "#9cf0ff",
+                        "surface-dim": "#0f131d",
+                        "secondary": "#bdc7dc"
                     },
                     "borderRadius": {
                         "DEFAULT": "0.125rem",
@@ -72,249 +70,211 @@
                     "fontFamily": {
                         "headline": ["Inter"],
                         "body": ["Inter"],
-                        "label": ["Space Grotesk"],
-                        "mono": ["Source Code Pro"]
+                        "label": ["Space Grotesk"]
                     }
                 },
             },
         }
     </script>
     <style>
-        body {
-            background-color: #0f131d;
-            color: #dfe2f1;
-            font-family: 'Inter', sans-serif;
+        body { font-family: 'Inter', sans-serif; }
+        .label-font { font-family: 'Space Grotesk', sans-serif; }
+        .mono-font { font-family: 'Fira Code', monospace; }
+        .glass-card {
+            background: rgba(28, 31, 42, 0.6);
+            backdrop-filter: blur(20px);
         }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            vertical-align: middle;
-        }
-        .glass-panel {
-            backdrop-filter: blur(12px);
-            background: rgba(28, 31, 42, 0.8);
-        }
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .ghost-border {
-            border: 1px solid rgba(132, 147, 150, 0.15);
-        }
+        .ghost-border { border: 1px solid rgba(59, 73, 76, 0.15); }
+        .active-glow { box-shadow: 0 0 20px rgba(0, 229, 255, 0.05); }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #3b494c; border-radius: 10px; }
     </style>
 </head>
-<body class="dark overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
-<!-- TopNavBar (Shared Component) -->
-<header class="fixed top-0 w-full z-50 bg-surface-container/80 backdrop-blur-xl dark:bg-slate-900/80 border-b border-white/10 shadow-2xl shadow-cyan-900/5 h-16 px-6 md:px-12 flex justify-between items-center">
-    <div class="flex items-center gap-2">
-        <a href="index.html" class="flex items-center gap-2">
-            <img alt="SFSpeckit Logo" class="h-8 w-8 object-contain" src="assets/logo.png"/>
-            <div class="text-xl font-bold tracking-tighter text-slate-100">SFSpeckit</div>
+<body class="bg-background text-on-surface min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar (Standardized) -->
+<header class="fixed top-0 w-full z-50 bg-[#0f131d]/80 backdrop-blur-xl shadow-[0_0_20px_rgba(0,229,255,0.05)]">
+    <div class="flex items-center justify-between px-8 py-4 w-full max-w-full">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="flex items-center gap-4">
+                <div class="text-2xl font-black tracking-tighter text-cyan-400">SFSpeckit</div>
+            </a>
+            <nav class="hidden md:flex items-center gap-8 ml-4 font-['Inter'] font-bold text-sm tracking-tight text-slate-400">
+                <a class="text-cyan-400 border-b-2 border-cyan-400 pb-1" href="index.html">Documentation</a>
+                <a class="hover:text-slate-200 transition-colors" href="https://github.com/ysumanth06/SF-Spec-Kit" target="_blank">GitHub</a>
+            </nav>
+        </div>
+        <a href="commands.html" class="bg-primary-container text-on-primary-container px-4 py-2 rounded-lg hover:bg-cyan-400/90 transition-all duration-300 active:scale-95 shadow-[0_0_15px_rgba(0,229,255,0.2)]">
+            Get Started
         </a>
     </div>
-    <nav class="hidden md:flex gap-8 items-center font-sans text-sm tracking-tight">
-        <a class="text-cyan-400 font-semibold border-b-2 border-cyan-400 pb-1" href="commands.html">Documentation</a>
-        <a class="text-slate-400 hover:text-slate-100 transition-colors" href="https://github.com/ysumanth06/SF-Spec-Kit">GitHub</a>
-        <a class="bg-primary-container text-on-primary-container px-4 py-2 rounded-xl font-semibold scale-95 active:opacity-80 transition-transform" href="https://www.linkedin.com/in/ysumanth/" target="_blank">Connect on LinkedIn</a>
-    </nav>
-    <div class="md:hidden flex items-center">
-        <span class="material-symbols-outlined text-slate-100">menu</span>
-    </div>
+    <div class="bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent h-[1px] bottom-0 absolute w-full"></div>
 </header>
 
-<div class="flex pt-16 min-h-screen">
-    <!-- SideNavBar (Shared Component) -->
-    <aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 bg-slate-950 dark:bg-slate-950 hidden md:flex flex-col py-8 gap-2 overflow-y-auto z-40">
-        <div class="px-6 mb-6">
-            <div class="font-mono text-xs uppercase tracking-widest text-cyan-400">Documentation</div>
-            <div class="text-[10px] text-slate-500 font-mono mt-1">V1.1.0-Stable</div>
+<div class="flex flex-1 pt-16">
+    <!-- SideNavBar (Standardized) -->
+    <aside class="w-64 border-r border-slate-800/50 bg-[#0f131d] flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] overflow-y-auto custom-scrollbar z-40">
+        <div class="p-6 border-b border-slate-800/30 tonal-shift bg-slate-900/30">
+            <div class="font-['Space_Grotesk'] text-xs uppercase tracking-widest text-slate-500">Framework</div>
+            <div class="text-cyan-400 text-sm font-bold mt-1">v1.1.0-Stable</div>
         </div>
-        <nav class="flex flex-col gap-1">
-            <!-- Introduction -->
-            <a class="flex items-center gap-3 px-6 py-3 text-slate-500 hover:text-slate-300 hover:bg-slate-900 transition-all group" href="index.html">
-                <span class="material-symbols-outlined text-lg">info</span>
-                <span class="font-mono text-xs uppercase tracking-widest">Introduction</span>
+        <nav class="mt-4 flex flex-col">
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 transition-all hover:text-cyan-300 hover:translate-x-1 cursor-pointer active:opacity-80" href="index.html">
+                <span class="material-symbols-outlined text-sm">info</span>
+                <span class="font-['Space_Grotesk'] text-xs uppercase tracking-widest">Introduction</span>
             </a>
             <!-- Slash Commands (Active) -->
-            <a class="flex items-center gap-3 px-6 py-3 text-cyan-400 bg-cyan-400/10 border-r-2 border-cyan-400 translate-x-1 transition-transform group" href="commands.html">
-                <span class="material-symbols-outlined text-lg">terminal</span>
-                <span class="font-mono text-xs uppercase tracking-widest">Slash Commands</span>
+            <a class="flex items-center gap-3 bg-cyan-400/10 text-cyan-400 border-r-2 border-cyan-400 px-4 py-3 font-bold cursor-pointer transition-all" href="commands.html">
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">terminal</span>
+                <span class="font-['Space_Grotesk'] text-xs uppercase tracking-widest">Slash Commands</span>
             </a>
-            <!-- Constitution -->
-            <a class="flex items-center gap-3 px-6 py-3 text-slate-500 hover:text-slate-300 hover:bg-slate-900 transition-all group" href="constitution.html">
-                <span class="material-symbols-outlined text-lg">gavel</span>
-                <span class="font-mono text-xs uppercase tracking-widest">Constitution</span>
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 transition-all hover:text-cyan-300 hover:translate-x-1 cursor-pointer active:opacity-80" href="constitution.html">
+                <span class="material-symbols-outlined text-sm">gavel</span>
+                <span class="font-['Space_Grotesk'] text-xs uppercase tracking-widest">Constitution</span>
             </a>
-            <!-- API Reference -->
-            <a class="flex items-center gap-3 px-6 py-3 text-slate-500 hover:text-slate-300 hover:bg-slate-900 transition-all group" href="#">
-                <span class="material-symbols-outlined text-lg">api</span>
-                <span class="font-mono text-xs uppercase tracking-widest">API Reference</span>
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 transition-all hover:text-cyan-300 hover:translate-x-1 cursor-pointer active:opacity-80" href="api.html">
+                <span class="material-symbols-outlined text-sm">api</span>
+                <span class="font-['Space_Grotesk'] text-xs uppercase tracking-widest">API Reference</span>
             </a>
-            <!-- Deployment -->
-            <a class="flex items-center gap-3 px-6 py-3 text-slate-500 hover:text-slate-300 hover:bg-slate-900 transition-all group" href="#">
-                <span class="material-symbols-outlined text-lg">rocket_launch</span>
-                <span class="font-mono text-xs uppercase tracking-widest">Deployment</span>
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 transition-all hover:text-cyan-300 hover:translate-x-1 cursor-pointer active:opacity-80" href="deployment.html">
+                <span class="material-symbols-outlined text-sm">rocket_launch</span>
+                <span class="font-['Space_Grotesk'] text-xs uppercase tracking-widest">Deployment</span>
             </a>
         </nav>
-        <div class="mt-auto px-6 py-8">
-            <div class="bg-surface-container-high rounded-xl p-4 ghost-border">
-                <p class="text-[10px] text-slate-500 font-mono mb-2 uppercase">System Status</p>
-                <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 rounded-full bg-primary-container animate-pulse shadow-[0_0_8px_rgba(0,229,255,0.6)]"></div>
-                    <span class="text-xs font-mono text-slate-300">Engine Stable</span>
-                </div>
-            </div>
-        </div>
     </aside>
 
-    <!-- Main Content Area -->
-    <main class="flex-1 md:ml-64 bg-surface min-h-screen px-6 py-12 md:px-16 lg:px-24">
-        <div class="max-w-4xl mx-auto">
-            <!-- Header Section -->
-            <header class="mb-16">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-400/5 border border-cyan-400/20 mb-6">
-                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-                    <span class="text-[10px] font-label uppercase tracking-widest text-cyan-400">Core Protocol</span>
-                </div>
-                <h1 class="text-5xl md:text-6xl font-headline font-extrabold tracking-tighter text-on-surface mb-6">
-                    Slash <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-fixed-dim to-primary-container">Commands</span>
-                </h1>
-                <p class="text-lg text-on-surface-variant font-body leading-relaxed max-w-2xl">
-                    Interact with the Architectural Intelligence using precise semantic triggers. These commands are processed via the Unified Spectrum Engine for zero-latency execution.
-                </p>
-            </header>
+    <!-- Main Content -->
+    <main class="ml-64 flex-1 p-12 lg:p-20 bg-surface">
+        <header class="mb-16">
+            <h1 class="text-6xl font-black tracking-tighter mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary-fixed-dim to-primary-container">
+                Slash Commands
+            </h1>
+            <p class="text-xl text-slate-400 font-light tracking-wide max-w-2xl leading-relaxed">
+                Complete Lifecycle Command Directory. Orchestrate the entire development cycle from constitution to release within your terminal.
+            </p>
+        </header>
 
-            <!-- Slash Commands Grid -->
-            <section class="mb-20">
-                <h2 class="text-xs font-label uppercase tracking-[0.2em] text-outline mb-10">Command Directory</h2>
-                <div class="grid grid-cols-1 gap-6">
-                    <!-- Command 1 -->
-                    <div class="group bg-surface-container-low rounded-xl p-6 transition-all hover:bg-surface-container border-b border-transparent hover:border-cyan-400/30">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
-                            <code class="text-primary-container font-mono text-lg font-bold">/sfspeckit-constitution</code>
-                            <span class="text-[10px] font-label bg-surface-container-highest px-2 py-1 rounded text-slate-400 uppercase tracking-widest">Global Anchor</span>
-                        </div>
-                        <div class="p-4 bg-surface-container-lowest rounded ghost-border font-mono text-sm text-slate-400 leading-relaxed">
-                            Initializes the architectural foundation. Sets the primary identity, core constraints, and design tokens for the entire project spectrum.
-                        </div>
+        <!-- Bento Grid for Commands -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            <!-- Command Card 1: Primary Feature -->
+            <div class="md:col-span-8 glass-card ghost-border p-8 rounded-xl group hover:shadow-[0_0_30px_rgba(0,229,255,0.1)] transition-all duration-500 overflow-hidden relative">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-primary-container/5 blur-[80px] -translate-y-1/2 translate-x-1/2"></div>
+                <div class="relative z-10">
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="mono-font text-primary-container text-xl font-bold">/sfspeckit-constitution</span>
+                        <span class="label-font text-[10px] tracking-[0.2em] bg-primary-container/10 text-primary-container px-3 py-1 rounded-full font-bold uppercase">Foundational</span>
                     </div>
-                    <!-- Command 2 -->
-                    <div class="group bg-surface-container-low rounded-xl p-6 transition-all hover:bg-surface-container border-b border-transparent hover:border-cyan-400/30">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
-                            <code class="text-primary-container font-mono text-lg font-bold">/sfspeckit-implement</code>
-                            <span class="text-[10px] font-label bg-surface-container-highest px-2 py-1 rounded text-slate-400 uppercase tracking-widest">Action Execution</span>
-                        </div>
-                        <div class="p-4 bg-surface-container-lowest rounded ghost-border font-mono text-sm text-slate-400 leading-relaxed">
-                            Executes technical specifications based on existing documentation. Bridges the gap between static specs and functional code blocks.
-                        </div>
-                    </div>
-                    <!-- Command 3 -->
-                    <div class="group bg-surface-container-low rounded-xl p-6 transition-all hover:bg-surface-container border-b border-transparent hover:border-cyan-400/30">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
-                            <code class="text-primary-container font-mono text-lg font-bold">/sfspeckit-plan</code>
-                            <span class="text-[10px] font-label bg-surface-container-highest px-2 py-1 rounded text-slate-400 uppercase tracking-widest">Architecture</span>
-                        </div>
-                        <div class="p-4 bg-surface-container-lowest rounded ghost-border font-mono text-sm text-slate-400 leading-relaxed">
-                            Generates a comprehensive technical blueprint and deployment strategy from a functional specification.
-                        </div>
-                    </div>
-                    <!-- Command 4 -->
-                    <div class="group bg-surface-container-low rounded-xl p-6 transition-all hover:bg-surface-container border-b border-transparent hover:border-cyan-400/30">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
-                            <code class="text-primary-container font-mono text-lg font-bold">/sfspeckit-verify</code>
-                            <span class="text-[10px] font-label bg-surface-container-highest px-2 py-1 rounded text-slate-400 uppercase tracking-widest">Verification</span>
-                        </div>
-                        <div class="p-4 bg-surface-container-lowest rounded ghost-border font-mono text-sm text-slate-400 leading-relaxed">
-                            Runs autonomous verification suites, including security scanning, code coverage, and evidence generation.
+                    <p class="text-on-surface/80 text-lg leading-relaxed mb-6">Establish principles with evidence-based org discovery. Scans metadata maturity and environmental constraints to establish a "North Star" for the project.</p>
+                    <div class="h-48 rounded-lg bg-surface-container-lowest relative overflow-hidden flex items-center justify-center border border-white/5">
+                        <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent"></div>
+                        <div class="mono-font text-xs text-cyan-400/40 p-6 leading-relaxed">
+                            [SYSTEM] Discovery initiated...<br/>
+                            [SCAN] Scanning 438 Metadata Components...<br/>
+                            [ANALYSIS] Identifying drift from Core Principles...<br/>
+                            [SUCCESS] Constitution generated at .sfspeckit/memory/constitution.md
                         </div>
                     </div>
                 </div>
-            </section>
-
-            <!-- Unified Spectrum Engine (CLI) Section -->
-            <section class="relative mb-20">
-                <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary-container/5 rounded-full blur-3xl"></div>
-                <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-cyan-900/10 rounded-full blur-3xl"></div>
-                <div class="relative glass-panel rounded-2xl p-8 md:p-12 ghost-border overflow-hidden">
-                    <div class="flex items-center gap-4 mb-8">
-                        <div class="p-3 bg-primary-container/10 rounded-xl">
-                            <span class="material-symbols-outlined text-primary-container">terminal</span>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-headline font-bold text-on-surface">Unified Spectrum Engine (CLI)</h3>
-                            <p class="text-sm text-slate-500 font-label tracking-wide uppercase">Operational Interface v1.1.0</p>
-                        </div>
+            </div>
+            <!-- Command Card 2: Sidebar Card -->
+            <div class="md:col-span-4 glass-card ghost-border p-8 rounded-xl bg-gradient-to-b from-surface-container-high to-surface-container flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">terminal</span>
+                        <span class="mono-font text-primary-container font-bold">/sfspeckit-specify</span>
                     </div>
-                    <p class="text-on-surface-variant mb-8 leading-relaxed">
-                        The CLI is the raw heartbeat of SFSpeckit. Use it to bypass the AI for rapid-fire deployment and configuration management.
-                    </p>
-                    <!-- Code Example Block -->
-                    <div class="bg-surface-container-lowest rounded-xl overflow-hidden border border-white/5">
-                        <div class="bg-surface-container-high px-4 py-2 flex items-center gap-2">
-                            <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
-                            <div class="w-2.5 h-2.5 rounded-full bg-amber-500/50"></div>
-                            <div class="w-2.5 h-2.5 rounded-full bg-emerald-500/50"></div>
-                            <span class="ml-4 text-[10px] font-mono text-slate-500 uppercase tracking-widest">Terminal — bash</span>
-                        </div>
-                        <div class="p-6 font-mono text-sm space-y-4">
-                            <div class="flex gap-4">
-                                <span class="text-slate-600 select-none">1</span>
-                                <span class="text-cyan-400">$</span>
-                                <span class="text-slate-100">./SFSpeckit/bin/sfspeckit init</span>
-                            </div>
-                            <div class="flex gap-4">
-                                <span class="text-slate-600 select-none">2</span>
-                                <span class="text-slate-500">&gt;&gt; Analyzing local architecture...</span>
-                            </div>
-                            <div class="flex gap-4">
-                                <span class="text-slate-600 select-none">3</span>
-                                <span class="text-slate-500">&gt;&gt; Constitution active. Core nodes established.</span>
-                            </div>
-                            <div class="flex gap-4">
-                                <span class="text-slate-600 select-none">4</span>
-                                <span class="text-cyan-400">$</span>
-                                <span class="text-slate-100">./SFSpeckit/bin/sfspeckit score <span class="text-tertiary-container">--json</span></span>
-                            </div>
-                        </div>
-                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">Create functional feature specs based on your constitution and current org state. Defines the "What" for AI agents.</p>
                 </div>
-            </section>
+                <div class="pt-4 border-t border-slate-800/50">
+                    <span class="label-font text-[9px] uppercase tracking-widest text-slate-500 font-bold">Sample Input</span>
+                    <div class="text-xs text-on-surface/60 mt-1 mono-font bg-black/20 p-2 rounded">/sfspeckit-specify --feature "Bulk-Save"</div>
+                </div>
+            </div>
+            <!-- Secondary Grid Row -->
+            <div class="md:col-span-4 glass-card ghost-border p-6 rounded-xl hover:translate-y-[-4px] transition-transform group">
+                <span class="mono-font text-primary font-bold text-sm block mb-2 group-hover:text-cyan-400 transition-colors">/sfspeckit-clarify</span>
+                <p class="text-xs text-slate-500 leading-relaxed">Deep gap analysis and drift audit. Identifies manual org changes and multi-team conflicts before planning.</p>
+            </div>
+            <div class="md:col-span-4 glass-card ghost-border p-6 rounded-xl hover:translate-y-[-4px] transition-transform border-l-2 border-l-primary-container/30 group">
+                <span class="mono-font text-primary font-bold text-sm block mb-2 group-hover:text-cyan-400 transition-colors">/sfspeckit-plan</span>
+                <p class="text-xs text-slate-500 leading-relaxed">Technical blueprint and deployment order for the defined feature specifications. Defines the "How".</p>
+            </div>
+            <div class="md:col-span-4 glass-card ghost-border p-6 rounded-xl hover:translate-y-[-4px] transition-transform group">
+                <span class="mono-font text-primary font-bold text-sm block mb-2 group-hover:text-cyan-400 transition-colors">/sfspeckit-stories</span>
+                <p class="text-xs text-slate-500 leading-relaxed">Break plan into Jira-ready developer stories with detailed acceptance criteria and technical notes.</p>
+            </div>
 
-            <!-- Helpful Links / Next Steps -->
-            <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-                <a class="group p-8 rounded-2xl bg-surface-container transition-all hover:bg-surface-container-high ghost-border flex items-start gap-6" href="constitution.html">
-                    <span class="material-symbols-outlined text-3xl text-primary-container p-4 bg-surface-container-lowest rounded-xl">book</span>
-                    <div>
-                        <h4 class="text-lg font-headline font-bold text-on-surface mb-2 group-hover:text-primary-container transition-colors">Constitution Guide</h4>
-                        <p class="text-sm text-on-surface-variant leading-relaxed">Deep dive into the rules that govern the SFSpeckit AI engine.</p>
-                    </div>
-                </a>
-                <a class="group p-8 rounded-2xl bg-surface-container transition-all hover:bg-surface-container-high ghost-border flex items-start gap-6" href="#">
-                    <span class="material-symbols-outlined text-3xl text-tertiary-container p-4 bg-surface-container-lowest rounded-xl">hub</span>
-                    <div>
-                        <h4 class="text-lg font-headline font-bold text-on-surface mb-2 group-hover:text-tertiary-container transition-colors">API Architecture</h4>
-                        <p class="text-sm text-on-surface-variant leading-relaxed">Extend the CLI with your own custom spectrum commands.</p>
-                    </div>
-                </a>
-            </section>
+            <!-- Command List Section (Assurance) -->
+            <div class="md:col-span-12 mt-12 mb-6 flex items-center gap-4">
+                <div class="h-[1px] flex-1 bg-gradient-to-r from-transparent to-slate-800"></div>
+                <h2 class="label-font text-xs uppercase tracking-[0.4em] text-slate-500 font-bold">Implementation & Assurance</h2>
+                <div class="h-[1px] flex-1 bg-gradient-to-l from-transparent to-slate-800"></div>
+            </div>
+
+            <div class="md:col-span-3 glass-card ghost-border p-5 rounded-lg group hover:border-cyan-400/30 transition-all">
+                <div class="mono-font text-sm text-primary-container font-bold">/sfspeckit-implement</div>
+                <p class="text-[11px] text-slate-500 mt-2 leading-relaxed">Build story by orchestrating SF skills and autonomous auto-heal loops.</p>
+            </div>
+            <div class="md:col-span-3 glass-card ghost-border p-5 rounded-lg group hover:border-cyan-400/30 transition-all">
+                <div class="mono-font text-sm text-primary-container font-bold">/sfspeckit-verify</div>
+                <p class="text-[11px] text-slate-500 mt-2 leading-relaxed">Generate "Verification Evidence" (Coverage, Security, Performance).</p>
+            </div>
+            <div class="md:col-span-3 glass-card ghost-border p-5 rounded-lg group hover:border-cyan-400/30 transition-all">
+                <div class="mono-font text-sm text-primary-container font-bold">/sfspeckit-pr</div>
+                <p class="text-[11px] text-slate-500 mt-2 leading-relaxed">Prepares PR summary via gh cli for automated code review context.</p>
+            </div>
+            <div class="md:col-span-3 glass-card ghost-border p-5 rounded-lg group hover:border-cyan-400/30 transition-all">
+                <div class="mono-font text-sm text-primary-container font-bold">/sfspeckit-qa</div>
+                <p class="text-[11px] text-slate-500 mt-2 leading-relaxed">Multi-persona UI validation against original functional specifications.</p>
+            </div>
+            <div class="md:col-span-3 glass-card ghost-border p-5 rounded-lg group hover:border-cyan-400/30 transition-all">
+                <div class="mono-font text-sm text-primary-container font-bold">/sfspeckit-uat</div>
+                <p class="text-[11px] text-slate-500 mt-2 leading-relaxed">Business UAT scripts and digital sign-off workflows for stakeholders.</p>
+            </div>
+            <div class="md:col-span-3 glass-card ghost-border p-5 rounded-lg group hover:border-cyan-400/30 transition-all">
+                <div class="mono-font text-sm text-primary-container font-bold">/sfspeckit-regression</div>
+                <p class="text-[11px] text-slate-500 mt-2 leading-relaxed">Full feature regression before final release candidate promotion.</p>
+            </div>
+            <div class="md:col-span-3 glass-card ghost-border p-5 rounded-lg group hover:border-cyan-400/30 transition-all">
+                <div class="mono-font text-sm text-primary-container font-bold">/sfspeckit-release-notes</div>
+                <p class="text-[11px] text-slate-500 mt-2 leading-relaxed">Business-ready delivery summary and metadata delta report.</p>
+            </div>
+            <div class="md:col-span-3 glass-card ghost-border p-5 rounded-lg group hover:border-cyan-400/30 transition-all">
+                <div class="mono-font text-sm text-primary-container font-bold">/sfspeckit-score</div>
+                <p class="text-[11px] text-slate-500 mt-2 leading-relaxed">Real-time project health dashboard and agentskills.io risk assessment.</p>
+            </div>
+            <div class="md:col-span-3 glass-card ghost-border p-5 rounded-lg group border-b-2 border-b-error/30 hover:bg-error/5 transition-all">
+                <div class="mono-font text-sm text-error font-bold">/sfspeckit-change</div>
+                <p class="text-[11px] text-slate-500 mt-2 leading-relaxed">Impact analysis for mid-sprint changes or requirement pivots.</p>
+            </div>
+            <div class="md:col-span-3 glass-card ghost-border p-5 rounded-lg group border-b-2 border-b-error/30 hover:bg-error/5 transition-all">
+                <div class="mono-font text-sm text-error font-bold">/sfspeckit-hotfix</div>
+                <p class="text-[11px] text-slate-500 mt-2 leading-relaxed">Emergency production patch workflow and safe bypass protocols.</p>
+            </div>
+            <div class="md:col-span-6 glass-card ghost-border p-5 rounded-lg group bg-cyan-400/5 hover:bg-cyan-400/10 transition-all border border-cyan-400/20">
+                <div class="flex items-center justify-between">
+                    <div class="mono-font text-sm text-primary-container font-bold">/sfspeckit-deploy</div>
+                    <span class="material-symbols-outlined text-primary-container text-xs animate-pulse">rocket_launch</span>
+                </div>
+                <p class="text-[11px] text-slate-500 mt-2 leading-relaxed">Multi-org environment promotion with pre/post-deployment validation hooks.</p>
+            </div>
         </div>
     </main>
 </div>
 
-<!-- Footer (Shared Component) -->
-<footer class="w-full py-12 bg-slate-950 border-t border-white/5 relative z-50">
-    <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-        <div class="flex items-center gap-2">
-            <img alt="SFSpeckit Logo" class="h-6 w-6 object-contain" src="assets/logo.png"/>
-            <div class="text-sm font-semibold text-slate-400">SFSpeckit</div>
+<!-- Footer (Standardized) -->
+<footer class="w-full border-t border-slate-800/40 bg-[#0f131d]">
+    <div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full">
+        <div class="flex flex-col gap-2">
+            <p class="font-['Space_Grotesk'] text-[10px] tracking-[0.2em] text-cyan-400 font-bold uppercase">SFSpeckit Intelligence</p>
+            <p class="text-[9px] text-slate-500 tracking-tight">Architectural Integrity Framework for Salesforce Ecosystems</p>
         </div>
-        <nav class="flex gap-8 items-center">
-            <a class="font-sans text-xs text-slate-600 hover:text-slate-400 transition-colors" href="#">Changelog</a>
-            <a class="font-sans text-xs text-slate-600 hover:text-slate-400 transition-colors" href="#">Privacy</a>
-            <a class="font-sans text-xs text-slate-600 hover:text-slate-400 transition-colors" href="index.html">Architecture</a>
-            <a class="font-sans text-xs text-slate-600 hover:text-slate-400 transition-colors" href="https://www.linkedin.com/in/ysumanth/" target="_blank">LinkedIn</a>
-            <a class="font-sans text-xs text-primary-container hover:text-cyan-400 transition-colors font-semibold" href="https://ysumanth06.github.io/LinkedIn-Personal-Website/" target="_blank">Creator Website</a>
-        </nav>
-        <div class="font-sans text-xs text-slate-500">
-            © 2026 SFSpeckit. MIT License.
+        <div class="flex gap-8 mt-6 md:mt-0 font-['Space_Grotesk'] text-[10px] tracking-widest font-bold">
+            <a class="text-slate-500 hover:text-cyan-400 transition-colors uppercase" href="https://github.com/ysumanth06/SF-Spec-Kit/blob/main/CHANGELOG.md" target="_blank">Changelog</a>
+            <a class="text-slate-500 hover:text-cyan-400 transition-colors uppercase" href="#">Privacy</a>
+            <a class="text-slate-500 hover:text-cyan-400 transition-colors uppercase" href="index.html">Architecture</a>
+            <a class="text-slate-500 hover:text-cyan-400 transition-colors uppercase" href="https://www.linkedin.com/in/ysumanth/" target="_blank">LinkedIn</a>
+            <a class="text-primary-container hover:text-primary transition-colors uppercase underline underline-offset-4" href="https://ysumanth06.github.io/LinkedIn-Personal-Website/" target="_blank">Creator Website</a>
         </div>
     </div>
 </footer>
