@@ -2,14 +2,15 @@
   <img src="docs/assets/logo.png" width="300" alt="SFSpeckit Logo">
   <h1>SFSpeckit</h1>
   <p><b>The Enterprise-Grade Salesforce AI-Driven Development (AIDD) Framework</b></p>
+
+  ![Version](https://img.shields.io/badge/version-1.1.0-blue)
+  ![GitHub last commit](https://img.shields.io/github/last-commit/ysumanth06/SF-Spec-Kit)
+  ![GitHub license](https://img.shields.io/github/license/ysumanth06/SF-Spec-Kit)
+  ![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-blue)
+  ![agentskills.io](https://img.shields.io/badge/agentskills.io-Certified-green)
 </div>
 
-![Version](https://img.shields.io/badge/version-1.1.0-blue)
-![GitHub last commit](https://img.shields.io/github/last-commit/ysumanth06/SF-Spec-Kit)
-![GitHub top language](https://img.shields.io/github/languages/top/ysumanth06/SF-Spec-Kit)
-![GitHub license](https://img.shields.io/github/license/ysumanth06/SF-Spec-Kit)
-![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-blue)
-![agentskills.io](https://img.shields.io/badge/agentskills.io-Certified-green)
+<br/>
 
 **Transforming Salesforce delivery into an evidence-based, autonomous engine driven by structured specifications.**
 
