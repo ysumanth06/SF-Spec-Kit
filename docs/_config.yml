@@ -1,6 +1,12 @@
-theme: jekyll-theme-architect
+theme: jekyll-theme-cayman
 title: SFSpeckit
-description: The Spec-Driven Engine (SDE) for Salesforce Lifecycle by Sumanth Yanamala
+description: The Enterprise-Grade Salesforce AI-Driven Development (AIDD) Framework
+author: Sumanth Yanamala
+github:
+  repository_url: https://github.com/ysumanth06/SF-Spec-Kit
 show_downloads: true
 google_analytics:
-remote_theme:
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
