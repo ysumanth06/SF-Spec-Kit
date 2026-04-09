@@ -111,6 +111,8 @@ SFSpeckit is a methodology + toolkit that gives your Salesforce team:
 
 SFSpeckit is inspired by GitHub's spec-kit. It has been re-architected from the ground up by **Sumanth Yanamala**, a Salesforce Architect, to meet the unique challenges of the Salesforce development lifecycle.
 
+Find more about the creator and his work on his **[Personal Website](https://ysumanth06.github.io/LinkedIn-Personal-Website/)**.
+
 The toolkit focuses on **metadata-driven development**, robust quality gates, and **autonomous Agentforce readiness**, ensuring that AI-assisted coding is as safe as it is fast.
 
 ---
