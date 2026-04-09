@@ -92,38 +92,41 @@
         ::-webkit-scrollbar-thumb { background: #313540; border-radius: 10px; }
     </style>
 </head>
-<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
-<!-- TopNavBar (Standardized) -->
-<nav class="fixed top-0 w-full z-50 bg-[#0f131d]/80 backdrop-blur-xl shadow-[0_0_20px_rgba(0,229,255,0.05)]">
-    <div class="flex items-center justify-between px-8 py-4 w-full max-w-full">
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#0f131d]/80 backdrop-blur-xl shadow-[0_0_20px_rgba(0,229,255,0.05)] border-b border-white/5">
+    <div class="flex items-center justify-between px-6 md:px-12 py-4 w-full">
         <div class="flex items-center gap-4">
+            <!-- Mobile Toggle -->
+            <button id="sidebar-toggle" class="md:hidden text-cyan-400 p-2 hover:bg-white/5 rounded-lg transition-colors">
+                <span class="material-symbols-outlined font-bold">menu</span>
+            </button>
             <a href="index.html" class="flex items-center gap-4">
                 <img alt="SFSpeckit Logo" class="w-8 h-8" src="assets/logo.png"/>
-                <span class="text-2xl font-black tracking-tighter text-cyan-400 font-headline">SFSpeckit</span>
+                <span class="text-xl md:text-2xl font-black tracking-tighter text-cyan-400 font-headline uppercase">SFSpeckit</span>
             </a>
-            <div class="hidden md:flex gap-6 items-center ml-4">
-                <a class="font-['Inter'] font-bold text-sm tracking-tight text-cyan-400 border-b-2 border-cyan-400 pb-1" href="introduction.html">Documentation</a>
+            <div class="hidden lg:flex gap-6 items-center ml-4">
+                <a class="font-['Inter'] font-bold text-sm tracking-tight text-cyan-400 border-b-2 border-cyan-400 pb-1" href="introduction.html">Docs</a>
                 <a class="font-['Inter'] font-bold text-sm tracking-tight text-slate-400 hover:text-slate-200 transition-colors" href="https://github.com/ysumanth06/SF-Spec-Kit" target="_blank">GitHub</a>
             </div>
         </div>
         <div class="flex items-center gap-4">
-            <a href="commands.html" class="bg-primary-container text-on-primary-container px-6 py-2 rounded-lg font-bold hover:bg-cyan-400/90 transition-all duration-300 active:scale-95 shadow-[0_0_15px_rgba(0,229,255,0.2)]">
+            <a href="commands.html" class="bg-primary-container text-on-primary-container px-4 md:px-6 py-2 rounded-lg text-xs md:text-sm font-bold hover:bg-cyan-400/90 transition-all shadow-[0_0_15px_rgba(0,229,255,0.2)]">
                 Get Started
             </a>
         </div>
     </div>
-    <div class="bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent h-[1px] bottom-0 absolute w-full"></div>
 </nav>
 
 <div class="flex min-h-screen pt-16">
-    <!-- SideNavBar (Standardized) -->
-    <aside class="flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] overflow-y-auto w-64 border-r border-slate-800/50 bg-[#0f131d] z-40">
+    <!-- SideNavBar (Mobile Drawer Logic) -->
+    <div id="sidebar-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden md:hidden"></div>
+    <aside id="sidebar" class="flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] overflow-y-auto w-64 border-r border-slate-800/50 bg-[#0f131d] z-40 transition-transform duration-300 -translate-x-full md:translate-x-0">
         <div class="px-6 py-8">
             <div class="font-['Space_Grotesk'] text-xs uppercase tracking-widest text-cyan-400 font-bold mb-1">Framework</div>
-            <div class="font-['Space_Grotesk'] text-[10px] tracking-wide text-slate-500">v1.1.0-Stable</div>
+            <div class="font-['Space_Grotesk'] text-[10px] tracking-wide text-slate-500 font-bold">v1.1.0-Stable</div>
         </div>
         <nav class="flex flex-col gap-1 px-2">
-            <!-- Introduction (Active) -->
             <a class="flex items-center gap-3 bg-cyan-400/10 text-cyan-400 border-r-2 border-cyan-400 px-4 py-3 font-bold font-['Space_Grotesk'] text-xs uppercase tracking-widest transition-all" href="introduction.html">
                 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">info</span>
                 <span>Introduction</span>
@@ -145,111 +148,87 @@
                 <span>Deployment</span>
             </a>
         </nav>
-        <div class="mt-auto p-6 tonal-shift">
-            <div class="bg-surface-container-highest rounded-xl p-4 border border-outline-variant/15">
-                <p class="text-[10px] font-label text-slate-400 mb-2 uppercase">System Status</p>
-                <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 rounded-full bg-primary-container animate-pulse shadow-[0_0_8px_rgba(0,229,255,0.4)]"></div>
-                    <span class="text-xs font-label text-primary">Core Synced</span>
-                </div>
-            </div>
-        </div>
     </aside>
 
     <!-- Main Content Canvas -->
-    <main class="lg:ml-64 flex-1 p-12 lg:p-20">
-        <!-- Hero Section -->
-        <section class="max-w-5xl mb-24 relative">
-            <div class="absolute -top-20 -left-20 w-96 h-96 bg-primary-container/5 blur-[120px] rounded-full"></div>
+    <main class="lg:ml-64 flex-1 p-6 md:p-12 lg:p-20 overflow-x-hidden">
+        <section class="max-w-4xl mb-24 relative">
             <div class="relative z-10">
-                <h1 class="text-6xl md:text-7xl font-black font-headline tracking-tighter text-on-surface mb-6">
-                    Introduction to <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-fixed-dim to-primary-container">SFSpeckit</span>
+                <h1 class="text-4xl md:text-7xl font-black font-headline tracking-tighter text-on-surface mb-6 leading-tight">
+                    Introduction to <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-primary-container">SFSpeckit</span>
                 </h1>
-                <p class="text-xl md:text-2xl font-label text-slate-400 max-w-3xl mx-auto mb-8 leading-relaxed">
-                    The Enterprise-Grade Salesforce AI-Driven Development (AIDD) Framework
+                <p class="text-lg md:text-2xl font-label text-slate-400 mb-8 leading-relaxed max-w-2xl font-bold uppercase tracking-wide">
+                    The Enterprise-Grade Salesforce AIDD Framework
                 </p>
-                <p class="text-lg text-slate-300 max-w-3xl leading-relaxed">
-                    Transforming Salesforce delivery into an evidence-based, autonomous engine driven by structured specifications. SFSpeckit enforces architectural rigor through a unified Spectrum Engine.
+                <p class="text-base md:text-lg text-slate-300 leading-relaxed max-w-3xl">
+                    Transforming Salesforce delivery into an evidence-based, autonomous engine driven by structured specifications.
                 </p>
             </div>
         </section>
 
-        <!-- Strategy Grid (SDD) -->
+        <!-- Strategy Grid (Responsive) -->
         <section class="mb-24">
-            <div class="flex items-center gap-4 mb-12">
-                <h2 class="text-2xl font-headline font-bold">The SDD Strategy</h2>
-                <div class="h-[1px] flex-1 bg-gradient-to-r from-outline-variant/30 to-transparent"></div>
-            </div>
+            <h2 class="text-2xl font-headline font-bold mb-8 flex items-center gap-4">
+                The SDD Strategy
+                <span class="h-px flex-1 bg-white/5"></span>
+            </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-                <div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/10 relative overflow-hidden group text-center lg:text-left">
+                <div class="bg-surface-container-low p-8 rounded-xl border border-white/5 text-center">
                     <span class="material-symbols-outlined text-primary mb-4 text-3xl">description</span>
-                    <h3 class="font-label font-bold text-sm tracking-widest text-primary mb-2">SPEC</h3>
-                    <p class="text-[10px] text-slate-500 leading-relaxed uppercase tracking-wider font-bold">Requirements Input</p>
+                    <h3 class="font-label font-bold text-xs uppercase tracking-widest text-primary mb-2">SPEC</h3>
                 </div>
-                <div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/10 relative overflow-hidden group text-center lg:text-left">
+                <div class="bg-surface-container-low p-8 rounded-xl border border-white/5 text-center">
                     <span class="material-symbols-outlined text-primary mb-4 text-3xl">architecture</span>
-                    <h3 class="font-label font-bold text-sm tracking-widest text-primary mb-2">PLAN</h3>
-                    <p class="text-[10px] text-slate-500 leading-relaxed uppercase tracking-wider font-bold">AI Architectural Setup</p>
+                    <h3 class="font-label font-bold text-xs uppercase tracking-widest text-primary mb-2">PLAN</h3>
                 </div>
-                <div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/10 relative overflow-hidden group text-center lg:text-left">
+                <div class="bg-surface-container-low p-8 rounded-xl border border-white/5 text-center">
                     <span class="material-symbols-outlined text-primary mb-4 text-3xl">code</span>
-                    <h3 class="font-label font-bold text-sm tracking-widest text-primary mb-2">BUILD</h3>
-                    <p class="text-[10px] text-slate-500 leading-relaxed uppercase tracking-wider font-bold">Autonomous Synthesis</p>
+                    <h3 class="font-label font-bold text-xs uppercase tracking-widest text-primary mb-2">BUILD</h3>
                 </div>
-                <div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/10 relative overflow-hidden group text-center lg:text-left">
+                <div class="bg-surface-container-low p-8 rounded-xl border border-white/5 text-center">
                     <span class="material-symbols-outlined text-primary mb-4 text-3xl">verified</span>
-                    <h3 class="font-label font-bold text-sm tracking-widest text-primary mb-2">TEST</h3>
-                    <p class="text-[10px] text-slate-500 leading-relaxed uppercase tracking-wider font-bold">Automated Validation</p>
+                    <h3 class="font-label font-bold text-xs uppercase tracking-widest text-primary mb-2">TEST</h3>
                 </div>
-                <div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/10 relative overflow-hidden group text-center lg:text-left">
+                <div class="bg-surface-container-low p-8 rounded-xl border border-white/5 text-center">
                     <span class="material-symbols-outlined text-primary mb-4 text-3xl">speed</span>
-                    <h3 class="font-label font-bold text-sm tracking-widest text-primary mb-2">DEPLOY</h3>
-                    <p class="text-[10px] text-slate-500 leading-relaxed uppercase tracking-wider font-bold">CI/CD Integration</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Feature Bento Section -->
-        <section class="mb-24">
-            <h2 class="text-3xl font-headline font-bold mb-12">Why AIDD for Salesforce?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-                <!-- Large Card: Context Isolation -->
-                <div class="md:col-span-8 bg-surface-container-low rounded-2xl overflow-hidden border border-outline-variant/15 flex flex-col md:flex-row group">
-                    <div class="p-10 flex-1 flex flex-col justify-center">
-                        <div class="bg-primary-container/10 text-primary-container font-label text-[10px] tracking-[0.2em] uppercase px-3 py-1 rounded-full w-fit mb-6 font-bold">Security Layer</div>
-                        <h3 class="text-2xl font-headline font-bold mb-4">Context Isolation</h3>
-                        <p class="text-slate-400 leading-relaxed">Protecting IP with isolated environments that preventing metadata leaks. By separating planning from building, the AI focuses on one logical layer at a time.</p>
-                    </div>
-                </div>
-                <!-- Small Card: Guardrails -->
-                <div class="md:col-span-4 bg-surface-container-highest p-10 rounded-2xl border border-outline-variant/15 flex flex-col justify-end min-h-[350px] relative group overflow-hidden">
-                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-primary-container/10 blur-[60px] rounded-full"></div>
-                    <div class="relative z-10">
-                        <span class="material-symbols-outlined text-primary-container text-5xl mb-6" style="font-variation-settings: 'FILL' 1;">security</span>
-                        <h3 class="text-xl font-headline font-bold mb-3">Hallucination Guardrails</h3>
-                        <p class="text-sm text-slate-500 leading-relaxed">Rigorous architectural checks that ensure every line of code follows the 9 Salesforce Articles. Mandatory prerequisites prevent the AI from proceeding on assumptions.</p>
-                    </div>
+                    <h3 class="font-label font-bold text-xs uppercase tracking-widest text-primary mb-2">DEPLOY</h3>
                 </div>
             </div>
         </section>
     </main>
 </div>
 
-<!-- Footer (Standardized) -->
-<footer class="w-full border-t border-slate-800/40 bg-[#0f131d] mt-auto">
-    <div class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full">
-        <div class="flex flex-col gap-2">
-            <p class="font-['Space_Grotesk'] text-[10px] tracking-[0.2em] text-cyan-400 font-bold uppercase">SFSpeckit Intelligence</p>
-            <p class="text-[9px] text-slate-500 tracking-tight">Architectural Integrity Framework for Salesforce ecosystems. Built by an Architect.</p>
+<!-- Footer -->
+<footer class="w-full border-t border-slate-800/40 bg-slate-950 p-6 md:p-12 text-center md:text-left">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+        <div>
+            <p class="font-['Space_Grotesk'] text-[10px] tracking-[0.2em] text-cyan-400 font-bold uppercase mb-2">SFSpeckit Intelligence</p>
+            <p class="text-[9px] text-slate-500 uppercase tracking-widest font-bold font-['Inter'] hover:text-slate-400 transition-colors">© 2026 Architectural Integrity Framework</p>
         </div>
-        <div class="flex gap-8 mt-6 md:mt-0 font-['Space_Grotesk'] text-[10px] tracking-widest font-bold">
-            <a class="text-slate-500 hover:text-cyan-400 transition-colors uppercase" href="https://github.com/ysumanth06/SF-Spec-Kit/blob/main/CHANGELOG.md" target="_blank">Changelog</a>
-            <a class="text-slate-500 hover:text-cyan-400 transition-colors uppercase" href="#">Privacy</a>
-            <a class="text-slate-500 hover:text-cyan-400 transition-colors uppercase" href="index.html">Architecture</a>
-            <a class="text-slate-500 hover:text-cyan-400 transition-colors uppercase" href="https://www.linkedin.com/in/ysumanth/" target="_blank">LinkedIn</a>
-            <a class="text-primary-container hover:text-primary transition-colors uppercase underline underline-offset-4" href="https://ysumanth06.github.io/LinkedIn-Personal-Website/" target="_blank">Creator Website</a>
+        <div class="flex gap-6 font-['Space_Grotesk'] text-[10px] tracking-widest font-bold uppercase text-slate-600">
+            <a class="hover:text-cyan-400 transition-colors" href="index.html">Home</a>
+            <a class="hover:text-cyan-400 transition-colors" href="https://github.com/ysumanth06/SF-Spec-Kit">GitHub</a>
+            <a class="hover:text-cyan-400 transition-colors" href="https://www.linkedin.com/in/ysumanth/">Connect</a>
         </div>
     </div>
 </footer>
+
+<script>
+    const toggle = document.getElementById('sidebar-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const backdrop = document.getElementById('sidebar-backdrop');
+
+    toggle.addEventListener('click', () => {
+        sidebar.classList.toggle('-translate-x-full');
+        backdrop.classList.toggle('hidden');
+        document.body.style.overflow = sidebar.classList.contains('-translate-x-full') ? '' : 'hidden';
+    });
+
+    backdrop.addEventListener('click', () => {
+        sidebar.classList.add('-translate-x-full');
+        backdrop.classList.add('hidden');
+        document.body.style.overflow = '';
+    });
+</script>
 </body>
 </html>

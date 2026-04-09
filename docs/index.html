@@ -13,53 +13,53 @@
             theme: {
                 extend: {
                     "colors": {
-                        "on-secondary-fixed": "#121c2c",
-                        "surface": "#0f131d",
-                        "outline-variant": "#3b494c",
-                        "primary-fixed-dim": "#00daf3",
-                        "on-secondary": "#273141",
-                        "primary-fixed": "#9cf0ff",
-                        "on-tertiary-fixed-variant": "#594400",
-                        "surface-container-lowest": "#0a0e18",
-                        "on-error": "#690005",
-                        "on-primary-fixed-variant": "#004f58",
-                        "on-primary": "#00363d",
-                        "tertiary-fixed-dim": "#f3bf26",
-                        "secondary-fixed": "#d9e3f9",
-                        "error-container": "#93000a",
-                        "inverse-on-surface": "#2c303b",
-                        "primary": "#c3f5ff",
-                        "error": "#ffb4ab",
-                        "on-error-container": "#ffdad6",
-                        "on-secondary-fixed-variant": "#3d4759",
                         "primary-container": "#00e5ff",
-                        "surface-container-high": "#262a35",
-                        "on-tertiary-fixed": "#251a00",
                         "on-primary-container": "#00626e",
+                        "on-error": "#690005",
+                        "on-tertiary-container": "#6f5500",
+                        "primary": "#c3f5ff",
+                        "tertiary-container": "#fec931",
                         "secondary-container": "#3d4759",
                         "surface-variant": "#313540",
-                        "surface-bright": "#353944",
-                        "on-surface": "#dfe2f1",
-                        "on-tertiary-container": "#6f5500",
-                        "tertiary": "#ffeac0",
-                        "on-primary-fixed": "#001f24",
-                        "surface-dim": "#0f131d",
-                        "surface-container-highest": "#313540",
-                        "surface-container": "#1c1f2a",
-                        "tertiary-fixed": "#ffdf96",
-                        "surface-container-low": "#171b26",
-                        "background": "#0f131d",
+                        "on-secondary-fixed": "#121c2c",
+                        "inverse-on-surface": "#2c303b",
                         "inverse-surface": "#dfe2f1",
-                        "on-background": "#dfe2f1",
-                        "on-tertiary": "#3e2e00",
-                        "tertiary-container": "#fec931",
-                        "secondary-fixed-dim": "#bdc7dc",
-                        "inverse-primary": "#006875",
+                        "surface-container-lowest": "#0a0e18",
+                        "surface-container-highest": "#313540",
+                        "on-secondary": "#273141",
                         "outline": "#849396",
-                        "secondary": "#bdc7dc",
+                        "surface-tint": "#00daf3",
+                        "primary-fixed-dim": "#00daf3",
+                        "surface-container-high": "#262a35",
+                        "tertiary": "#ffeac0",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "background": "#0f131d",
+                        "surface": "#0f131d",
+                        "secondary-fixed-dim": "#bdc7dc",
+                        "on-primary": "#00363d",
+                        "on-primary-fixed": "#001f24",
+                        "on-tertiary": "#3e2e00",
+                        "outline-variant": "#3b494c",
+                        "secondary-fixed": "#d9e3f9",
+                        "surface-container-low": "#171b26",
+                        "surface-bright": "#353944",
                         "on-secondary-container": "#abb5cb",
+                        "surface-container": "#1c1f2a",
+                        "tertiary-fixed-dim": "#f3bf26",
+                        "on-surface": "#dfe2f1",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#251a00",
+                        "on-background": "#dfe2f1",
+                        "error-container": "#93000a",
                         "on-surface-variant": "#bac9cc",
-                        "surface-tint": "#00daf3"
+                        "error": "#ffb4ab",
+                        "inverse-primary": "#006875",
+                        "on-primary-fixed-variant": "#004f58",
+                        "tertiary-fixed": "#ffdf96",
+                        "on-secondary-fixed-variant": "#3d4759",
+                        "primary-fixed": "#9cf0ff",
+                        "surface-dim": "#0f131d",
+                        "secondary": "#bdc7dc"
                     },
                     "borderRadius": {
                         "DEFAULT": "0.125rem",
@@ -89,15 +89,17 @@
         }
     </style>
 </head>
-<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
-<!-- TopNavBar (Standardized) -->
-<nav class="fixed top-0 w-full z-50 bg-surface-container/80 backdrop-blur-xl border-b border-white/10 flex justify-between items-center h-16 px-6 md:px-12 shadow-2xl shadow-cyan-900/5">
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- TopNavBar (Standardized & Responsive) -->
+<nav class="fixed top-0 w-full z-50 bg-surface-container/80 backdrop-blur-xl border-b border-white/10 flex justify-between items-center h-16 px-6 md:px-12 shadow-2xl">
     <div class="text-xl font-bold tracking-tighter text-slate-100 font-headline">
         <a href="index.html" class="flex items-center gap-2">
             <img alt="SFSpeckit Logo" class="w-8 h-8 object-contain" src="assets/logo.png"/>
             <span>SFSpeckit</span>
         </a>
     </div>
+    
+    <!-- Desktop Nav -->
     <div class="hidden md:flex items-center gap-8 font-sans text-sm tracking-tight text-slate-400">
         <a class="hover:text-slate-100 transition-colors" href="introduction.html">Documentation</a>
         <a class="hover:text-slate-100 transition-colors" href="https://github.com/ysumanth06/SF-Spec-Kit" target="_blank">GitHub</a>
@@ -105,115 +107,120 @@
             Get Started
         </a>
     </div>
-    <button class="md:hidden text-primary">
+
+    <!-- Mobile Menu Button -->
+    <button id="mobile-menu-toggle" class="md:hidden text-primary p-2 hover:bg-white/5 rounded-lg transition-colors">
         <span class="material-symbols-outlined">menu</span>
     </button>
 </nav>
 
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="fixed inset-0 z-50 bg-surface/95 backdrop-blur-2xl hidden md:hidden">
+    <div class="flex flex-col items-center justify-center h-full gap-8 p-6">
+        <button id="mobile-menu-close" class="absolute top-6 right-6 text-slate-400 hover:text-white">
+            <span class="material-symbols-outlined text-3xl">close</span>
+        </button>
+        <a href="index.html" class="flex items-center gap-2 mb-8">
+            <img alt="SFSpeckit Logo" class="w-12 h-12" src="assets/logo.png"/>
+            <span class="text-2xl font-black text-white">SFSpeckit</span>
+        </a>
+        <nav class="flex flex-col items-center gap-6">
+            <a class="text-2xl font-bold text-slate-300 hover:text-primary transition-colors" href="introduction.html">Documentation</a>
+            <a class="text-2xl font-bold text-slate-300 hover:text-primary transition-colors" href="https://github.com/ysumanth06/SF-Spec-Kit" target="_blank">GitHub</a>
+            <a href="introduction.html" class="mt-4 bg-primary-container text-on-primary-container px-8 py-3 rounded-xl font-bold text-lg shadow-xl shadow-cyan-400/20">
+                Get Started
+            </a>
+        </nav>
+    </div>
+</div>
+
 <main class="pt-16">
-    <!-- Hero Section -->
-    <section class="relative min-h-[921px] flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+    <!-- Hero Section (Responsive Scales) -->
+    <section class="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-6 overflow-hidden">
         <div class="absolute inset-0 hero-glow -z-10"></div>
         <div class="mb-8 p-4 rounded-full bg-surface-container-highest/30 backdrop-blur-md border border-white/5">
-            <img alt="SFSpeckit Logo" class="w-24 h-24 md:w-32 md:h-32 object-contain drop-shadow-[0_0_15px_rgba(0,229,255,0.4)]" src="assets/logo.png"/>
+            <img alt="SFSpeckit Logo" class="w-20 h-20 md:w-32 md:h-32 object-contain drop-shadow-[0_0_15px_rgba(0,229,255,0.4)]" src="assets/logo.png"/>
         </div>
-        <h1 class="text-5xl md:text-8xl font-black tracking-tighter font-headline mb-6 bg-gradient-to-br from-white via-primary to-cyan-400 bg-clip-text text-transparent">
+        <h1 class="text-5xl md:text-8xl font-black tracking-tighter font-headline mb-6 bg-gradient-to-br from-white via-primary to-cyan-400 bg-clip-text text-transparent leading-none">
             SFSpeckit
         </h1>
-        <p class="text-lg md:text-2xl font-label text-on-surface-variant max-w-3xl mx-auto mb-12 tracking-wide uppercase drop-shadow-md">
+        <p class="text-base md:text-2xl font-label text-on-surface-variant max-w-3xl mx-auto mb-12 tracking-wide uppercase font-bold px-4">
             The Enterprise-Grade Salesforce AI-Driven Development (AIDD) Framework
         </p>
-        <div class="flex flex-col md:flex-row gap-4">
-            <a href="introduction.html" class="px-10 py-4 bg-primary-container text-on-primary-container font-bold rounded-xl hover:shadow-[0_0_30px_rgba(0,229,255,0.3)] transition-all duration-300 scale-100 active:scale-95">
+        <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-6">
+            <a href="introduction.html" class="px-10 py-4 bg-primary-container text-on-primary-container font-bold rounded-xl hover:shadow-[0_0_30px_rgba(0,229,255,0.3)] transition-all duration-300 active:scale-95 text-center">
                 Install Now
             </a>
-            <a class="px-8 py-4 bg-surface-container-highest text-on-surface font-bold rounded-xl border border-outline-variant/20 hover:bg-surface-variant transition-all duration-300 flex items-center gap-2" href="https://ysumanth06.github.io/LinkedIn-Personal-Website/" target="_blank">
+            <a class="px-8 py-4 bg-surface-container-highest text-on-surface font-bold rounded-xl border border-outline-variant/20 hover:bg-surface-variant transition-all duration-300 flex items-center justify-center gap-2" href="https://ysumanth06.github.io/LinkedIn-Personal-Website/" target="_blank">
                 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
                 Creator Profile
             </a>
         </div>
     </section>
 
-    <!-- Strategy Grid -->
-    <section class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 relative">
-            <div class="hidden md:block absolute top-1/2 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary/20 to-transparent -z-10"></div>
-            <div class="bg-surface-container-low p-8 rounded-xl border-b-2 border-primary/40 text-center hover:bg-surface-container transition-colors group">
+    <!-- Strategy Grid (Responsive Stacking) -->
+    <section class="py-16 md:py-24 px-6 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 relative">
+            <div class="hidden lg:block absolute top-1/2 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary/20 to-transparent -z-10"></div>
+            <div class="bg-surface-container-low p-8 rounded-xl border-b-2 border-primary/40 text-center hover:bg-surface-container transition-all group">
                 <span class="material-symbols-outlined text-4xl text-primary mb-4 block group-hover:scale-110 transition-transform">description</span>
-                <h3 class="font-label text-sm uppercase tracking-widest text-on-surface-variant mb-2 font-bold">Spec</h3>
-                <p class="text-xs text-slate-500">Define requirements with architectural precision.</p>
+                <h3 class="font-label text-xs md:text-sm uppercase tracking-widest text-on-surface-variant mb-2 font-bold">Spec</h3>
+                <p class="text-[10px] text-slate-500">Define requirements with architectural precision.</p>
             </div>
-            <div class="bg-surface-container-low p-8 rounded-xl border-b-2 border-primary/40 text-center hover:bg-surface-container transition-colors group">
+            <div class="bg-surface-container-low p-8 rounded-xl border-b-2 border-primary/40 text-center hover:bg-surface-container transition-all group">
                 <span class="material-symbols-outlined text-4xl text-primary mb-4 block group-hover:scale-110 transition-transform">map</span>
-                <h3 class="font-label text-sm uppercase tracking-widest text-on-surface-variant mb-2 font-bold">Plan</h3>
-                <p class="text-xs text-slate-500">AI-generated implementation maps and dependency trees.</p>
+                <h3 class="font-label text-xs md:text-sm uppercase tracking-widest text-on-surface-variant mb-2 font-bold">Plan</h3>
+                <p class="text-[10px] text-slate-500">AI-generated maps and dependency trees.</p>
             </div>
-            <div class="bg-surface-container-low p-8 rounded-xl border-b-2 border-primary/40 text-center hover:bg-surface-container transition-colors group">
+            <div class="bg-surface-container-low p-8 rounded-xl border-b-2 border-primary/40 text-center hover:bg-surface-container transition-all group">
                 <span class="material-symbols-outlined text-4xl text-primary mb-4 block group-hover:scale-110 transition-transform">integration_instructions</span>
-                <h3 class="font-label text-sm uppercase tracking-widest text-on-surface-variant mb-2 font-bold">Build</h3>
-                <p class="text-xs text-slate-500">Context-aware coding following framework standards.</p>
+                <h3 class="font-label text-xs md:text-sm uppercase tracking-widest text-on-surface-variant mb-2 font-bold">Build</h3>
+                <p class="text-[10px] text-slate-500">Context-aware coding following standards.</p>
             </div>
-            <div class="bg-surface-container-low p-8 rounded-xl border-b-2 border-primary/40 text-center hover:bg-surface-container transition-colors group">
+            <div class="bg-surface-container-low p-8 rounded-xl border-b-2 border-primary/40 text-center hover:bg-surface-container transition-all group">
                 <span class="material-symbols-outlined text-4xl text-primary mb-4 block group-hover:scale-110 transition-transform">rule</span>
-                <h3 class="font-label text-sm uppercase tracking-widest text-on-surface-variant mb-2 font-bold">Test</h3>
-                <p class="text-xs text-slate-500">Automated unit and integration testing loops.</p>
+                <h3 class="font-label text-xs md:text-sm uppercase tracking-widest text-on-surface-variant mb-2 font-bold">Test</h3>
+                <p class="text-[10px] text-slate-500">Automated unit and integration loops.</p>
             </div>
-            <div class="bg-surface-container-low p-8 rounded-xl border-b-2 border-primary/40 text-center hover:bg-surface-container transition-colors group">
+            <div class="bg-surface-container-low p-8 rounded-xl border-b-2 border-primary/40 text-center hover:bg-surface-container transition-all group">
                 <span class="material-symbols-outlined text-4xl text-primary mb-4 block group-hover:scale-110 transition-transform">rocket_launch</span>
-                <h3 class="font-label text-sm uppercase tracking-widest text-on-surface-variant mb-2 font-bold">Deploy</h3>
-                <p class="text-xs text-slate-500">Continuous delivery to production environments.</p>
+                <h3 class="font-label text-xs md:text-sm uppercase tracking-widest text-on-surface-variant mb-2 font-bold">Deploy</h3>
+                <p class="text-[10px] text-slate-500">Continuous delivery to production.</p>
             </div>
         </div>
     </section>
 
-    <!-- Comparison Table -->
+    <!-- Comparison Table (Responsive Overflow) -->
     <section class="py-24 px-6 bg-surface-container-lowest">
         <div class="max-w-5xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-4">The AIDD Advantage</h2>
-                <p class="text-on-surface-variant font-label uppercase tracking-widest font-bold text-xs">Why SFSpeckit outclasses standard chat-based generation</p>
+                <h2 class="text-3xl md:text-5xl font-black tracking-tight mb-4">The AIDD Advantage</h2>
+                <p class="text-on-surface-variant font-label uppercase tracking-widest font-bold text-[10px] md:text-xs">SFSpeckit outclasses standard chat generation</p>
             </div>
-            <div class="overflow-hidden rounded-xl border border-outline-variant/10">
-                <table class="w-full text-left border-collapse">
-                    <thead class="bg-surface-container-high">
+            <div class="overflow-x-auto rounded-xl border border-outline-variant/10 custom-scrollbar">
+                <table class="w-full text-left border-collapse min-w-[600px]">
+                    <thead class="bg-surface-container-high font-bold">
                         <tr>
-                            <th class="p-6 font-label text-sm uppercase tracking-widest text-on-surface">Feature</th>
-                            <th class="p-6 font-label text-sm uppercase tracking-widest text-slate-500">Standard Chat-and-Code</th>
-                            <th class="p-6 font-label text-sm uppercase tracking-widest text-primary font-bold">SFSpeckit (AIDD)</th>
+                            <th class="p-6 font-label text-xs uppercase tracking-widest text-on-surface">Feature</th>
+                            <th class="p-6 font-label text-xs uppercase tracking-widest text-slate-500">Standard</th>
+                            <th class="p-6 font-label text-xs uppercase tracking-widest text-primary">SFSpeckit</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-outline-variant/10">
                         <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-6 font-bold">Context Awareness</td>
-                            <td class="p-6 text-on-surface-variant">Fragmented / Single File</td>
-                            <td class="p-6 text-primary flex items-center gap-2 font-bold">
-                                <span class="material-symbols-outlined text-sm">check_circle</span>
-                                Full Metadata Org-Aware
-                            </td>
+                            <td class="p-6 font-bold text-sm">Context</td>
+                            <td class="p-6 text-slate-500 text-sm">Fragmented</td>
+                            <td class="p-6 text-primary font-bold text-sm">Full Org-Aware</td>
                         </tr>
                         <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-6 font-bold">Code Standards</td>
-                            <td class="p-6 text-on-surface-variant">Inconsistent / Generic</td>
-                            <td class="p-6 text-primary flex items-center gap-2 font-bold">
-                                <span class="material-symbols-outlined text-sm">check_circle</span>
-                                Strict Enterprise Patterns
-                            </td>
+                            <td class="p-6 font-bold text-sm">Standards</td>
+                            <td class="p-6 text-slate-500 text-sm">Inconsistent</td>
+                            <td class="p-6 text-primary font-bold text-sm">Strict Enterprise</td>
                         </tr>
                         <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-6 font-bold">Testing</td>
-                            <td class="p-6 text-on-surface-variant">Manual Prompting</td>
-                            <td class="p-6 text-primary flex items-center gap-2 font-bold">
-                                <span class="material-symbols-outlined text-sm">check_circle</span>
-                                Auto-Generated Assertions
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition-colors">
-                            <td class="p-6 font-bold">Architecture</td>
-                            <td class="p-6 text-on-surface-variant">Flat Logic</td>
-                            <td class="p-6 text-primary flex items-center gap-2 font-bold">
-                                <span class="material-symbols-outlined text-sm">check_circle</span>
-                                Layered Framework Strategy
-                            </td>
+                            <td class="p-6 font-bold text-sm">Testing</td>
+                            <td class="p-6 text-slate-500 text-sm">Manual</td>
+                            <td class="p-6 text-primary font-bold text-sm">Auto-Assertions</td>
                         </tr>
                     </tbody>
                 </table>
@@ -221,92 +228,83 @@
         </div>
     </section>
 
-    <!-- Architect Section -->
-    <section class="py-32 px-6">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch gap-12">
-            <div class="w-full md:w-5/12">
-                <div class="relative group h-full">
+    <!-- Architect Section (Responsive Layout) -->
+    <section class="py-24 md:py-32 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+            <div class="w-full lg:w-5/12">
+                <div class="relative group max-w-md mx-auto">
                     <div class="absolute -inset-1 bg-gradient-to-r from-primary to-cyan-800 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-                    <div class="relative bg-surface-container rounded-2xl overflow-hidden border border-white/10 h-full flex items-center justify-center">
-                        <img alt="Sumanth Yanamala - Salesforce Architect" class="w-full h-full object-cover object-top aspect-[4/5] md:aspect-auto grayscale-[0.3] brightness-90 contrast-[1.1] transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/ADBb0uhH6qhX02P4xMtoRWCihmm3ucScqQerbAPUDfAgGQ0SFywttBOzLE3gmjrrCpSHAVIDiY1CyFO3KiMNohLeArYRA1HRs1ydJGeTVlVOGbUzGxw6cey_aquXg7EduHvb4xcqoloyV6OpS2N331YXyI6hT_J2PYYbVL_O_T_K17GcHhe7N_tF6VpiWuZmhSCn2DbmfaaprZrkNiLOTi2_sutHgZPcMVTksGrx5Kj-Aho3Xj833QeC8wHuPGIDyDCCWr3lJsrmsexdEA"/>
-                        <div class="absolute inset-0 bg-primary/5 mix-blend-color pointer-events-none"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-60 pointer-events-none"></div>
+                    <div class="relative bg-surface-container rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                        <img alt="Sumanth Yanamala" class="w-full grayscale-[0.2] brightness-90 hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida/ADBb0uhH6qhX02P4xMtoRWCihmm3ucScqQerbAPUDfAgGQ0SFywttBOzLE3gmjrrCpSHAVIDiY1CyFO3KiMNohLeArYRA1HRs1ydJGeTVlVOGbUzGxw6cey_aquXg7EduHvb4xcqoloyV6OpS2N331YXyI6hT_J2PYYbVL_O_T_K17GcHhe7N_tF6VpiWuZmhSCn2DbmfaaprZrkNiLOTi2_sutHgZPcMVTksGrx5Kj-Aho3Xj833QeC8wHuPGIDyDCCWr3lJsrmsexdEA"/>
                     </div>
                 </div>
             </div>
-            <div class="w-full md:w-7/12 flex flex-col justify-center">
-                <div class="inline-flex items-center gap-3 mb-6 px-4 py-2 bg-primary/10 rounded-full border border-primary/20 w-fit">
+            <div class="w-full lg:w-7/12 text-center lg:text-left">
+                <div class="inline-flex items-center gap-3 mb-6 px-4 py-2 bg-primary/10 rounded-full border border-primary/20 w-fit mx-auto lg:mx-0">
                     <span class="material-symbols-outlined text-primary text-xl">architecture</span>
-                    <span class="text-sm font-label uppercase tracking-widest text-primary font-bold">Built by an Architect</span>
+                    <span class="text-[10px] font-label uppercase tracking-widest text-primary font-bold">Built by an Architect</span>
                 </div>
-                <h2 class="text-4xl md:text-6xl font-bold tracking-tight mb-8 leading-tight">Designed for <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-primary/60">Enterprise Scalability</span></h2>
-                <p class="text-on-surface-variant text-xl leading-relaxed mb-10">
-                    SFSpeckit isn't just another toolkit. It's a fundamental rethink of the Salesforce lifecycle, engineered by <span class="text-primary font-bold">Sumanth Yanamala</span>.
-                    Drawing from years of experience in enterprise architecture, it is optimized for high-compliance, high-complexity Salesforce environments.
+                <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight text-white drop-shadow-sm">Designed for <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-400">Enterprise Scale</span></h2>
+                <p class="text-on-surface-variant text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0">
+                    RE-engineered by <span class="text-primary font-bold">Sumanth Yanamala</span> to solve metadata complexity in high-compliance environments.
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="flex items-start gap-4 p-6 bg-surface-container-low/50 backdrop-blur-sm rounded-2xl border border-outline-variant/10 hover:border-primary/30 transition-colors">
-                        <div class="flex-shrink-0 w-10 h-10 bg-surface-variant rounded-lg flex items-center justify-center">
-                            <span class="material-symbols-outlined text-primary">verified_user</span>
-                        </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto lg:mx-0">
+                    <div class="p-6 bg-surface-container-low/50 rounded-2xl border border-white/5 text-left flex items-start gap-4">
+                        <span class="material-symbols-outlined text-primary">verified_user</span>
                         <div>
-                            <p class="font-bold text-on-surface">Architect Verified</p>
-                            <p class="text-sm text-on-surface-variant">Production-ready patterns out of the box.</p>
+                            <p class="font-bold text-sm">Verified Patterns</p>
+                            <p class="text-xs text-slate-500">Architect-grade logic presets.</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-4 p-6 bg-surface-container-low/50 backdrop-blur-sm rounded-2xl border border-outline-variant/10 hover:border-primary/30 transition-colors">
-                        <div class="flex-shrink-0 w-10 h-10 bg-surface-variant rounded-lg flex items-center justify-center">
-                            <span class="material-symbols-outlined text-primary">analytics</span>
-                        </div>
+                    <div class="p-6 bg-surface-container-low/50 rounded-2xl border border-white/5 text-left flex items-start gap-4">
+                        <span class="material-symbols-outlined text-primary">analytics</span>
                         <div>
-                            <p class="font-bold text-on-surface">Impact Analyzed</p>
-                            <p class="text-sm text-on-surface-variant">Built for complex dependency trees.</p>
+                            <p class="font-bold text-sm">Impact Analysis</p>
+                            <p class="text-xs text-slate-500">Built for complex org trees.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-24 px-6 pb-40">
-        <div class="max-w-4xl mx-auto glass-panel p-12 rounded-[2rem] border border-white/5 text-center relative overflow-hidden">
-            <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-64 h-64 bg-primary/10 blur-[80px] rounded-full"></div>
-            <h2 class="text-4xl font-bold mb-6">Ready to Build Smarter?</h2>
-            <p class="text-on-surface-variant mb-10 max-w-xl mx-auto">Join the new era of Salesforce development where AI is your architect, not just your assistant.</p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="introduction.html" class="bg-primary-container text-on-primary-container px-10 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-transform shadow-lg shadow-cyan-400/20">
-                    Get Started Now
-                </a>
-                <a class="bg-white/5 backdrop-blur-md text-white px-10 py-4 rounded-xl font-bold text-lg border border-white/10 hover:bg-white/10 transition-colors flex items-center gap-2" href="https://www.linkedin.com/in/ysumanth/" target="_blank">
-                    <svg class="w-6 h-6 fill-current" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
-                    </svg>
-                    Connect on LinkedIn
-                </a>
             </div>
         </div>
     </section>
 </main>
 
-<!-- Footer (Standardized) -->
-<footer class="bg-slate-950 border-t border-white/5 py-12">
-    <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
-        <div class="flex flex-col">
+<footer class="bg-slate-950 border-t border-white/5 py-12 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="text-center md:text-left">
             <span class="text-sm font-bold text-slate-400">SFSpeckit</span>
-            <p class="font-sans text-[10px] text-slate-500 mt-2 uppercase tracking-widest">© 2026 SFSpeckit. MIT License.</p>
+            <p class="text-[10px] text-slate-500 mt-2 font-label tracking-widest uppercase">© 2026 SFSpeckit. MIT License.</p>
         </div>
-        <div class="flex flex-wrap justify-center gap-8 font-['Space_Grotesk'] text-[10px] font-bold tracking-widest">
-            <a class="text-slate-600 hover:text-cyan-400 transition-colors" href="https://ysumanth06.github.io/LinkedIn-Personal-Website/" target="_blank">Creator Website</a>
-            <a class="text-slate-600 hover:text-cyan-400 transition-colors" href="https://github.com/ysumanth06/SF-Spec-Kit/blob/main/CHANGELOG.md" target="_blank">Changelog</a>
-            <a class="text-slate-600 hover:text-cyan-400 transition-colors" href="#">Privacy</a>
-            <a class="text-slate-600 hover:text-cyan-400 transition-colors" href="introduction.html">Architecture</a>
-            <a class="text-slate-600 hover:text-cyan-400 transition-colors" href="https://www.linkedin.com/in/ysumanth/" target="_blank">LinkedIn</a>
-        </div>
-        <div class="flex gap-4">
-            <a class="material-symbols-outlined text-slate-500 hover:text-primary transition-colors cursor-pointer text-sm" href="https://www.linkedin.com/in/ysumanth/">person_search</a>
+        <div class="flex flex-wrap justify-center gap-6 font-label text-[10px] font-bold tracking-widest text-slate-500 uppercase">
+            <a class="hover:text-cyan-400 transition-colors" href="introduction.html">Docs</a>
+            <a class="hover:text-cyan-400 transition-colors" href="https://github.com/ysumanth06/SF-Spec-Kit">GitHub</a>
+            <a class="hover:text-cyan-400 transition-colors" href="https://www.linkedin.com/in/ysumanth/">LinkedIn</a>
         </div>
     </div>
 </footer>
+
+<script>
+    const toggle = document.getElementById('mobile-menu-toggle');
+    const close = document.getElementById('mobile-menu-close');
+    const menu = document.getElementById('mobile-menu');
+
+    toggle.addEventListener('click', () => {
+        menu.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    });
+
+    close.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        document.body.style.overflow = '';
+    });
+
+    // Close menu when clicking links
+    menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            menu.classList.add('hidden');
+            document.body.style.overflow = '';
+        });
+    });
+</script>
 </body>
 </html>
