@@ -1,6 +1,9 @@
 ---
 name: sfspeckit-score
 description: "Comprehensive quality scoring dashboard across all stories in a feature. Runs all SF skill scoring systems and produces a combined quality report with per-story and per-layer breakdowns."
+version: "1.1.0"
+author: "Sumanth Yanamala"
+license: "MIT"
 ---
 
 # /sfspeckit-score — Quality Scoring Dashboard

@@ -1,6 +1,9 @@
 ---
 name: sfspeckit-implement
 description: "Implement a specific Salesforce developer story file. Reads the story, invokes SF skills in deployment order, runs scoring gates, and marks tasks complete. Run by the developer."
+version: "1.1.0"
+author: "Sumanth Yanamala"
+license: "MIT"
 ---
 
 # /sfspeckit-implement — Implement a Developer Story
@@ -27,7 +30,7 @@ Path to the story file:
 - Plan exists in the same feature directory
 - Dependencies are met (Story-000 must be DONE for non-foundation stories)
 - Developer has authenticated to Dev Sandbox: `sf org login web --alias dev`
-- Salesforce Code Analyzer plugin installed: `sf plugins install @salesforce/sfdx-scanner`
+- Salesforce Code Analyzer (v5) installed: `sf plugins install code-analyzer`
 
 ## Steps
 
@@ -67,9 +70,9 @@ If the feature branch exists and Story-000 has been merged, branch from the upda
 
 ### Step 5: Check Code Analyzer
 
-1. Verify if `sf scanner run` is available.
+1. Verify if `sf code-analyzer run` is available.
 2. If NOT available:
-   - Prompt: "Salesforce Code Analyzer is not installed. Would you like to install it now? (`sf plugins install @salesforce/sfdx-scanner`)"
+   - Prompt: "Salesforce Code Analyzer (v5) is not installed. Would you like to install it now? (`sf plugins install code-analyzer`)"
    - If user declines:
      - **WARNING: Proceeding without the Code Analyzer is a SECURITY RISK. Vulnerabilities like SOQL Injection or CRUD/FLS holes may not be caught before deployment. This could cause significant problems during PR review or in Production.**
      - Ask: "Are you sure you want to proceed without static analysis? (y/n)"
@@ -101,7 +104,7 @@ Read the **SF Implementation Layers** table from the story file. Execute each la
   - Use TestDataFactory (from Story-000)
 - Check: mark `[ ]` → `[x]` in the story's layer table
 - **Scoring gate**: Run sf-apex scoring → must meet 90/150 minimum
-- **Scanner gate**: Run `sf scanner run --target "force-app/main/default/classes/*.cls" --engine pmd`
+- **Scanner gate**: Run `sf code-analyzer run --path "force-app/main/default/classes/*.cls" --engine pmd`
   - Requirement: **Zero Severity 1 (Critical)** violations.
   - Fix any violations before proceeding to Phase 3.
 
@@ -120,7 +123,7 @@ Read the **SF Implementation Layers** table from the story file. Execute each la
 - Ensure SLDS 2 compliance, keyboard accessibility
 - Check: mark `[ ]` → `[x]` in the story's layer table
 - **Scoring gate**: Run sf-lwc scoring → must meet 125/165 minimum
-- **Scanner gate**: Run `sf scanner run --target "force-app/main/default/lwc/" --engine eslint-lwc`
+- **Scanner gate**: Run `sf code-analyzer run --path "force-app/main/default/lwc/" --engine eslint`
   - Requirement: **Zero Severity 1 (Critical)** violations.
   - Fix any violations before proceeding to Step 6.
 

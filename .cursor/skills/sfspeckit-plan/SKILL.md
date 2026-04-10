@@ -3,6 +3,9 @@ name: sfspeckit-plan
 description: "Architectural Planning Engine. Transforms functional specs into technical blueprints with force-app mapping, impact analysis, and architect sign-off gates. Prevents hallucination by isolating technical design from implementation."
 tags: ["aidd", "planning", "architect", "sfdc"]
 weight: 10
+version: "1.1.0"
+author: "Sumanth Yanamala"
+license: "MIT"
 ---
 
 # /sfspeckit-plan — Create Technical Implementation Plan

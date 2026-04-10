@@ -1,6 +1,9 @@
 ---
 name: sfspeckit-pr
 description: "Prepare a pull request for a completed story. Runs all scoring gates, generates PR description from the story file, and creates a code review checklist for peer and architect review."
+version: "1.1.0"
+author: "Sumanth Yanamala"
+license: "MIT"
 ---
 
 # /sfspeckit-pr — Prepare Code Review
@@ -25,16 +28,16 @@ Path to the story file:
 - Story status is **IMPLEMENTED** (completed by /SFSpeckit-implement)
 - Story branch exists: `story/$FEATURE_NUMBER-$STORY_NUMBER-$STORY_SLUG`
 - All implementation layers are marked `[x]` in the story file
-- Salesforce Code Analyzer plugin installed: `sf plugins install @salesforce/sfdx-scanner`
+- Salesforce Code Analyzer (v5) installed: `sf plugins install code-analyzer`
 - **Verification Evidence** exists: `sfspeckit-data/specs/[feature]/test-logs/story-$ID-verify.md`
 
 ## Steps
 
 ### Step 1.5: Check Code Analyzer
 
-1. Verify if `sf scanner run` is available.
+1. Verify if `sf code-analyzer run` is available.
 2. If NOT available:
-   - Prompt: "Salesforce Code Analyzer is not installed. Would you like to install it now? (`sf plugins install @salesforce/sfdx-scanner`)"
+   - Prompt: "Salesforce Code Analyzer (v5) is not installed. Would you like to install it now? (`sf plugins install code-analyzer`)"
    - If user declines:
      - **WARNING: Proceeding without the Code Analyzer is a SECURITY RISK. The automated PR will not include a Security Score, forcing a manual and much slower review by the Architect.**
      - Ask: "Are you sure you want to proceed without static analysis? (y/n)"
@@ -44,8 +47,8 @@ Path to the story file:
 
 Execute scoring for every artifact layer in this story:
 
-**Security Scan (Scanner)**:
-- Run full scan on story files: `sf scanner run --target "force-app/" --engine pmd,eslint-lwc`
+**Security Scan (Code Analyzer v5)**:
+- Run full scan on story files: `sf code-analyzer run --path "force-app/" --engine pmd,eslint`
 - **Mandatory Gate**: ZERO Severity 1 (Critical) or Severity 2 (High) violations allowed.
 - If violations exist → STOP and inform developer they must fix them before PR creation.
 
@@ -76,7 +79,7 @@ Execute scoring for every artifact layer in this story:
 - Target: ≥ 90% coverage
 
 **Data Flow Analysis (Architect-Ready Scan)**:
-- Run Graph Engine: `sf scanner run dfa --target "force-app/main/default/classes" --projectdir "force-app/"`
+- Run Unified Scan: `sf code-analyzer run --path "force-app/main/default/classes" --engine pmd-dfa`
 - Record any findings. Any high-risk DFA finding (Injection, FLS bypass) must be documented in the PR description.
 
 ### Step 3: Generate PR Description

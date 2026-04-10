@@ -1,6 +1,9 @@
 ---
 name: sfspeckit-uat
 description: "Generate and manage Business UAT scripts and sign-offs for developer stories. Run by the BPO or QA lead for business validation."
+version: "1.1.0"
+author: "Sumanth Yanamala"
+license: "MIT"
 ---
 
 # /sfspeckit-uat — Business UAT Generation

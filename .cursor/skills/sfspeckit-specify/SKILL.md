@@ -1,6 +1,9 @@
 ---
 name: sfspeckit-specify
 description: "Create a Salesforce functional specification for a new feature. Generates a numbered spec with user stories, platform context, automation decisions, and security model. Run by the TPO."
+version: "1.1.0"
+author: "Sumanth Yanamala"
+license: "MIT"
 ---
 
 # /sfspeckit-specify — Create Feature Specification

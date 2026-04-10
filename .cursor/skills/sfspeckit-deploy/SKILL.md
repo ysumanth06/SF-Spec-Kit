@@ -1,6 +1,9 @@
 ---
 name: sfspeckit-deploy
 description: "Promote Salesforce code through environments (Dev → QA → UAT → Prod). Validates all stories are complete, runs dry-run, and deploys in the correct Salesforce metadata dependency order."
+version: "1.1.0"
+author: "Sumanth Yanamala"
+license: "MIT"
 ---
 
 # /sfspeckit-deploy — Environment Promotion

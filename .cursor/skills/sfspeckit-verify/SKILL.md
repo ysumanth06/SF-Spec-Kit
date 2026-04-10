@@ -1,6 +1,9 @@
 ---
 name: sfspeckit-verify
 description: "Developer Verification and Evidence Generation. Runs Apex and LWC tests, generates a formal Verification Evidence document in the sfspeckit-data folder, and includes coverage and performance metrics."
+version: "1.1.0"
+author: "Sumanth Yanamala"
+license: "MIT"
 ---
 
 # /sfspeckit-verify — Story Verification Evidence Generation
@@ -24,7 +27,7 @@ Path to the story file:
 
 - Story status is **IMPLEMENTED** (completed by /SFSpeckit-implement)
 - Target org is Dev Sandbox (`--target-org dev`)
-- Salesforce Code Analyzer plugin installed (for security snapshot)
+- Salesforce Code Analyzer (v5) installed (for security snapshot)
 
 ## Steps
 
@@ -118,7 +121,7 @@ List any test method taking longer than **1.0 second**:
 |-------------|----------|--------|
 | $METHOD_NAME | 1.45s    | ⚠️ SLOW |
 
-## 5. Security Scanner Snapshot
+## 5. Security Scan Snapshot (Code Analyzer v5)
 
 Standard scan results (PMD/ESLint):
 - **Severity 1 (Critical)**: 0

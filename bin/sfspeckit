@@ -87,7 +87,7 @@ cmd_verify() {
     log_info "Running Salesforce Code Analyzer..."
     # Simplified for the wrapper; in a real scenario, this would target changed files
     if command -v sf &> /dev/null; then
-        sf scanner run --target "force-app" --format table > /tmp/sf_scanner_results.txt 2>&1
+        sf code-analyzer run --path "force-app" --engine pmd,eslint > /tmp/sf_code_analyzer_results.txt 2>&1
     else
         log_warn "sf CLI not found. Skipping scanner."
     fi
@@ -106,7 +106,7 @@ cmd_verify() {
     local evidence_file="verification-evidence.md"
     echo "# Verification Evidence - $(date)" > "$evidence_file"
     echo "## Static Analysis Results" >> "$evidence_file"
-    [ -f /tmp/sf_scanner_results.txt ] && cat /tmp/sf_scanner_results.txt >> "$evidence_file"
+    [ -f /tmp/sf_code_analyzer_results.txt ] && cat /tmp/sf_code_analyzer_results.txt >> "$evidence_file"
     echo "## Apex Test Results" >> "$evidence_file"
     [ -f /tmp/sf_test_results.txt ] && cat /tmp/sf_test_results.txt >> "$evidence_file"
 

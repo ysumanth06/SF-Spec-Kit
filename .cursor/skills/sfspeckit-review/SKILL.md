@@ -1,6 +1,9 @@
 ---
 name: sfspeckit-review
 description: "TPO and Architect review of generated story files before Jira creation. Validates dependency graph, deployment order, merge conflict risks, and story boundaries. Run after /SFSpeckit-stories."
+version: "1.1.0"
+author: "Sumanth Yanamala"
+license: "MIT"
 ---
 
 # /sfspeckit-review — Story Review Gate

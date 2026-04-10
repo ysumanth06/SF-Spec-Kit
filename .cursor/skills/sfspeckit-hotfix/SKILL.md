@@ -1,6 +1,9 @@
 ---
 name: sfspeckit-hotfix
 description: "Emergency production bug fix workflow. Bypasses the full SDD cycle for critical bugs. Creates a minimal hotfix story, implements the fix, and deploys to production. Run by the developer."
+version: "1.1.0"
+author: "Sumanth Yanamala"
+license: "MIT"
 ---
 
 # /sfspeckit-hotfix — Emergency Production Fix

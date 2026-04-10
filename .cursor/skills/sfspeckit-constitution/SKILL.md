@@ -1,6 +1,9 @@
 ---
 name: sfspeckit-constitution
 description: "Establish Salesforce project principles. Creates the project constitution with 9 Salesforce-specific articles. Run once per project by the TPO."
+version: "1.1.0"
+author: "Sumanth Yanamala"
+license: "MIT"
 ---
 
 # /sfspeckit-constitution — Establish Project Principles

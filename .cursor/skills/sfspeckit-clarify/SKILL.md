@@ -1,6 +1,9 @@
 ---
 name: sfspeckit-clarify
 description: "Analyze the feature specification for gaps and edge cases. Generates a business-ready clarification report for stakeholder sign-off before architecture planning. Includes the baseline 10-point Salesforce technical checklist."
+version: "1.1.0"
+author: "Sumanth Yanamala"
+license: "MIT"
 ---
 
 # /sfspeckit-clarify — Fill Specification Gaps

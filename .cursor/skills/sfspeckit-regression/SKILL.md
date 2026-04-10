@@ -1,6 +1,9 @@
 ---
 name: sfspeckit-regression
 description: "Run full regression tests across all stories in a feature. Deploys the complete feature branch to QA sandbox, runs all Apex tests, and identifies regressions introduced by story merges."
+version: "1.1.0"
+author: "Sumanth Yanamala"
+license: "MIT"
 ---
 
 # /sfspeckit-regression — Full Regression Testing

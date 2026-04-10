@@ -1,6 +1,9 @@
 ---
 name: sfspeckit-change
 description: "Handle mid-sprint requirement changes. Analyzes the impact of a change request on the current spec, plan, and active stories. Generates an impact report showing which stories are affected and what new stories are needed."
+version: "1.1.0"
+author: "Sumanth Yanamala"
+license: "MIT"
 ---
 
 # /sfspeckit-change — Mid-Sprint Change Management

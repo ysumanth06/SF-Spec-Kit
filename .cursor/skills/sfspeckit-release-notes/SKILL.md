@@ -1,6 +1,9 @@
 ---
 name: sfspeckit-release-notes
 description: "Automatically aggregate a feature's completed stories, test results, and UAT sign-offs into a formal, business-ready Release Notes document."
+version: "1.1.0"
+author: "Sumanth Yanamala"
+license: "MIT"
 ---
 
 # /sfspeckit-release-notes — Generate Feature Release Summary
@@ -72,7 +75,7 @@ Brief summary of the feature's business impact (extracted from spec.md).
 | Unit Test Coverage | XX% | 75% | ✅ |
 | Avg. Apex Quality | 142/150 | 90 | ✅ |
 | Avg. LWC Quality | 158/165 | 125 | ✅ |
-| Security Scanner | 0 Critical | 0 | ✅ |
+| Code Analyzer v5   | 0 Critical | 0      | ✅      |
 
 ## 4. Technical Inventory
 ### New Objects/Fields

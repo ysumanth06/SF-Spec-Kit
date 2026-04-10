@@ -1,6 +1,9 @@
 ---
 name: sfspeckit-stories
 description: "Generate individual developer story files from the implementation plan. Each story is a self-contained, Jira-ready unit with detailed requirements, security matrices, and human effort estimations. Run by the TPO."
+version: "1.1.0"
+author: "Sumanth Yanamala"
+license: "MIT"
 ---
 
 # /sfspeckit-stories — Generate Developer Story Files

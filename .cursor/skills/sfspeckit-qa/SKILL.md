@@ -1,6 +1,9 @@
 ---
 name: sfspeckit-qa
 description: "QA story verification. Generates manual test scripts from acceptance criteria, runs automated Apex/Jest tests, creates a traceability matrix, and provides persona coverage analysis. Run by the QA tester."
+version: "1.1.0"
+author: "Sumanth Yanamala"
+license: "MIT"
 ---
 
 # /sfspeckit-qa — QA Story Verification
