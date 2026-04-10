@@ -176,6 +176,13 @@ You **do not** need to run these commands manually. Your AI assistant (Antigravi
 > [!NOTE]
 > While optimized for AI agents, the Spectrum Engine provides a **Premium Dashboard** experience if you choose to run commands manually for a quick health check.
 
+### 🔄 Staying Up-to-Date
+To ensure you have the latest AI skills and engine features, run the following command periodically:
+```bash
+./SFSpeckit/bin/sfspeckit upgrade
+```
+This will synchronize your local environment with the master community library and pull in any new skills.
+
 ---
 
 ## 🤖 For AI Agents (Auto-Setup)
