@@ -300,7 +300,9 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 
 ---
 
-_Built with ❤️ for Salesforce teams moving at the speed of AI._
+## 🌟 Giving Back
+
+This framework is my contribution to the incredible Salesforce community. Throughout my career, the community has been a constant source of support, learning, and inspiration. I am sharing **SFSpeckit** with deep love and gratitude as a way to give back to the platform and the people that have shaped my professional journey.
 
 ---
 
