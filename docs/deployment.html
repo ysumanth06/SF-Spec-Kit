@@ -119,9 +119,9 @@
                 <span class="material-symbols-outlined">gavel</span>
                 <span>Constitution</span>
             </a>
-            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 font-['Space_Grotesk'] text-xs uppercase tracking-widest transition-all" href="api.html">
-                <span class="material-symbols-outlined">api</span>
-                <span>API Reference</span>
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 font-['Space_Grotesk'] text-xs uppercase tracking-widest transition-all" href="lifecycle.html">
+                <span class="material-symbols-outlined">schema</span>
+                <span>SDD Lifecycle</span>
             </a>
             <!-- Deployment (Active) -->
             <a class="flex items-center gap-3 bg-cyan-400/10 text-cyan-400 border-r-2 border-cyan-400 px-4 py-3 font-bold font-['Space_Grotesk'] text-xs uppercase tracking-widest transition-all" href="deployment.html">
@@ -133,10 +133,148 @@
 
     <main class="lg:ml-64 flex-1 p-6 md:p-12 lg:p-20">
         <header class="mb-16">
-            <h1 class="text-4xl md:text-6xl font-black tracking-tighter mb-4 text-white leading-tight">Deployment Strategy</h1>
-            <p class="text-slate-400 font-bold uppercase tracking-widest text-sm md:text-lg">Multi-Org Promotion Lifecycle.</p>
+            <h1 class="text-4xl md:text-6xl font-black tracking-tighter mb-4 text-white leading-tight">Git Strategy</h1>
+            <p class="text-slate-400 font-bold uppercase tracking-widest text-sm md:text-lg">Enterprise Workflow for Multi-Member Teams.</p>
         </header>
-        <!-- (Deployment content) -->
+
+        <!-- Branching Model -->
+        <section class="mb-24">
+            <h2 class="text-2xl font-headline font-bold mb-8 flex items-center gap-4 text-white">
+                The Branching Model
+                <span class="h-px flex-1 bg-white/5"></span>
+            </h2>
+            <div class="bg-surface-container-low p-8 rounded-3xl border border-white/5 font-mono text-sm leading-relaxed overflow-x-auto">
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="text-primary-container font-black">main</span>
+                    <span class="text-slate-500">------------------------------------[Production Stable]</span>
+                </div>
+                <div class="flex items-center gap-4 mb-4 ml-8 border-l border-white/10 pl-4">
+                    <span class="text-cyan-400 font-black">feature/ABC-123</span>
+                    <span class="text-slate-500">--------------------[UAT / Release Candidate]</span>
+                </div>
+                <div class="flex flex-col gap-2 ml-20 border-l border-white/10 pl-4">
+                    <div class="flex items-center gap-4">
+                        <span class="text-slate-300">story/ABC-123-ui</span>
+                        <span class="text-slate-600">----[Dev Branch]</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="text-slate-300">story/ABC-123-logic</span>
+                        <span class="text-slate-600">-[Dev Branch]</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advanced Git Lifecycle -->
+        <section class="mb-24">
+            <h2 class="text-2xl font-headline font-bold mb-8 flex items-center gap-4 text-white">
+                The Committer Lifecycle
+                <span class="h-px flex-1 bg-white/5"></span>
+            </h2>
+            <div class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-center bg-surface-container-low p-6 rounded-2xl border border-white/5">
+                    <div class="text-primary font-bold text-xs uppercase tracking-widest">1. Discovery</div>
+                    <div class="text-white font-bold">TPO commits Spec</div>
+                    <div class="text-slate-400 text-sm">Initial functional requirements committed to the <code>main</code> or <code>draft</code> branch.</div>
+                    <div class="text-slate-500 font-mono text-[10px]">/sfspeckit-specify</div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-center bg-surface-container-low p-6 rounded-2xl border border-white/5">
+                    <div class="text-primary font-bold text-xs uppercase tracking-widest">2. Validation</div>
+                    <div class="text-white font-bold">Arch/TPO commit Clarify</div>
+                    <div class="text-slate-400 text-sm">Gap analysis and drift detection results added to the feature spec folder.</div>
+                    <div class="text-slate-500 font-mono text-[10px]">/sfspeckit-clarify</div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-center bg-surface-container-low p-6 rounded-2xl border border-white/5">
+                    <div class="text-primary font-bold text-xs uppercase tracking-widest">3. Architecture</div>
+                    <div class="text-white font-bold">Arch commits Plan & Stories</div>
+                    <div class="text-slate-400 text-sm">The technical blueprint and story decomposition are committed to the feature branch.</div>
+                    <div class="text-slate-500 font-mono text-[10px]">/sfspeckit-plan</div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-center bg-surface-container-low p-6 rounded-2xl border border-white/5">
+                    <div class="text-primary font-bold text-xs uppercase tracking-widest">4. Scaffolding</div>
+                    <div class="text-white font-bold">Lead Dev commits Story 00</div>
+                    <div class="text-slate-400 text-sm">Mother Story creates the "Shell" (Metadata + Method Headers) to unblock the team.</div>
+                    <div class="text-slate-500 font-mono text-[10px]">/sfspeckit-implement</div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-center bg-surface-container-low p-6 rounded-2xl border border-white/5">
+                    <div class="text-primary font-bold text-xs uppercase tracking-widest">5. Parallel Dev</div>
+                    <div class="text-white font-bold">Devs commit Story PRs</div>
+                    <div class="text-slate-400 text-sm">Team members work on individual story branches and PR into the feature branch.</div>
+                    <div class="text-slate-500 font-mono text-[10px]">/sfspeckit-pr</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mother Story Concept -->
+        <section class="mb-24 bg-surface-container-lowest p-8 md:p-12 rounded-3xl border border-white/5 relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-8 opacity-10">
+                <span class="material-symbols-outlined text-[120px]">hub</span>
+            </div>
+            <div class="relative z-10">
+                <h2 class="text-3xl font-black text-white mb-6">The "Mother Story" (Story 00)</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="space-y-6">
+                        <p class="text-slate-300 leading-relaxed font-medium">Parallel development often stalls because developers are waiting for the underlying Schema or Apex headers. The **Mother Story** solves this by creating the shell first.</p>
+                        <ul class="space-y-4">
+                            <li class="flex gap-4">
+                                <span class="material-symbols-outlined text-primary">check_circle</span>
+                                <span class="text-sm text-slate-400"><strong class="text-slate-200">Metadata Layer:</strong> Creates all Objects, Fields, and Relationships.</span>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="material-symbols-outlined text-primary">check_circle</span>
+                                <span class="text-sm text-slate-400"><strong class="text-slate-200">Scaffold Layer:</strong> Creates Apex Class headers and LWC Skeletons (empty methods).</span>
+                            </li>
+                            <li class="flex gap-4">
+                                <span class="material-symbols-outlined text-primary">check_circle</span>
+                                <span class="text-sm text-slate-400"><strong class="text-slate-200">Unblocker:</strong> Allows other devs to write logic immediately against a "mocked" interface.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-black/40 rounded-2xl border border-white/5 p-6 font-mono text-xs">
+                        <div class="text-slate-500 mb-4">// Story 00: The Scaffold Build</div>
+                        <div class="text-primary">implement(00-feature-shell) {</div>
+                        <div class="text-slate-400 pl-4">create_objects([Billing_Config__c, ...]);</div>
+                        <div class="text-slate-400 pl-4">create_apex_header("BillingService", ["calculateTax", ...]);</div>
+                        <div class="text-slate-400 pl-4">create_lwc_skeleton("billingDashboard");</div>
+                        <div class="text-primary">}</div>
+                        <div class="text-green-500/50 mt-4">// Status: Team Unblocked</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roles & Responsibilities -->
+        <section class="mb-24">
+            <h2 class="text-3xl font-black text-white mb-8">Who Does What?</h2>
+            <div class="overflow-hidden rounded-2xl border border-white/5 bg-surface-container-low">
+                <table class="w-full text-left">
+                    <thead class="bg-white/5 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                        <tr>
+                            <th class="px-6 py-4">Role</th>
+                            <th class="px-6 py-4">Responsibility</th>
+                            <th class="px-6 py-4">Tool/Command</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5 text-sm text-slate-300">
+                        <tr class="hover:bg-white/10 transition-colors">
+                            <td class="px-6 py-4 font-bold text-white">Developer</td>
+                            <td class="px-6 py-4">Build logic & generate evidence.</td>
+                            <td class="px-6 py-4 font-mono text-xs text-primary">/sfspeckit-implement</td>
+                        </tr>
+                        <tr class="hover:bg-white/10 transition-colors">
+                            <td class="px-6 py-4 font-bold text-white">Architect</td>
+                            <td class="px-6 py-4">Review code & guide architecture.</td>
+                            <td class="px-6 py-4 font-mono text-xs text-primary">/sfspeckit-clarify</td>
+                        </tr>
+                        <tr class="hover:bg-white/10 transition-colors">
+                            <td class="px-6 py-4 font-bold text-white">QA / TPO</td>
+                            <td class="px-6 py-4">Verify features & release notes.</td>
+                            <td class="px-6 py-4 font-mono text-xs text-primary">/sfspeckit-qa</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </main>
 </div>
 

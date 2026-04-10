@@ -136,9 +136,9 @@
                 <span class="material-symbols-outlined text-sm">gavel</span>
                 <span>Constitution</span>
             </a>
-            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 transition-all hover:text-cyan-300 hover:translate-x-1 font-['Space_Grotesk'] text-xs uppercase tracking-widest" href="api.html">
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 transition-all hover:text-cyan-300 hover:translate-x-1 font-['Space_Grotesk'] text-xs uppercase tracking-widest" href="lifecycle.html">
                 <span class="material-symbols-outlined text-sm">api</span>
-                <span>API Reference</span>
+                <span>SDD Lifecycle</span>
             </a>
             <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 transition-all hover:text-cyan-300 hover:translate-x-1 font-['Space_Grotesk'] text-xs uppercase tracking-widest" href="deployment.html">
                 <span class="material-symbols-outlined text-sm">rocket_launch</span>
@@ -154,22 +154,196 @@
                 Slash Commands
             </h1>
             <p class="text-base md:text-xl text-slate-400 font-bold uppercase tracking-widest leading-relaxed max-w-2xl">
-                Complete Lifecycle Command Directory.
+                The Complete SFSpeckit Command Directory.
             </p>
         </header>
 
-        <!-- Bento Grid (Responsive) -->
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-            <div class="md:col-span-12 lg:col-span-8 glass-card ghost-border p-8 rounded-xl relative overflow-hidden group">
-                <div class="relative z-10">
-                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
-                        <span class="mono-font text-primary-container text-lg md:text-xl font-bold">/sfspeckit-constitution</span>
-                        <span class="label-font text-[9px] tracking-[0.2em] bg-primary-container/10 text-primary-container px-3 py-1 rounded-full font-bold uppercase">Foundational</span>
-                    </div>
-                    <p class="text-on-surface/80 text-base md:text-lg leading-relaxed">Establish principles with evidence-based org discovery. Scans metadata maturity and environmental constraints.</p>
-                </div>
+        <!-- Search / Filter (Visual Placeholder) -->
+        <div class="mb-12">
+            <div class="flex flex-wrap gap-2">
+                <span class="px-4 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded-full border border-primary/20 uppercase">All</span>
+                <span class="px-4 py-1 bg-surface-container-high text-slate-500 text-[10px] font-bold rounded-full border border-white/5 uppercase">TPO</span>
+                <span class="px-4 py-1 bg-surface-container-high text-slate-500 text-[10px] font-bold rounded-full border border-white/5 uppercase">Architect</span>
+                <span class="px-4 py-1 bg-surface-container-high text-slate-500 text-[10px] font-bold rounded-full border border-white/5 uppercase">Developer</span>
+                <span class="px-4 py-1 bg-surface-container-high text-slate-500 text-[10px] font-bold rounded-full border border-white/5 uppercase">QA</span>
             </div>
-            <!-- (Other command cards condensed/restacked in grid) -->
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <!-- DISCOVERY -->
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">TPO</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 1</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/sfspeckit-constitution</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Establish project principles with evidence-based org discovery. Scans metadata maturity and environmental constraints.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Start of Project</div>
+            </div>
+
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">TPO</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 1</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/sfspeckit-specify</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Create functional feature specifications. Translates business needs into structured instructions for the AI.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Requirement Gathering</div>
+            </div>
+
+            <!-- DRIFT / PLAN -->
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">Architect</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 2</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/sfspeckit-clarify</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Identify manual org changes and multi-team conflicts (Drift Detection) before finalizing the plan.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Before Planning</div>
+            </div>
+
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">Architect</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 2</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/sfspeckit-plan</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Generate technical blueprints, class structures, and deployment order based on the Spec.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: System Design</div>
+            </div>
+
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">Architect</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 2</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/sfspeckit-stories</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Break the plan into self-contained, Jira-ready developer stories with effort estimation.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: After Planning</div>
+            </div>
+
+            <!-- IMPLEMENTATION -->
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">Developer</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 3</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/sfspeckit-implement</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">The "Auto-Heal" engine. Automatically builds story logic, fixes linting errors, and resolves test failures.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Development</div>
+            </div>
+
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">Developer</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 3</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/sfspeckit-verify</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Generate "Verification Evidence" (Coverage, Security, Performance) required for PR approval.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Before PR</div>
+            </div>
+
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">Developer</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 3</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/sfspeckit-pr</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Automated PR preparation using GitHub CLI. Includes technical summaries and test evidence.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Submitting Work</div>
+            </div>
+
+            <!-- QA / TEST -->
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">QA</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 4</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/sfspeckit-qa</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Multi-persona UI validation. Ensures features work for all user roles defined in the Spec.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: QA Testing</div>
+            </div>
+
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">BPO</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 4</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/sfspeckit-uat</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Business UAT scripts and human sign-offs. Final business verification before release.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: User Acceptance</div>
+            </div>
+
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">QA</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 4</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/sfspeckit-regression</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Full feature regression before release. Ensures no breaking changes in existing features.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Release Prep</div>
+            </div>
+
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">QA</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 4</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/sfspeckit-score</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Real-time project health dashboard. Aggregates coverage, quality, and progress scores.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Continuous Monitor</div>
+            </div>
+
+            <!-- DEPLOY / MISC -->
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">Architect</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Phase 5</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/sfspeckit-deploy</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Evidence-based promotion across multi-org landscapes (Dev -> QA -> UAT -> Prod).</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Release Promotion</div>
+            </div>
+
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">TPO</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Lifecycle</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/sfspeckit-change</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Impact analysis for mid-sprint requirements changes. Recalculates effort and risks.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Mid-Sprint Changes</div>
+            </div>
+
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">Developer</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Hotfix</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/sfspeckit-hotfix</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Emergency production patch workflow. Critical bug fix bypass loop.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Emergency Bugs</div>
+            </div>
+
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">TPO</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Release</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/sfspeckit-release-notes</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Automatically aggregate feature stories and test results into a business-ready release note.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Post-Release</div>
+            </div>
+
+            <div class="glass-card ghost-border p-6 rounded-2xl flex flex-col h-full border-l-4 border-l-primary hover:translate-y-[-4px] transition-all">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-primary/10 text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase">System</span>
+                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">Maintenance</span>
+                </div>
+                <h3 class="font-mono text-primary-container font-bold mb-3 text-lg leading-tight">/sfspeckit-upgrade</h3>
+                <p class="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">Synchronize local environment with the master community library and pull in new AI skills.</p>
+                <div class="pt-4 border-t border-white/5 text-[10px] text-slate-500 font-bold uppercase">When: Periodically</div>
+            </div>
         </div>
     </main>
 </div>

@@ -75,6 +75,14 @@ graph TD
 4.  **TEST (Validate)**: Multi-persona QA, UAT sign-offs, and multi-org regression scoring.
 5.  **DEPLOY (Promote)**: Evidence-based promotion across complex environment landscapes.
 
+### 🏗️ The Mother Story (Story 00)
+
+Parallel development in Salesforce is often blocked by metadata dependencies (e.g., waiting for a new field or an Apex class to exist). SFSpeckit solves this with the **Mother Story (Story 00)**.
+
+- **Purpose**: A "Scaffold Build" that creates the functional shell of the feature.
+- **Scope**: Metadata (Fields, Objects), Apex Class method headers (without logic), and LWC skeletons.
+- **Impact**: Once Story 00 is implemented, the entire team is unblocked to work on subsequent logic-heavy stories in parallel.
+
 ### Why SDD Framework for Salesforce?
 
 - **🧠 Context Isolation**: By separating planning from building, the AI focuses on one logical layer at a time, drastically reducing hallucinations.
@@ -293,6 +301,8 @@ SFSpeckit/
 │           ├── plan.md                     # Technical Plan
 │           ├── verification-evidence.md    # Automated Evidence
 │           └── stories/                    # Developer Work Units
+│               ├── 00-shell.md             # Mother Story (Metadata & Skeletons)
+│               └── 01-logic.md             # Implementation Story
 └── force-app/                              # Salesforce Metadata
 ```
 

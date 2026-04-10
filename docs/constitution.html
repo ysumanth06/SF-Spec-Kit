@@ -120,9 +120,9 @@
                 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">gavel</span>
                 <span>Constitution</span>
             </a>
-            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 font-['Space_Grotesk'] text-xs uppercase tracking-widest" href="api.html">
+            <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 font-['Space_Grotesk'] text-xs uppercase tracking-widest" href="lifecycle.html">
                 <span class="material-symbols-outlined">api</span>
-                <span>API Reference</span>
+                <span>SDD Lifecycle</span>
             </a>
             <a class="flex items-center gap-3 text-slate-400 px-4 py-3 hover:bg-slate-800/50 font-['Space_Grotesk'] text-xs uppercase tracking-widest" href="deployment.html">
                 <span class="material-symbols-outlined">rocket_launch</span>
@@ -134,9 +134,125 @@
     <main class="lg:ml-64 flex-1 p-6 md:p-12 lg:p-20">
         <header class="mb-16">
             <h1 class="text-4xl md:text-6xl font-black tracking-tighter mb-4 text-white leading-tight">Project Constitution</h1>
-            <p class="text-slate-400 font-bold uppercase tracking-widest text-sm md:text-lg">The 9 Universal Articles of SFSpeckit.</p>
+            <p class="text-slate-400 font-bold uppercase tracking-widest text-sm md:text-lg italic">"The North Star for your Salesforce Project."</p>
         </header>
-        <!-- (Constitution Articles) -->
+
+        <!-- The 9 Articles -->
+        <section class="mb-24">
+            <h2 class="text-2xl font-headline font-bold mb-8 flex items-center gap-4 text-white">
+                The 9 Salesforce Constitution Articles
+                <span class="h-px flex-1 bg-white/5"></span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Article I -->
+                <div class="bg-surface-container-low p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-primary font-black text-2xl">I</span>
+                        <h3 class="font-bold text-lg text-white">Metadata-First</h3>
+                    </div>
+                    <p class="text-sm text-slate-400 font-medium">Objects and Fields must be defined and finalized before any business logic is written.</p>
+                </div>
+                <!-- Article II -->
+                <div class="bg-surface-container-low p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-primary font-black text-2xl">II</span>
+                        <h3 class="font-bold text-lg text-white">Bulk Awareness</h3>
+                    </div>
+                    <p class="text-sm text-slate-400 font-medium">Every piece of logic must handle 201+ records by default. No exceptions.</p>
+                </div>
+                <!-- Article III -->
+                <div class="bg-surface-container-low p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-primary font-black text-2xl">III</span>
+                        <h3 class="font-bold text-lg text-white">Declarative-First</h3>
+                    </div>
+                    <p class="text-sm text-slate-400 font-medium">If it can be done with Flow, it must be done with Flow. Use Apex ONLY when necessary.</p>
+                </div>
+                <!-- Article IV -->
+                <div class="bg-surface-container-low p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-primary font-black text-2xl">IV</span>
+                        <h3 class="font-bold text-lg text-white">Absolute Security</h3>
+                    </div>
+                    <p class="text-sm text-slate-400 font-medium">Mandatory use of <code>with sharing</code> and <code>WITH USER_MODE</code> in all queries.</p>
+                </div>
+                <!-- Article V -->
+                <div class="bg-surface-container-low p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-primary font-black text-2xl">V</span>
+                        <h3 class="font-bold text-lg text-white">PNB Test Pattern</h3>
+                    </div>
+                    <p class="text-sm text-slate-400 font-medium">Every feature must have Positive, Negative, and Bulk test scenarios documented.</p>
+                </div>
+                <!-- Article VI -->
+                <div class="bg-surface-container-low p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-primary font-black text-2xl">VI</span>
+                        <h3 class="font-bold text-lg text-white">Clean Layers</h3>
+                    </div>
+                    <p class="text-sm text-slate-400 font-medium">Strict separation between Service, Selector, and Domain layers.</p>
+                </div>
+                <!-- Article VII -->
+                <div class="bg-surface-container-low p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-primary font-black text-2xl">VII</span>
+                        <h3 class="font-bold text-lg text-white">Deployment Safety</h3>
+                    </div>
+                    <p class="text-sm text-slate-400 font-medium">Mandatory dry-runs and metadata syncs before any deployment starts.</p>
+                </div>
+                <!-- Article VIII -->
+                <div class="bg-surface-container-low p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-primary font-black text-2xl">VIII</span>
+                        <h3 class="font-bold text-lg text-white">Platform Context</h3>
+                    </div>
+                    <p class="text-sm text-slate-400 font-medium">Always provide AI with clear architectural context and managed package interactions.</p>
+                </div>
+                <!-- Article IX -->
+                <div class="bg-surface-container-low p-6 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-primary font-black text-2xl">IX</span>
+                        <h3 class="font-bold text-lg text-white">Modular Logic</h3>
+                    </div>
+                    <p class="text-sm text-slate-400 font-medium">Break complex logic into reusable, testable domain units.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Setup Guide -->
+        <section class="mb-24 bg-surface-container-lowest p-8 md:p-12 rounded-3xl border border-white/5">
+            <h2 class="text-3xl font-black text-white mb-6">How to Create Your Constitution</h2>
+            <div class="space-y-8">
+                <div class="flex gap-6">
+                    <div class="w-10 h-10 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center font-bold shrink-0">1</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Run the Command</h3>
+                        <p class="text-slate-400 mb-4">Open your AI Agent (Antigravity, Cursor, etc.) and type the following slash command:</p>
+                        <code class="bg-black/50 text-primary px-4 py-2 rounded-lg font-mono text-sm">/sfspeckit-constitution</code>
+                    </div>
+                </div>
+                <div class="flex gap-6">
+                    <div class="w-10 h-10 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center font-bold shrink-0">2</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Automated Discovery</h3>
+                        <p class="text-slate-400 mb-4">The toolkit will automatically scan your Salesforce Org for:</p>
+                        <ul class="list-disc list-inside text-slate-500 text-sm space-y-2 ml-4">
+                            <li>Installed Packages (CPQ, Financial Services Cloud, etc.)</li>
+                            <li>Integration Endpoints and Named Credentials</li>
+                            <li>Metadata Maturity (Flow vs. Apex posture)</li>
+                            <li>Org Limits and Constraints</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="flex gap-6">
+                    <div class="w-10 h-10 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center font-bold shrink-0">3</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Review & Finalize</h3>
+                        <p class="text-slate-400">Review the generated <code>constitution.md</code> file in your project root. This file now acts as the "North Star" for all future AI interactions. No halluncinations, just rules.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 </div>
 
