@@ -50,6 +50,8 @@ Evaluate the change request against each artifact:
 - Does this change invalidate work already completed?
 - Does this change create new dependencies?
 
+**Destructive Impact**: Does this change obsolete any existing fields, objects, or classes? If yes, prepare to generate a `destructiveChanges.xml` containing these components.
+
 ### Step 3: Generate Impact Report
 
 ```markdown
@@ -77,6 +79,13 @@ Evaluate the change request against each artifact:
 
 ### New Stories Needed
 - task_story_04.md — Currency Conversion Service (new Apex batch class)
+
+### Destructive Changes Review
+*(If applicable, list components slated for deletion. TPO MUST manually sign off.)*
+| Component Type | Component Name | Action | TPO Approval Required |
+|----------------|----------------|--------|-----------------------|
+| CustomField | Invoice__c.OldCurrency__c | DELETE | [ ] Pending Sign-off |
+> **WARNING**: Deletions will be executed during deployment. Ensure `destructiveChanges.xml` is generated and accurate before approving.
 
 ### Risk Assessment
 - **Already-completed work**: Story-000 Foundation needs re-deployment (schema change)
@@ -107,6 +116,7 @@ If the TPO approves:
 3. Update affected story files
 4. Create new story files
 5. Update dependency graph
+6. If destructive changes are approved, generate `destructiveChanges.xml` in the `force-app/main/default` directory.
 
 ### Step 6: Add Change Log Entry
 

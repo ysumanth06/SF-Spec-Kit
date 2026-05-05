@@ -115,7 +115,7 @@ Parallel development in Salesforce is often blocked by metadata dependencies (e.
 
 SFSpeckit is a methodology + toolkit that gives your Salesforce team:
 
-- **17 Slash Commands**: A complete lifecycle from `/sfspeckit-specify` to `/sfspeckit-deploy`.
+- **18 Slash Commands**: A complete lifecycle from `/sfspeckit-specify` to `/sfspeckit-deploy`.
 - **Autonomous Auto-Heal**: `/sfspeckit-implement` automatically fixes linting, logic, and test errors by orchestrating your team's specific Salesforce skills.
 - **Evidence-Based Discovery**: `/sfspeckit-constitution` now automatically scans your org for managed packages, integration endpoints, and metadata maturity to establish project principles tailored to your environment.
 - **CLI-Driven Drift Detection**: `/sfspeckit-clarify` identifies manual org changes and multi-team conflicts before a plan is finalized.
@@ -225,6 +225,8 @@ SFSpeckit is **IDE-agnostic**. The core logic lives in structured Markdown "skil
 | `/sfspeckit-clarify`       | Arch | **[DRIFT ALERT]** Deep gap analysis and drift audit.                    |
 | `/sfspeckit-plan`          | Arch | Technical blueprint and deployment order.                               |
 | `/sfspeckit-stories`       | Arch | Break plan into Jira-ready developer stories.                           |
+| `/sfspeckit-review`        | TPO  | Architect review of generated story files before Jira creation.         |
+| `/sfspeckit-analyze`       | Dev  | Pre-implementation analysis and deep drift detection.                   |
 | `/sfspeckit-implement`     | Dev  | **[AUTO-HEAL]** Build story by orchestrating SF skills.                 |
 | `/sfspeckit-verify`        | Dev  | Generate "Verification Evidence" (Coverage, Security, Perf).            |
 | `/sfspeckit-pr`            | Dev  | Prepares PR summary via `gh cli`.                                       |

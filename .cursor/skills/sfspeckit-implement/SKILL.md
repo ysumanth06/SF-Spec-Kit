@@ -62,11 +62,17 @@ Update the story file:
 
 ### Step 4: Create Story Branch
 
+Ensure branch naming consistency. The standard format is:
+- Feature Branch: `feature/<feature-id>-<slug>`
+- Story Branch: `story/<feature-id>-<story-id>-<slug>`
+
 ```bash
-./SFSpeckit/bin/sfspeckit branch story $FEATURE_NUMBER-$STORY_NUMBER-$STORY_SLUG
+git checkout feature/$FEATURE_NUMBER-$FEATURE_SLUG
+git pull origin feature/$FEATURE_NUMBER-$FEATURE_SLUG
+git checkout -b story/$FEATURE_NUMBER-$STORY_NUMBER-$STORY_SLUG
 ```
 
-If the feature branch exists and Story-000 has been merged, branch from the updated feature branch.
+If the feature branch exists and Story-000 has been merged, always branch from the updated feature branch.
 
 ### Step 5: Check Code Analyzer
 
@@ -156,12 +162,33 @@ Compare actual scores with the story's required thresholds:
    - **Refactor**: Automatically modify the code to address the identified issues.
    - **Re-score**: Rerun the scoring skill for that layer.
    - **Retry Limit**: Attempt this loop up to **3 times** per layer.
+   - **API Limit Kill Switch**: After each retry, check the `LimitInfoHeader` or equivalent limits output. If `API Requests` or `CPU Time` exceeds 80% of the org limit, or shows a sudden massive spike, **IMMEDIATELY ABORT** the auto-heal loop to prevent sandbox lockout.
 
 3. **Final Validation**:
-   - If score is achieved within 3 retries → proceed to Step 8.
-   - If all 3 retries fail → STOP and inform the developer of the specific blockers and current score vs. threshold.
+   - If score is achieved within 3 retries (and limits are safe) → proceed to Step 8.
+   - If all 3 retries fail, or the kill switch is triggered → STOP and inform the developer of the specific blockers, current score vs. threshold, and current API limit status.
 
-### Step 8: Update Story File
+### Step 8: Deploy to Salesforce Target Org
+
+**CRITICAL GUARDRAIL**: You MUST deploy the code to the target Salesforce org *before* making any Git commits.
+
+```bash
+sf project deploy start --target-org dev
+```
+
+If the deployment fails, **STOP**. Resolve the deployment errors in the code before proceeding. Do NOT commit failing code to the repository.
+
+### Step 9: Git Commit and Push
+
+Only AFTER a successful Salesforce deployment, commit the changes to your story branch:
+
+```bash
+git add .
+git commit -m "feat: implement $STORY_TITLE"
+git push origin story/$FEATURE_NUMBER-$STORY_NUMBER-$STORY_SLUG
+```
+
+### Step 10: Update Story File
 
 Update the story file:
 - Mark all implementation layer checkboxes as `[x]`
@@ -169,7 +196,7 @@ Update the story file:
 - Set **State** to `IMPLEMENTED`
 - Set **Completed** to today's date (implementation date, not QA date)
 
-### Step 9: Summary
+### Step 11: Summary
 
 Inform the developer:
 - Layers completed: X/Y

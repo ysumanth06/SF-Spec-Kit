@@ -66,9 +66,11 @@ If any prerequisite fails → STOP and report what's missing.
    sf org display --target-org $TARGET_ENV
    ```
 
-### Step 3: Dry-Run Validation
+### Step 3: Destructive Changes & Dry-Run Validation
 
-ALWAYS run dry-run first:
+1. **Check for Destructive Changes**: Look for `force-app/main/default/destructiveChanges.xml` (or equivalent path).
+2. **Human-in-the-Loop Gate**: If the file exists, STOP and output the contents to the console. Ask the Release Manager: "Destructive changes detected. Do you approve the execution of these deletions? (y/n)". Do NOT proceed without explicit typed approval.
+3. **Dry-Run**: ALWAYS run dry-run first. If destructive changes exist and were approved, append `--post-destructive-changes destructiveChanges.xml`.
 
 ```bash
 sf project deploy start \
@@ -142,6 +144,14 @@ sf project deploy start \
   --target-org $TARGET_ENV \
   --test-level NoTestRun
 ```
+
+### Step 4.5: Automated Rollback Strategy
+
+If a phased deployment fails mid-flight (e.g., Phase 3 fails after Phase 1 and 2 succeeded), the org may be in an inconsistent state.
+1. **Halt and Alert**: Stop the deployment, report the specific errors, and alert the Release Manager.
+2. **Identify Previous State**: Identify the Git commit SHA from immediately before the deployment started.
+3. **Rollback Prompt**: Ask the user: "Deployment failed. Would you like to automatically rollback to the previous state (Commit SHA: $PREV_SHA)? (y/n)"
+4. **Execute Rollback**: If approved, run `git checkout $PREV_SHA` and execute an atomic `sf project deploy start --source-dir force-app --target-org $TARGET_ENV --ignore-conflicts` to revert the org metadata, then run `git checkout -` to return to the current branch.
 
 ### Step 5: Post-Deployment Verification
 

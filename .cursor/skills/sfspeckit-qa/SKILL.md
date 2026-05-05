@@ -113,7 +113,18 @@ Save technical results (Persona Matrix, Traceability Matrix, Manual Scripts) to:
 Update the story file's QA Results section:
 - **Technical Tests**: X/Y passed
 - **Persona Coverage**: X/Y confirmed
-- **State** to `QA` (passed technical QA, ready for UAT)
+- **State**: If all tests pass, set to `QA_READY`.
+
+### Step 11: QA Bug Remediation Flow
+
+If a bug is discovered during testing:
+
+1. **Do NOT create a new branch or story file**.
+2. Set the Story State to `QA_FAILED`.
+3. Document the bug details (Steps to Reproduce, Expected, Actual) in the **QA Results** section.
+4. Return the story to the developer.
+5. **Developer Action**: Check out the existing `story/` branch, fix the bug, deploy to the SF Dev org, verify with `/sfspeckit-verify`, and push to the existing PR.
+6. Once the developer's fix is deployed to the QA Sandbox, run `/sfspeckit-qa` again.
 
 ## Output
 

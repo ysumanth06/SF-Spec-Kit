@@ -37,13 +37,12 @@ Path to the story file:
 2. Identify all Apex classes, LWC components, and Triggers from the **SF Implementation Layers** table.
 3. Identify relevant test classes (e.g., `MyClass_Test.cls`).
 
-### Step 2: Push Current Changes
+### Step 2: Pre-Verification Guardrails
 
-Ensure the story branch is up-to-date with your local changes.
-```bash
-git add .
-git commit -m "chore: prepare for unit test verification"
-```
+1. **Deployment Check**: Confirm that the latest code has been successfully deployed to the target Salesforce Org. 
+   - Ask: "Have you successfully deployed the latest changes to your Salesforce org via `sf project deploy start`?"
+   - If NO: STOP and instruct the developer to deploy first. Verification MUST run against deployed code.
+2. **Git Commit Guardrail**: Ensure no unverified code is pushed to remote. Do not run any `git commit` or `git push` commands until all tests pass in the following steps.
 
 ### Step 3: Run Unit Tests & Security Scans
 
@@ -134,8 +133,18 @@ Standard scan results (PMD/ESLint):
 - [ ] No governor limit exceptions (SOQL/DML) detected
 ```
 
-### Step 6: Update Story File
+### Step 6: Final Git Commit and Update Story
 
+Only after verification passes and the evidence document is generated:
+
+1. **Commit and Push**:
+```bash
+git add .
+git commit -m "test: add verification evidence for $STORY_TITLE"
+git push origin story/$FEATURE_NUMBER-$STORY_NUMBER-$STORY_SLUG
+```
+
+2. **Update Story File**:
 - Update **QA Results** or **State** section to reference the new evidence document.
 - Set **State** to `VERIFIED` (Internal dev verification complete).
 
